@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kantin Nasi Hainam 88</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- External CSS File -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <span class="brand-name">Kantin 88 Nasi Hainam</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Lokasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tentang Kami</a>
+                </li>
+            </ul>
+            <div class="ms-3 d-flex">
+                <a href="#" class="social-icon me-2"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-icon me-2"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="display-4 fw-bold mb-3">Kantin Nasi Hainam 88</h1>
+                    <p class="lead mb-4">Semua menu kami dimasak dengan bahan segar setiap hari. Kami mementingkan gizi seimbang untuk mahasiswa yang butuh energi sepanjang hari.</p>
+                    <div class="d-flex">
+                        <a href="#login-section" class="btn btn-login btn-lg me-3">Pesan Sekarang</a>
+                        <a href="#menu-section" class="btn btn-outline-light btn-lg">Lihat Menu</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/images/fotofull-makanan.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login/Register Section -->
+    <section id="login-section" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card login-card">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+                                <div class="col-md-5">
+                                    <img src="/images/chef.png" alt="Seafood Illustration" class="seafood-illustration">
+                                </div>
+                                <div class="col-md-7 p-4 p-lg-5">
+                                    <div class="tabs-container">
+                                        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">Register</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="login" role="tabpanel">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label for="email" class="form-label">Email</label>
+                                                        <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="password" class="form-label">Password</label>
+                                                        <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda">
+                                                    </div>
+                                                    <div class="mb-3 form-check">
+                                                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                                                        <label class="form-check-label" for="rememberMe">Ingat saya</label>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-login btn-lg w-100">Login</button>
+                                                    <div class="text-center mt-3">
+                                                        <a href="#" class="text-decoration-none">Lupa password?</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="register" role="tabpanel">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label for="fullName" class="form-label">Nama Lengkap</label>
+                                                        <input type="text" class="form-control" id="fullName" placeholder="Masukkan nama lengkap Anda">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="registerEmail" class="form-label">Email</label>
+                                                        <input type="email" class="form-control" id="registerEmail" placeholder="Masukkan email Anda">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="phone" class="form-label">Nomor Telepon</label>
+                                                        <input type="tel" class="form-control" id="phone" placeholder="Masukkan nomor telepon Anda">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="registerPassword" class="form-label">Password</label>
+                                                        <input type="password" class="form-control" id="registerPassword" placeholder="Masukkan password Anda">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-register btn-lg w-100">Register</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Popular Menu Section -->
+<section id="menu-section" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Menu Populer Kami</h2>
+            <p class="text-muted">Berbagai pilihan menu yang menjadi favorit pelanggan kami</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card food-item h-100">
+                    <img src="/images/kentangbalado.jpeg" class="card-img-top" alt="Kentang Balado">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Kentang Balado</h5>
+                        <p class="card-text">Kentang Balado adalah hidangan khas Indonesia yang terbuat dari kentang goreng renyah yang dipadukan dengan sambal pedas berbumbu cabai, bawang, dan rempah lainnya.</p>
+                        <p class="fw-bold text-danger mb-0">Rp 5.000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card food-item h-100">
+                    <img src="/images/Togesyr.jpeg" class="card-img-top" alt="Kentang Balado">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
+                        <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari toge yang ditumis dengan bumbu bawang putih dan rempah-rempah, menghasilkan rasa segar dan sehat.
+                        </p>
+                        <p class="fw-bold text-danger mb-0">Rp 5.000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card food-item h-100">
+                    <img src="/images/sayurijo.jpeg" class="card-img-top" alt="Kentang Balado">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Sayur Daging Tumis</h5>
+                        <p class="card-text">Sayur Daging Tumis adalah hidangan Indonesia yang terbuat dari daging dan sayuran yang ditumis untuk menciptakan rasa gurih dan enak.
+                        </p>
+                        <p class="fw-bold text-danger mb-0">Rp 5.000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card food-item h-100">
+                    <img src="/images/sawi.jpeg" class="card-img-top" alt="Kentang Balado">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Sayur Cah Sawi </h5>
+                        <p class="card-text">Sayur Cah Sawi adalah hidangan sederhana khas Indonesia yang terbuat dari sawi yang ditumis dengan bawang putih, cabai hingga matang .
+                        </p>
+                        <p class="fw-bold text-danger mb-0">Rp 5.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-outline-dark btn-lg">Lihat Menu Lengkap</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Testimonial Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Apa Kata Pelanggan Kami</h2>
+            <p class="text-muted">Pengalaman pelanggan yang puas dengan pelayanan kami</p>
+        </div>
+        <div class="row g-4">
+            <!-- Testimonial 1 -->
+            <div class="col-md-3">
+                <div class="card h-100 p-4">
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <img src="/api/placeholder/50/50" class="rounded-circle" alt="Customer">
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="mb-0">Eryca Dhamma</h5>
+                            <div class="text-warning mb-1">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-text">"Nasi Hainam terbaik yang pernah saya coba! Rasanya autentik dan porsinya cukup besar. Pelayanannya juga ramah."</p>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="col-md-3">
+                <div class="card h-100 p-4">
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <img src="/api/placeholder/50/50" class="rounded-circle" alt="Customer">
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="mb-0">Brenda Abigail</h5>
+                            <div class="text-warning mb-1">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-text">"Seafood-nya segar dan diolah dengan sempurna. Saya sering pesan delivery dan selalu puas dengan rasa dan kebersihannya."</p>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="col-md-3">
+                <div class="card h-100 p-4">
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <img src="/api/placeholder/50/50" class="rounded-circle" alt="Customer">
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="mb-0">Georgia Sugisandhea</h5>
+                            <div class="text-warning mb-1">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-text">"Tempat nyaman dan bersih. Menu Nasi Hainam Special benar-benar worth it untuk dicoba. Akan kembali lagi!"</p>
+                </div>
+            </div>
+            <!-- Testimonial 4 -->
+            <div class="col-md-3">
+                <div class="card h-100 p-4">
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <img src="/api/placeholder/50/50" class="rounded-circle" alt="Customer">
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="mb-0">Gathan</h5>
+                            <div class="text-warning mb-1">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-text">"Tempat nyaman dan bersih. Menu Nasi Hainam Special benar-benar worth it untuk dicoba. Akan kembali lagi!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Location Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-4">Kunjungi Kami</h2>
+                    <p class="mb-4">Kami hadir di beberapa lokasi strategis untuk memudahkan Anda menikmati kelezatan masakan kami.</p>
+                    
+                    <!-- Alamat Lokasi -->
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-geo-alt text-danger fs-4"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>Lokasi</h5>
+                            <p class="mb-0">Tarumanagara University, Jl. Taman S. Parman No.blok A, RT.6/RW.16, Tomang, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11440</p>
+                        </div>
+                    </div>
+
+                    <!-- Nomor Telepon -->
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-telephone text-danger fs-4"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>Kontak</h5>
+                            <p class="mb-0">0818-0855-1680</p>
+                        </div>
+                    </div>
+
+                    <!-- Jam Operasional -->
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-clock text-danger fs-4"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>Jam Operasional</h5>
+                            <ul class="list-unstyled">
+                                <li>Jumat: 7.00 am – 3.00 pm</li>
+                                <li>Sabtu: Tutup</li>
+                                <li>Minggu: Tutup</li>
+                                <li>Senin – Kamis: 7.00 am – 3.00 pm</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Options -->
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <i class="bi bi-credit-card text-danger fs-4"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>Opsi Pembayaran</h5>
+                            <p class="mb-0">Hanya Menerima Pembayaran Tunai</p>
+                        </div>
+                    </div>
+                </div>
+              <!-- Embed Google Maps -->
+              <div class="col-lg-6">
+                <div class="ratio ratio-16x9">
+                    <!-- Google Maps Embed iframe -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1170.8445564277936!2d106.78870808028746!3d-6.169614224309266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7f6fba2b5b5%3A0x68d7f6aef79e4fb4!2sKantin%2088%20Untar!5e0!3m2!1sen!2sid!4v1746187970343!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="brand-name mb-4">Kantin 88 Nasi Hainam</h3>
+                    <p>Restoran keluarga yang menyajikan makanan khas Hainan dan seafood dengan cita rasa autentik dan bahan berkualitas.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="mb-4">Menu</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Nasi Hainam</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Menu Spesial</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="mb-4">Layanan</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Katering</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Event</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Hubungi Kami</h5>
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email Anda">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="3" placeholder="Pesan Anda"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-light">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Kantin 88 Nasi Hainam. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Syarat & Ketentuan</a>
+                    <a href="#" class="text-white text-decoration-none">Kebijakan Privasi</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+}
+/* Navbar Styling */
+.navbar {
+    background-color: rgba(255, 255, 255, 10);
+    /*Transparandenganlatarbelakangputih*/position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /*Agarnavbarselaludiatas*/box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    /*Menambahkanbayanganuntukmemberikanefekdimensi*/transition: background-color 0.5s ease;
+}
+
+.navbar-brand {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1d3557;
+}
+
+.navbar-nav .nav-link {
+    color: #495057; /* Warna teks menu */
+    font-size: 1.2rem; /* Ukuran font lebih besar */
+    font-weight: 600;
+    padding: 12px 20px; /* Menambah ruang di sekitar teks */
+    transition: color 0.3s, background-color 0.3s; /* Transisi untuk hover */
+}
+
+/* Hover Effect on Navbar Links */
+.navbar-nav .nav-link:hover {
+    color: #fff; /* Warna teks menjadi putih saat hover */
+    background-color: #ff9f5a; /* Memberikan latar belakang oranye saat hover */
+    border-radius: 5px; /* Menambahkan sudut melengkung */
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border-color: #1d3557;
+}
+
+.navbar-toggler-icon {
+    background-color: #1d3557;
+}
+
+/* Social Media Icons */
+.social-icon {
+    font-size: 1.5rem;
+    color: #1d3557;
+    margin: 0 10px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    color: #ff9f5a;
+    transform: translateY(-3px); /* Efek pergerakan saat hover */
+}
+
+/* Fixed Navbar (Sticky) */
+body {
+    padding-top: 70px; /* Menambahkan ruang agar konten tidak tertutup oleh navbar */
+}
+
+
+.brand-name {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.hero-section {
+    background-color: #1d3557;
+    color: white;
+    border-radius: 0 0 25px 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.login-card {
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+.btn-login {
+    background-color: #ff9f5a;
+    border: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+.btn-login:hover {
+    background-color: #ff8c3b;
+    transform: translateY(-2px);
+}
+.btn-register {
+    background-color: #8ecae6;
+    border: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+.btn-register:hover {
+    background-color: #73b8d9;
+    transform: translateY(-2px);
+}
+.tabs-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+}
+.nav-tabs {
+    border-bottom: none;
+}
+.nav-tabs .nav-link {
+    margin-bottom: 0;
+    border: none;
+    color: #495057;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+}
+.nav-tabs .nav-link.active {
+    color: #1d3557;
+    background-color: transparent;
+    border-bottom: 3px solid #ff9f5a;
+}
+.food-item {
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+.food-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.footer {
+    background-color: #1d3557;
+    color: white;
+}
+.social-icon {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 10px;
+    transition: all 0.3s;
+}
+.social-icon:hover {
+    color: #ff9f5a;
+    transform: translateY(-3px);
+}
+.seafood-illustration {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* New Styles for 4 Columns and 1:1 Image Ratio */
+.food-item {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.food-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes the image fill the card */
+    aspect-ratio: 1 / 1; /* Ensures a 1:1 ratio for images */
+}
+
+/* Arrange items in 4 columns */
+@media (min-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 25%; /* 4 items per row */
+        max-width: 25%;
+    }
+}
