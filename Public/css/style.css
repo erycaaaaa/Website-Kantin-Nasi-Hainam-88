@@ -170,3 +170,13 @@ body {
         max-width: 25%;
     }
 }
+#category-section .nav-link {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  #category-section .nav-link.active {
+    color: #fff;
+    background-color: #e74c3c; /* Warna latar untuk kategori aktif */
+  }
+  
