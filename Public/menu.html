@@ -52,13 +52,26 @@
     </nav>
     <!-- Navbar End -->
 
-    <!-- Popular Menu Section -->
+    <!-- Menu -->
     <section id="menu-section" class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">Menu Populer Kami</h2>
                 <p class="text-muted">Berbagai pilihan menu yang menjadi favorit pelanggan kami</p>
             </div>
+ 
+            <!-- Floating Cart Button -->
+            <a href="#cart-page" id="cart-button"class="btn btn-primary rounded-circle shadow-lg cart-button position-fixed">
+                <i class="bi bi-cart-fill fs-4 position-relative">
+                    <span id="cart-badge"class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span>
+                </i>
+            </a>
+    
+            
+
+               <!-- Popular Menu Section -->
             <div class="row g-4">
                 <div class="col-md-3">
                     <div class="card food-item h-100">
@@ -74,10 +87,12 @@
                                 <p class="mb-0">Stok: 20</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+                                <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -98,10 +113,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -122,10 +139,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -147,10 +166,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -171,10 +192,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -195,10 +218,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -219,10 +244,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -243,10 +270,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -267,10 +296,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -291,10 +322,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -315,10 +348,12 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
@@ -339,15 +374,18 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm">
+                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-                                <button class="btn btn-outline-danger btn-sm">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 
 
@@ -571,6 +609,8 @@
             </div>
         </div>
     </footer>
+    
+    <script src="js/script.js"></script>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
