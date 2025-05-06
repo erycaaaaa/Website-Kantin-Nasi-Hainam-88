@@ -60,71 +60,53 @@
                 <p class="text-muted">Berbagai pilihan menu yang menjadi favorit pelanggan kami</p>
             </div>
  
-            <!-- Floating Cart Button -->
-            <a href="#cart-page" id="cart-button"class="btn btn-primary rounded-circle shadow-lg cart-button position-fixed">
+            <!-- Floating Cart Button Baru -->
+            <a href="#cart-page" id="cart-button" class="btn btn-primary rounded-circle shadow-lg cart-button position-fixed bottom-0 end-0 m-4">
                 <i class="bi bi-cart-fill fs-4 position-relative">
-                    <span id="cart-badge"class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                         0
                     </span>
                 </i>
             </a>
-    
-            
-
-               <!-- Popular Menu Section -->
+                        <!-- Popular Menu Section -->
             <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="/images/kentangbalado.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Kentang Balado</h5>
-                            <p class="card-text">Kentang Balado adalah hidangan khas Indonesia yang terbuat dari kentang goreng renyah... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail1">More...</a></p>
-                            <div id="detail1" class="collapse">
-                                <p>Kentang Balado adalah hidangan khas Indonesia yang terbuat dari kentang goreng renyah yang dipadukan dengan sambal pedas berbumbu cabai, bawang, dan rempah lainnya yang memberikan rasa yang menggugah selera. Hidangan ini sangat cocok sebagai teman makan nasi atau sekadar cemilan.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 20</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
-                                <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-3">
                     <div class="card food-item h-100">
                         <img src="/images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
+                            <p class="card-text">
+                                Sayur Toge Tumis adalah hidangan Indonesia... 
+                                <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a>
+                            </p>
                             <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
+                                <p>Sayur sehat yang terdiri dari toge, bawang putih, dan bumbu lainnya.</p>
                             </div>
+                
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="fw-bold text-danger mb-0">Rp 5.000</p>
                                 <p class="mb-0">Stok: 15</p>
                             </div>
+                
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-
+                                <button 
+                                    class="btn btn-outline-dark btn-sm btn-add-cart"
+                                    data-name="Sayur Toge Tumis"
+                                    data-price="5000"
+                                    data-img="/images/Togesyr.jpeg">
                                     <i class="bi bi-cart-plus"></i> Keranjang
                                 </button>
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
+                
+                                <button 
+                                    class="btn btn-outline-danger btn-sm btn-remove-cart"
+                                    data-name="Sayur Toge Tumis">
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-3">
                     <div class="card food-item h-100" style="width: 100%; aspect-ratio: 1;">
                         <img src="/images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis" style="object-fit: cover; width: 100%; height: 100%;">
@@ -139,10 +121,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -166,10 +148,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -192,10 +174,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -218,10 +200,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -244,10 +226,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -270,10 +252,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -296,10 +278,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -322,10 +304,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -348,10 +330,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
@@ -374,10 +356,10 @@
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                                <i class="bi bi-cart-plus"></i> Keranjang
+                            </button>
 
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
 <button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
 
                                     <i class="bi bi-trash"></i> Hapus
