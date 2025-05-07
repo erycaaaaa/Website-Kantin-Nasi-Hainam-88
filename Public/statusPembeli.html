@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histori Penjualan</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+      <!-- Kiri -->
+      <a class="navbar-brand" href="#">Kantin 88 Nasi Hainam</a>
+  
+      <!-- Toggler for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/Public/index.html">Beranda</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./menu.html">Menu</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#location">Lokasi</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Tentang Kami</a>
+          </li>
+          </ul>
+      </div>
+      </div>
+  </nav>
+  <!-- Navbar End -->
+   
+  <!-- Daftar Pesanan -->
+  <div class="container">
+    <h1>Status Pesanan</h1>
+    <p id="current-status">Status saat ini: <span id="status-text">Menunggu Konfirmasi</span></p>
+
+    <div id="status-form" class="hidden">
+      <label for="status-select">Ubah Status:</label>
+      <select id="status-select">
+        <option value="Makanan sedang diproses">Makanan sedang diproses</option>
+        <option value="Makanan siap diambil">Makanan siap diambil</option>
+        <option value="Makanan telah diambil">Makanan telah diambil</option>
+      </select>
+      <button onclick="updateStatus()">Simpan</button>
+    </div>
+  </div>
+
+    <script src="js/pesanan.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
