@@ -13,6 +13,18 @@ body {
     /*Agarnavbarselaludiatas*/box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     /*Menambahkanbayanganuntukmemberikanefekdimensi*/transition: background-color 0.5s ease;
 }
+nav.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+body {
+  padding-top: 70px; /* atur sesuai tinggi navbar agar konten tidak ketiban */
+}
+
+
 
 .navbar-brand {
     font-family: 'Brush Script MT', cursive;

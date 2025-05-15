@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" ng-app="memoryApp">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kantin Nasi Hainam 88</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Kantin Nasi Hainam 88</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="stylesheet" href="css/memory.css">
+  <link rel="stylesheet" href="css/style.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link Bootstrap Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
-    <!-- External CSS File -->
-    <link href="css/style.css" rel="stylesheet">
+    
 </head>
 <body>
-      
+ 
+
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid d-flex justify-content-between align-items-center">
@@ -66,25 +69,20 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="/images/fotofull-makanan.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
+                    <img src="images/fotofull-makanan.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
                 </div>
             </div>
         </div>
         
-            <!-- Floating Cart Button -->
-            <a href="#cart-page" id="cart-button"class="btn btn-primary rounded-circle shadow-lg cart-button position-fixed">
-                <i class="bi bi-cart-fill fs-4 position-relative">
-                    <span id="cart-badge"class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0
-                    </span>
-                </i>
-            </a>
+           
     
 
     </section>
-
-    <!-- Login/Register Section -->
-    <section id="login-section" class="py-5">
+<body ng-controller="MemoryController">
+  <!-- Tombol Logout (hanya muncul setelah login) -->
+  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
+     
+  <section id="login-section" class="py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -92,7 +90,7 @@
                         <div class="card-body p-0">
                             <div class="row g-0">
                                 <div class="col-md-5">
-                                    <img src="./images/chef.png" alt="Seafood Illustration" class="seafood-illustration">
+                                    <img src="images/chef.png" alt="Illustration" class="seafood-illustration">
                                 </div>
                                 <div class="col-md-7 p-4 p-lg-5">
                                     <div class="tabs-container">
@@ -106,44 +104,44 @@
                                         </ul>
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="login" role="tabpanel">
-                                                <form>
+                                                <form id="loginForm">
                                                     <div class="mb-3">
                                                         <label for="email" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda">
+                                                        <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="password" class="form-label">Password</label>
-                                                        <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda">
+                                                        <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda" required>
                                                     </div>
                                                     <div class="mb-3 form-check">
                                                         <input type="checkbox" class="form-check-input" id="rememberMe">
                                                         <label class="form-check-label" for="rememberMe">Ingat saya</label>
                                                     </div>
-                                                    <button type="submit" class="btn btn-login btn-lg w-100">Login</button>
+                                                    <button type="button" class="btn btn-login btn-lg w-100" onclick="login()">Login</button>
                                                     <div class="text-center mt-3">
                                                         <a href="#" class="text-decoration-none">Lupa password?</a>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="tab-pane fade" id="register" role="tabpanel">
-                                                <form>
+                                                <form id="registerForm">
                                                     <div class="mb-3">
                                                         <label for="fullName" class="form-label">Nama Lengkap</label>
-                                                        <input type="text" class="form-control" id="fullName" placeholder="Masukkan nama lengkap Anda">
+                                                        <input type="text" class="form-control" id="fullName" placeholder="Masukkan nama lengkap Anda" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="registerEmail" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="registerEmail" placeholder="Masukkan email Anda">
+                                                        <input type="email" class="form-control" id="registerEmail" placeholder="Masukkan email Anda" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="phone" class="form-label">Nomor Telepon</label>
-                                                        <input type="tel" class="form-control" id="phone" placeholder="Masukkan nomor telepon Anda">
+                                                        <input type="tel" class="form-control" id="phone" placeholder="Masukkan nomor telepon Anda" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="registerPassword" class="form-label">Password</label>
-                                                        <input type="password" class="form-control" id="registerPassword" placeholder="Masukkan password Anda">
+                                                        <input type="password" class="form-control" id="registerPassword" placeholder="Masukkan password Anda" required>
                                                     </div>
-                                                    <button type="submit" class="btn btn-register btn-lg w-100">Register</button>
+                                                    <button type="button" class="btn btn-register btn-lg w-100" onclick="register()">Register</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -156,66 +154,86 @@
             </div>
         </div>
     </section>
+  
+  <div class="container">
+    <h1>Menu Restoran</h1>
 
-    <!-- Popular Menu Section -->
-    <section id="menu-section" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Menu Populer Kami</h2>
-                <p class="text-muted">Berbagai pilihan menu yang menjadi favorit pelanggan kami</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="./images/kentangbalado.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Kentang Balado</h5>
-                            <p class="card-text">Kentang Balado adalah hidangan khas Indonesia yang terbuat dari kentang goreng renyah yang dipadukan dengan sambal pedas berbumbu cabai, bawang, dan rempah lainnya.</p>
-                            <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="./images/sawi.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari toge yang ditumis dengan bumbu bawang putih dan rempah-rempah, menghasilkan rasa segar dan sehat.
-                            </p>
-                            <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="./images/sayurijo.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Daging Tumis</h5>
-                            <p class="card-text">Sayur Daging Tumis adalah hidangan Indonesia yang terbuat dari daging dan sayuran yang ditumis untuk menciptakan rasa gurih dan enak.
-                            </p>
-                            <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="./images/Togesyr.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Cah Sawi </h5>
-                            <p class="card-text">Sayur Cah Sawi adalah hidangan sederhana khas Indonesia yang terbuat dari sawi yang ditumis dengan bawang putih, cabai hingga matang .
-                            </p>
-                            <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="./menu.html" class="btn btn-outline-dark btn-lg">Lihat Menu Lengkap</a>
-            </div>
+    <!-- Form Tambah Menu (khusus admin) -->
+    <div id="admin-panel" style="display:none;">
+      <form ng-submit="addMemory()" enctype="multipart/form-data">
+        <input id="photoInput" type="file" file-model="memory.photo" required>
+        <input type="text" ng-model="memory.name" placeholder="Nama menu..." required>
+        <input type="text" ng-model="memory.description" placeholder="Deskripsi menu..." required>
+        <input type="number" ng-model="memory.price" placeholder="Harga menu..." required>
+        <button type="submit">Tambah Menu</button>
+      </form>
+    </div>
+
+  <!-- Floating Cart Button -->
+<button id="cartButton" class="btn btn-primary rounded-circle shadow-lg position-fixed"
+        style="bottom: 20px; right: 20px; z-index: 1050;"
+        onclick="toggleCartPanel()">
+    <i class="bi bi-cart-fill fs-4 position-relative">
+        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cart.length }}
+            <span class ="visually-hidden"></span>
+        </span>
+    </i>
+</button>
+
+
+<!-- Panel Keranjang Belanja -->
+<div id="cartPanel" class="bg-light p-3 rounded shadow"
+     style="position: fixed; bottom: 80px; right: 20px; width: 300px; display: none; z-index: 1040; max-height: 400px; overflow-y: auto;">
+  <h5>Keranjang Belanja</h5>
+
+  <div ng-if="cart.length === 0">Keranjang Anda kosong.</div>
+
+  <div ng-repeat="item in cart" class="mb-2">
+    <strong>{{item.name}}</strong><br>
+    Rp {{item.price | number:0}} x {{item.quantity}} =
+    <strong>Rp {{item.price * item.quantity | number:0}}</strong><br>
+    <button ng-click="addToCart(item)">+</button>
+    <button ng-click="removeFromCart(item)">Hapus</button>
+  </div>
+
+  <p ng-if="cart.length > 0" class="mt-3"><strong>Total:</strong> Rp {{ getTotal() | number:0 }}</p>
+</div>
+
+
+
+
+
+
+
+        
+
+    <!-- Daftar Menu -->
+    <div class="memory-list">
+      <div class="memory-item" ng-repeat="memory in memories">
+        <div ng-if="!memory.editing">
+          <img ng-src="http://localhost:5000/{{memory.photo}}" alt="Foto Menu" width="200">
+          <h3><b>{{memory.name}}</b></h3>
+          <p>{{memory.description}}</p>
+          <p>Rp {{memory.price | number:0}}</p>
+          <button ng-show="isAdmin()" ng-click="deleteMemory(memory._id)" style="background: blue; color: white;">Hapus</button>
+          <button ng-show="isAdmin()" ng-click="editMemory(memory)" style="background: blue; color: white;">Edit</button>
+          <!-- Tombol untuk menambah menu ke keranjang -->
+          <button ng-click="addToCart(memory)" style="background: orange; color: white;">Tambah ke Keranjang</button>
         </div>
-    </section>
 
-    <!-- Testimonial Section -->
+        <div ng-if="memory.editing">
+          <input type="text" ng-model="memory.name" placeholder="Edit nama..." required>
+          <input type="text" ng-model="memory.description" placeholder="Edit deskripsi..." required>
+          <input type="number" ng-model="memory.price" placeholder="Edit harga..." required>
+          <button ng-click="saveMemory(memory)" style="background: green; color: white;">Simpan</button>
+          <button ng-click="cancelEdit(memory)" style="background: gray; color: white;">Batal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Testimonial Section -->
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
@@ -431,10 +449,204 @@
             </div>
         </div>
     </footer>
-    <script src="js/script.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Script autentikasi -->
+  <script>
+    function toggleRegister() {
+            const registerFields = document.getElementById('registerFields');
+            const toggleText = document.getElementById('toggleText');
+
+            if (registerFields.style.display === "none") {
+                registerFields.style.display = "block";
+                toggleText.innerText = "Sudah punya akun? Login di sini";
+            } else {
+                registerFields.style.display = "none";
+                toggleText.innerText = "Belum punya akun? Daftar di sini";
+            }
+        }
+    async function getProtectedData() {
+      const token = localStorage.getItem("token");
+      const response = await fetch("http://localhost:5000/api/auth/protected", {
+        method: "GET",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+      const data = await response.json();
+      console.log(data);
+      alert(JSON.stringify(data));
+    }
+   // Fungsi untuk menambah item ke keranjang
+// Fungsi untuk menambah item ke keranjang
+function addToCart(memory) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || []; // Ambil keranjang dari localStorage
+
+  // Cek jika item sudah ada di keranjang
+  const existingItem = cart.find(item => item._id === memory._id);
+
+  if (existingItem) {
+    // Jika ada, tambah jumlahnya
+    existingItem.quantity += 1;  // Menambah quantity jika sudah ada
+  } else {
+    // Jika tidak ada, set jumlahnya menjadi 1
+    memory.quantity = 1;
+    cart.push(memory);
+  }
+
+  // Simpan kembali keranjang ke localStorage
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartDisplay(); // Update tampilan keranjang
+}
+
+// Fungsi untuk mendapatkan total harga
+function getTotal() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  return cart.reduce((total, item) => total + item.price * item.quantity, 0); // Total harga berdasarkan quantity
+}
+
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      window.location.href = "index.html"; // Redirect ke halaman login
+    }
+
+    // Fungsi untuk login
+    function login() {
+      // Logika login di sini, simpan token dan role ke localStorage jika login berhasil
+      localStorage.setItem("token", "some-auth-token");
+      localStorage.setItem("role", "customer");  // atau "admin" sesuai dengan role pengguna
+      updateUI(); // Update UI setelah login
+    }
+    // Fungsi untuk memperbarui tampilan keranjang
+// Fungsi untuk memperbarui tampilan keranjang
+function updateCartDisplay() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
+
+  const cartBadge = document.getElementById("cart-badge");
+  if (cartBadge) {
+    cartBadge.innerText = cartCount;
+  }
+
+  const cartButton = document.getElementById("cartButton");
+  if (cartButton && cartButton.innerText.includes("Keranjang")) {
+    cartButton.innerText = `Keranjang (${cartCount})`;
+  }
+}
+
+function removeFromCart(item) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Jika jumlah lebih dari 1, kurangi jumlahnya
+  if (item.quantity > 1) {
+    item.quantity -= 1;
+  } else {
+    // Jika jumlahnya 1, hapus item dari keranjang
+    const index = cart.findIndex(cartItem => cartItem._id === item._id);
+    cart.splice(index, 1);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart)); // Simpan kembali keranjang ke localStorage
+  updateCartDisplay(); // Update tampilan keranjang
+}
+
+
+
+
+    // Update UI berdasarkan status login
+    function updateUI() {
+      const token = localStorage.getItem("token");
+      const logoutButton = document.getElementById("logoutButton");
+      if (token) {
+        logoutButton.style.display = "inline-block"; // Tampilkan tombol logout jika login berhasil
+      } else {
+        logoutButton.style.display = "none"; // Sembunyikan tombol logout jika belum login
+      }
+
+      const role = localStorage.getItem("role");
+      const adminPanel = document.getElementById("admin-panel");
+      if (role === "admin") {
+        adminPanel.style.display = "block";
+      } else {
+        adminPanel.style.display = "none";
+      }
+
+      const cartButton = document.getElementById("cartButton");
+      if (role === "customer") {
+        cartButton.style.display = "inline-block"; // Tampilkan tombol keranjang untuk customer
+      } else {
+        cartButton.style.display = "none"; // Sembunyikan tombol keranjang untuk selain customer
+      }
+    }
+    function toggleCartPanel() {
+  const panel = document.getElementById("cartPanel");
+  if (panel.style.display === "none") {
+    panel.style.display = "block";
+    renderCart(); // update isi keranjang saat ditampilkan
+  } else {
+    panel.style.display = "none";
+  }
+}
+
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartContent = document.getElementById("cartContent");
+  const cartTotal = document.getElementById("cartTotal");
+
+  if (cart.length === 0) {
+    cartContent.innerHTML = "<p>Keranjang Anda kosong.</p>";
+    cartTotal.innerHTML = "";
+    return;
+  }
+
+  let html = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
+    html += `
+      <div class="mb-2">
+        <strong>${item.name}</strong><br>
+        Rp ${item.price.toLocaleString()} x ${item.quantity} = <strong>Rp ${subtotal.toLocaleString()}</strong><br>
+        <small>di pesan ${item.quantity} kali</small><br>
+        <button onclick='addToCart(${JSON.stringify(item)})'>+</button>
+        <button onclick='removeFromCartById("${item._id}")'>Hapus</button>
+      </div>
+    `;
+  });
+
+  cartContent.innerHTML = html;
+  cartTotal.innerHTML = `<strong>Total:</strong> Rp ${total.toLocaleString()}`;
+}
+
+function removeFromCartById(id) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const index = cart.findIndex(item => item._id === id);
+
+  if (index > -1) {
+    if (cart[index].quantity > 1) {
+      cart[index].quantity -= 1;
+    } else {
+      cart.splice(index, 1);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartDisplay();
+    renderCart(); // Perbarui panel
+  }
+}
+
+
+    // Panggil updateUI saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", function () {
+      updateUI(); // Pastikan UI diperbarui saat halaman dimuat
+    });
+  </script>
+
+  <script src="fotoapp.js"></script>
+  <script src="auth.js"></script>
+
 </body>
 </html>
