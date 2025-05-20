@@ -193,6 +193,8 @@ body {
   }
   
   .cart-button {
+    background-color: #1d3557; /* Dark blue color */
+    border: none;
     position: fixed;
     bottom: 20px;
     right: 20px;
