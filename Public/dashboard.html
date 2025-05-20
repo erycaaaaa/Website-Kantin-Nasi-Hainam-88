@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="memoryApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Restoran</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="stylesheet" href="css/memory.css">
+</head>
+<button onclick="logout()">Logout</button>
+
+
+
+<body ng-controller="MemoryController">
+  
+  
+  <div class="container">
+    <h1>Menu Restoran</h1>
+    
+    <!-- Form Tambah Menu (khusus admin) -->
+    <div id="admin-panel" style="display:none;">
+      <form ng-submit="addMemory()" enctype="multipart/form-data">
+        <input id="photoInput" type="file" file-model="memory.photo" required>
+        <input type="text" ng-model="memory.name" placeholder="Nama menu..." required>
+        <input type="text" ng-model="memory.description" placeholder="Deskripsi menu..." required>
+        <input type="number" ng-model="memory.price" placeholder="Harga menu..." required>
+        <button type="submit">Tambah Menu</button>
+      </form>
+    </div>
+
+<!-- Tombol Keranjang Belanja -->
+<div id="cartButton" style="display: none;">
+  <button ng-click="showCart = !showCart">Keranjang ({{cart.length}})</button>
+  <div ng-if="showCart">
+    <h2>Keranjang Belanja</h2>
+    <div ng-if="cart.length === 0">Keranjang Anda kosong.</div>
+    <ul>
+      <li ng-repeat="item in cart">
+        <p>{{item.name}} - Rp {{item.price | number:0}}</p>
+        <button ng-click="removeFromCart(item)" style="background: red; color: white;">Hapus</button>
+      </li>
+    </ul>
+    <p ng-if="cart.length > 0">Total: Rp {{getTotal() | number:0}}</p>
+  </div>
+</div>
+
+
+<!-- Daftar Menu -->
+<div class="memory-list">
+  <div class="memory-item" ng-repeat="memory in memories">
+    <div ng-if="!memory.editing">
+      <img ng-src="http://localhost:5000/{{memory.photo}}" alt="Foto Menu" width="200">
+      <h3><b>{{memory.name}}</b></h3>
+      <p>{{memory.description}}</p>
+      <p>Rp {{memory.price | number:0}}</p>
+      <button ng-show="isAdmin()" ng-click="deleteMemory(memory._id)" style="background: blue; color: white;">Hapus</button>
+      <button ng-show="isAdmin()" ng-click="editMemory(memory)" style="background: blue; color: white;">Edit</button>
+      <!-- Tombol untuk menambah menu ke keranjang -->
+      <button ng-click="addToCart(memory)" style="background: orange; color: white;">Tambah ke Keranjang</button>
+    </div>
+
+    <div ng-if="memory.editing">
+      <input type="text" ng-model="memory.name" placeholder="Edit nama..." required>
+      <input type="text" ng-model="memory.description" placeholder="Edit deskripsi..." required>
+      <input type="number" ng-model="memory.price" placeholder="Edit harga..." required>
+      <button ng-click="saveMemory(memory)" style="background: green; color: white;">Simpan</button>
+      <button ng-click="cancelEdit(memory)" style="background: gray; color: white;">Batal</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Script autentikasi -->
+  <script>
+    async function getProtectedData() {
+      const token = localStorage.getItem("token");
+      const response = await fetch("http://localhost:5000/api/auth/protected", {
+        method: "GET",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+      const data = await response.json();
+      console.log(data);
+      alert(JSON.stringify(data));
+    }
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      window.location.href = "index.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const role = localStorage.getItem("role");
+      
+      // Menampilkan panel admin hanya jika peran adalah admin
+      const adminPanel = document.getElementById("admin-panel");
+      if (role === "admin") {
+        adminPanel.style.display = "block";
+      } else {
+        adminPanel.style.display = "none";
+      }
+    
+      // Menampilkan tombol keranjang hanya untuk customer
+      const cartButton = document.getElementById("cartButton");
+      if (role === "customer") {
+        cartButton.style.display = "inline-block"; // Menampilkan tombol keranjang untuk customer
+      } else {
+        cartButton.style.display = "none"; // Menyembunyikan tombol keranjang untuk selain customer
+      }
+    });
+    
+  </script>
+
+  <script src="fotoapp.js"></script>
+  <script src="auth.js"></script>
+
+</body>
+</html>
