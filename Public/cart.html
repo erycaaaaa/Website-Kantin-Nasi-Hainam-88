@@ -10,6 +10,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- External CSS File -->
     <link href="css/style.css" rel="stylesheet">
+     <style>
+    .quantity-btn {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+    }
+    .item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+    .total-box {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
       
@@ -41,8 +58,7 @@
             </li>
             </ul>
         </div>
-        
-    
+            
         <!-- Kanan (Ikon Sosial Media atau Login) -->
         <div class="d-none d-lg-flex">
             <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
@@ -53,167 +69,106 @@
     </nav>
     <!-- Navbar End -->
   
-    <!-- Hero Section -->
-    <section class="hero-section py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="display-4 fw-bold mb-3">Kantin Nasi Hainam 88</h1>
-                    <p class="lead mb-4">Semua menu kami dimasak dengan bahan segar setiap hari. Kami mementingkan gizi seimbang untuk mahasiswa yang butuh energi sepanjang hari.</p>
-                    <div class="d-flex">
-                        <a href="#login-section" class="btn btn-login btn-lg me-3">Pesan Sekarang</a>
-                        <a href="./menu.html" class="btn btn-outline-light btn-lg">Lihat Menu</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="/images/fotofull-makanan.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
-                </div>
-            </div>
-        </div>
-        
-            <!-- Floating Cart Button -->
-            <a href="./cart.html" id="cart-button"class="btn btn-primary rounded-circle shadow-lg cart-button position-fixed">
-                <i class="bi bi-cart-fill fs-4 position-relative">
-                    <span id="cart-badge"class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0
-                    </span>
-                </i>
-            </a>
-    
+    <div class="cart-item">
+  <span class="item-name">Produk A</span>
+  <span data-price="20000"></span>
+  <div class="quantity-control">
+    <button class="quantity-btn">-</button>
+    <span class="quantity">1</span>
+    <button class="quantity-btn">+</button>
+  </div>
+  <span class="item-total">Rp 20.000</span>
+  <button class="remove-btn" style="background-color: red; color: white;">Hapus</button>
+</div>
 
-    </section>
-
-    <!-- Login/Register Section -->
-    <section id="login-section" class="py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card login-card">
-                        <div class="card-body p-0">
-                            <div class="row g-0">
-                                <div class="col-md-5">
-                                    <img src="./images/chef.png" alt="Seafood Illustration" class="seafood-illustration">
-                                </div>
-                                <div class="col-md-7 p-4 p-lg-5">
-                                    <div class="tabs-container">
-                                        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">Register</button>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content" id="myTabContent">
-                                            <div class="tab-pane fade show active" id="login" role="tabpanel">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <label for="email" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="password" class="form-label">Password</label>
-                                                        <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda">
-                                                    </div>
-                                                    <div class="mb-3 form-check">
-                                                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                                                        <label class="form-check-label" for="rememberMe">Ingat saya</label>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-login btn-lg w-100">Login</button>
-                                                    <div class="text-center mt-3">
-                                                        <a href="#" class="text-decoration-none">Lupa password?</a>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="register" role="tabpanel">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <label for="fullName" class="form-label">Nama Lengkap</label>
-                                                        <input type="text" class="form-control" id="fullName" placeholder="Masukkan nama lengkap Anda">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="registerEmail" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="registerEmail" placeholder="Masukkan email Anda">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="phone" class="form-label">Nomor Telepon</label>
-                                                        <input type="tel" class="form-control" id="phone" placeholder="Masukkan nomor telepon Anda">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="registerPassword" class="form-label">Password</label>
-                                                        <input type="password" class="form-control" id="registerPassword" placeholder="Masukkan password Anda">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-register btn-lg w-100">Register</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Cart dan struk -->
+    <!-- <div class="row align-items-center border-bottom py-3 cart-item">
+      <div class="col-md-2 text-center">
+        <img src="./images/nasi.png" class="img-fluid item-img" alt="nasi">
+      </div>
+      <div class="col-md-4">
+        <h6>Nasi</h6>
+        <small class="text-muted" data-price="5000">Rp 5.000</small>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="d-flex justify-content-center align-items-center">
+          <button class="btn btn-outline-secondary quantity-btn">-</button>
+          <span class="mx-2 quantity">5</span>
+          <button class="btn btn-outline-secondary quantity-btn">+</button>
         </div>
-    </section>
+      </div>
+      <div class="col-md-2 text-end fw-bold item-total">
+        Rp 25.000
+      </div>
+      <div class="col-md-1 text-end">
+        <button class="btn btn-danger btn-sm rounded-circle">&times;</button>
+      </div>
+    </div> -->
 
-    <!-- Popular Menu Section -->
-    <section id="menu-section" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Menu Populer Kami</h2>
-                <p class="text-muted">Berbagai pilihan menu yang menjadi favorit pelanggan kami</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="./images/kentangbalado.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Kentang Balado</h5>
-                            <p class="card-text">Kentang Balado adalah hidangan khas Indonesia yang terbuat dari kentang goreng renyah yang dipadukan dengan sambal pedas berbumbu cabai, bawang, dan rempah lainnya.</p>
-                            <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="./images/sawi.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari toge yang ditumis dengan bumbu bawang putih dan rempah-rempah, menghasilkan rasa segar dan sehat.
-                            </p>
-                            <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="./images/sayurijo.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Daging Tumis</h5>
-                            <p class="card-text">Sayur Daging Tumis adalah hidangan Indonesia yang terbuat dari daging dan sayuran yang ditumis untuk menciptakan rasa gurih dan enak.
-                            </p>
-                            <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="./images/Togesyr.jpeg" class="card-img-top" alt="Kentang Balado">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Cah Sawi </h5>
-                            <p class="card-text">Sayur Cah Sawi adalah hidangan sederhana khas Indonesia yang terbuat dari sawi yang ditumis dengan bawang putih, cabai hingga matang .
-                            </p>
-                            <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="./menu.html" class="btn btn-outline-dark btn-lg">Lihat Menu Lengkap</a>
-            </div>
-        </div>
-    </section>
+<!-- <div class="container py-5">
+  <h2 class="mb-4 text-center">Keranjang Belanja</h2>
+
+  <!-- Cart Item -->
+  <div class="row align-items-center border-bottom py-3">
+    <div class="col-md-2 text-center">
+      <img src="./images/nasi.png" class="img-fluid item-img" alt="nasi">
+    </div>
+    <div class="col-md-4">
+      <h6>Nasi</h6>
+      <small class="text-muted">Rp 5.000</small>
+    </div>
+    <div class="col-md-3 text-center">
+      <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-outline-secondary quantity-btn">-</button>
+        <span class="mx-2">5</span>
+        <button class="btn btn-outline-secondary quantity-btn">+</button>
+      </div>
+    </div>
+    <div class="col-md-2 text-end fw-bold">
+      Rp 5.000
+    </div>
+    <div class="col-md-1 text-end">
+      <button class="btn btn-danger btn-sm rounded-circle">&times;</button>
+    </div>
+  </div>
+
+
+<!-- Tambahkan sebelum penutup </body> -->
+<script>
+  document.querySelectorAll('.quantity-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const isAdding = this.textContent === '+';
+      const quantitySpan = this.parentElement.querySelector('span');
+      let current = parseInt(quantitySpan.textContent);
+
+      if (isAdding) {
+        quantitySpan.textContent = current + 1;
+      } else if (current > 1) {
+        quantitySpan.textContent = current - 1;
+      }
+    });
+  });
+</script>
+
+  <!-- Promo Code & Total -->
+  <div class="row mt-5">
+    <div class="col-md-6">
+      
+</div>
+<div class="col-md-6">
+  <div class="total-box">
+    <p>Jumlah: <span class="float-end">Rp 5.000</span></p>
+    <hr>
+    <p class="fw-bold">Total yang harus dibayar: <span class="float-end">Rp 5.000</span></p>
+  </div>
+</div>
+</div>
+
+  <!-- Order Button -->
+  <div class="text-center mt-4">
+    <button class="btn btn-danger px-5 py-2">Order</button>
+  </div>
+</div> -->
 
     <!-- Testimonial Section -->
     <section class="py-5">
@@ -431,7 +386,7 @@
             </div>
         </div>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
 
 
     <!-- Bootstrap 5 JS Bundle with Popper -->

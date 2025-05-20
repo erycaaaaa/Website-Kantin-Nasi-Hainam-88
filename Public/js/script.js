@@ -65,3 +65,48 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+const express = require('express');
+const path = require('path');
+const app = express();
+
+app.use(express.static(path.join(__dirname, 'Public')));
+
+app.listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
+});
+
+
+  const hargaPerItem = 5000;
+
+  function formatRupiah(num) {
+    return "Rp " + num.toLocaleString("id-ID");
+  }
+
+  function updateTotal() {
+    const quantity = parseInt(document.querySelector(".quantity").textContent);
+    const itemTotal = quantity * hargaPerItem;
+
+    document.querySelector(".item-total").textContent = formatRupiah(itemTotal);
+    document.querySelector(".total-amount").textContent = formatRupiah(itemTotal);
+    document.querySelector(".grand-total").textContent = formatRupiah(itemTotal);
+  }
+
+  document.querySelectorAll('.quantity-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const isAdding = this.textContent === '+';
+      const quantitySpan = this.parentElement.querySelector('.quantity');
+      let current = parseInt(quantitySpan.textContent);
+
+      if (isAdding) {
+        quantitySpan.textContent = current + 1;
+      } else if (current > 1) {
+        quantitySpan.textContent = current - 1;
+      }
+
+      updateTotal();
+    });
+  });
+
+  updateTotal(); // initial update
+
