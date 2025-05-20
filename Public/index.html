@@ -14,69 +14,126 @@
     
 </head>
 <body>
- 
+ <!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <!-- Left Section with Profile -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
+            Kantin 88 Nasi Hainam
+        </a>
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-        <!-- Kiri -->
-        <a class="navbar-brand" href="#">Kantin 88 Nasi Hainam</a>
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay"></div>
     
-        <!-- Toggler for mobile -->
+        <!-- Full Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header d-flex align-items-center">
+                <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
+                <div>
+                    <h6 class="mb-0">Kantin 88</h6>
+                    <p class="text-muted mb-0" style="font-size: 14px;">kantin88@example.com</p>
+                </div>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-section-title">MAIN MENU</div>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="#" class="menu-item dropdown-toggle" id="ordersToggle">
+                    <i class="fas fa-utensils"></i> Orders
+                    <span class="badge rounded-pill">20+</span>
+                </a>
+                <div class="sub-menu" id="ordersSubmenu">
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-angle-right"></i> Pending
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-angle-right"></i> Processing
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-angle-right"></i> Completed
+                        <span class="badge rounded-pill">20+</span>
+                    </a>
+                </div>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-clipboard-list"></i> Menu Items
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-users"></i> Customers
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-section-title">ACCOUNT</div>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-bell"></i> Notifications
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    
+        <!-- Toggler for Mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="./index.html">Beranda</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./menu.html">Menu</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#location">Lokasi</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Tentang Kami</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./menu.html">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#location">Lokasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tentang Kami</a>
+                </li>
             </ul>
         </div>
-        
-    </nav>
-    <!-- Navbar End -->
-  
-    <!-- Hero Section -->
-    <section class="hero-section py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="display-4 fw-bold mb-3">Kantin Nasi Hainam 88</h1>
-                    <p class="lead mb-4">Semua menu kami dimasak dengan bahan segar setiap hari. Kami mementingkan gizi seimbang untuk mahasiswa yang butuh energi sepanjang hari.</p>
-                    <div class="d-flex">
-                        <a href="#login-section" class="btn btn-login btn-lg me-3">Pesan Sekarang</a>
-                        <a href="./menu.html" class="btn btn-outline-light btn-lg">Lihat Menu</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="images/fotofull-makanan.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
+    </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Hero Section -->
+<section class="hero-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-3">Kantin Nasi Hainam 88</h1>
+                <p class="lead mb-4">Semua menu kami dimasak dengan bahan segar setiap hari. Kami mementingkan gizi seimbang untuk mahasiswa yang butuh energi sepanjang hari.</p>
+                <div class="d-flex">
+                    <a href="#login-section" class="btn btn-login btn-lg me-3">Pesan Sekarang</a>
+                    <a href="./menu.html" class="btn btn-outline-light btn-lg">Lihat Menu</a>
                 </div>
             </div>
+            <div class="col-lg-6">
+                <img src="images/fotofull-makanan.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
+            </div>
         </div>
-        
-            <!-- Floating Cart Button -->
-            <a href="./cart.html" id="cart-button"class="btn btn-primary rounded-circle shadow-lg cart-button position-fixed">
-                <i class="bi bi-cart-fill fs-4 position-relative">
-                    <span id="cart-badge"class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0
-                    </span>
-                </i>
-            </a>
+    </div>
 
+    <!-- Floating Cart Button -->
+    <a href="./cart.html" id="cart-button" class="btn btn-primary rounded-circle shadow-lg cart-button position-fixed">
+        <i class="bi bi-cart-fill fs-4 position-relative">
+            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                0
+            </span>
+        </i>
+    </a>
+</section>
+<!-- Hero Section End -->
 
-    </section>
 <body ng-controller="MemoryController">
   <!-- Tombol Logout (hanya muncul setelah login) -->
   <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
@@ -644,6 +701,7 @@ function removeFromCartById(id) {
     });
   </script>
 
+  <script src="/Public/js/"></script>
   <script src="fotoapp.js"></script>
   <script src="auth.js"></script>
 
