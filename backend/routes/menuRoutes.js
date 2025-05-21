@@ -2,9 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Menu = require("../models/Menu");
 const { verifyToken, verifyAdmin } = require("../middleware/authMiddleware");
-
-
-
   
 // GET semua menu
 router.get("/", async (req, res) => {

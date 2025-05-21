@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histori Penjualan</title>
+    <title>Pembayaran</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body ng-app="warung88" ng-controller="HistoryPenjualController" id="home">   
+<body ng-app="warung88" ng-controller="PembayaranController" id="home">   
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
@@ -40,46 +40,25 @@
       </div>
       </div>
   </nav>
-  <!-- Navbar End -->
-   <!--Tabel Histori Penjualan -->
-    <div class="container mt-5 pt-5">
-        <h2 class="text-center mb-4">Histori Penjualan</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover text-center">
-                <thead class="table-dark">
-                    <tr>
-                        <th>No</th>
-                        <th>Tanggal</th>
-                        <th>Pemesan</th>
-                        <th>Menu</th>
-                        <th>Total Harga</th>
-                        <th>Kode</th>
-                        <th>Status
-                    </tr>
-                </thead>
-                <tbody id="history-table-body">
-                     <tr ng-repeat="item in allData">
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ item.tanggal | date:'dd MMM yyyy, HH:mm' }}</td>
-                        <td>{{ item.username }}</td>
-                        <td>
-                            <span ng-repeat="p in item.pesanan track by $index">
-                                {{ p[0] }} ({{ p[1] }})
-                                <span ng-if="!$last">, </span>
-                            </span>
-                        </td>
-                        <td>Rp {{ item.totalHarga }}</td>
-                        <td>{{item.kode}}</td>
-                        <td>{{item.status}}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="text-center my-3">
+        <img src="./images/qris.jpg" class="img-fluid" style="max-width: 250px; margin: 50px;" alt="QRIS">
+        <h4>Total yang perlu dibayar: Rp. {{ amount }}</h4>
+    </div>
+
+      <div class="mt-3 d-flex justify-content-center align-items-center">
+            <input type="file" id="uploadFile" class="d-none" ng-model="uploadedFile" onchange="angular.element(this).scope().fileSelected(this.files)">
+            <label for="uploadFile" class="btn btn-primary" style="max-width: 250px; cursor: pointer;">
+                Upload Image
+            </label>
+ 
+        <div class="mt-4">
+            <button class="btn btn-success" ng-disabled="!isUploaded" ng-click="continue()">Continue</button>
         </div>
     </div>
-    <!--Tabel History Penjualan End -->
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="js/historyJual.js"></script>
+    <script src="js/pembayaran.js"></script>
 </body>
 </html>
