@@ -43,7 +43,7 @@
                         <a class="nav-link" href="#location">Lokasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tentang Kami</a>
+                        <a class="nav-link" href="./tentangKami.html">Tentang Kami</a>
                     </li>
                 </ul>
             </div>
@@ -51,112 +51,137 @@
     </nav>
     <!-- Navbar End -->
 
-<!-- Profile Content Start -->
-<div class="container my-4">
-    <div class="row">
-        <!-- Profile Header -->
-        <div class="col-12">
-            <div class="profile-header">
-                <div class="row align-items-center">
-                    <div class="col-md-2 text-center">
-                        <img src="./images/man.png" alt="Profile Picture" class="profile-pic">
+    <div class="container my-4">
+        <div class="row">
+            <!-- Profile Header -->
+            <div class="col-12 mb-4">
+                <div class="profile-header d-flex align-items-center">
+                    <img src="./images/man.png" alt="Profile Picture" class="profile-pic me-4" />
+                    <div>
+                        <h2 class="profile-name" id="name-display">Eryca Dhamma</h2>
+                        <p><i class="fas fa-envelope me-2"></i> <span id="email-display">Ruuchiera@email.com</span></p>
                     </div>
-                    <div class="col-md-7 profile-info">
-                        <h2 class="profile-name" id="name-value">Eryca Dhamma</h2>
-                        <p class="mb-1"><i class="fas fa-envelope me-2"></i> <span id="email-value">Ruuchiera@email.com</span></p>
-                    </div>
-                    <div class="col-md-3 text-md-end mt-3 mt-md-0">
+                    <div class="ms-auto">
                         <button class="btn btn-primary" id="edit-profile-btn">
                             <i class="fas fa-edit me-2"></i> Edit Profil
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Left Column - Menu -->
-        <div class="col-lg-3 mb-4">
-            <div class="profile-menu">
-                <div class="profile-menu-item active" data-tab="personal-info">
-                    <i class="fas fa-user"></i> Informasi Pribadi
-                </div>
-                <div class="profile-menu-item" data-tab="order-history" onclick="window.open('order-history.html', '_blank')">
-                    <i class="fas fa-clipboard-list"></i> Riwayat Pesanan
-                </div>
-                <div class="profile-menu-item" data-tab="security" onclick="window.open('security.html', '_blank')">
-                    <i class="fas fa-shield-alt"></i> Keamanan
-                </div>
-                <div class="profile-menu-item" data-tab="help" onclick="window.open('bantuan.html', '_blank')">
-                    <i class="fas fa-life-ring"></i> Bantuan
-                </div>
-                <div class="profile-menu-item" data-tab="change-password" onclick="window.open('ubahPw.html', '_blank')">
-                    <i class="fas fa-key"></i> Ubah Password
-                </div>
-                <div class="profile-menu-item" data-tab="delete-account" onclick="window.open('hapusAcc.html', '_blank')">
-                    <i class="fas fa-trash-alt"></i> Hapus Akun
+            <!-- Left Column - Menu -->
+            <div class="col-lg-3 mb-4">
+                <div class="profile-menu">
+                    <div class="profile-menu-item active" data-tab="personal-info">
+                        <i class="fas fa-user"></i> Informasi Pribadi
+                    </div>
+                    <div class="profile-menu-item" data-tab="order-history" onclick="window.open('order-history.html', '_blank')">
+                        <i class="fas fa-clipboard-list"></i> Riwayat Pesanan
+                    </div>
+                    <div class="profile-menu-item" data-tab="security" onclick="window.open('security.html', '_blank')">
+                        <i class="fas fa-shield-alt"></i> Keamanan
+                    </div>
+                    <div class="profile-menu-item" data-tab="help" onclick="window.open('bantuan.html', '_blank')">
+                        <i class="fas fa-life-ring"></i> Bantuan
+                    </div>
+                    <div class="profile-menu-item" data-tab="change-password" onclick="window.open('ubahPw.html', '_blank')">
+                        <i class="fas fa-key"></i> Ubah Password
+                    </div>
+                    <div class="profile-menu-item" data-tab="delete-account" onclick="window.open('hapusAcc.html', '_blank')">
+                        <i class="fas fa-trash-alt"></i> Hapus Akun
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-9">
-            <!-- Personal Information Tab -->
-            <div class="profile-tab-content" id="personal-info">
-                <div class="profile-card">
-                    <h4 class="profile-card-title">Informasi Pribadi</h4>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="data-item">
-                                <div class="data-label">Nama Lengkap</div>
-                                <div class="data-value" id="name-value">Eryca Dhamma</div>
-                                <input type="text" id="name-edit" class="form-control" style="display:none;">
+            <!-- Right Column - Profile Info -->
+            <div class="col-lg-9">
+                <div class="profile-tab-content" id="personal-info">
+                    <div class="profile-card">
+                        <h4 class="profile-card-title mb-3">Informasi Pribadi</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name-edit" class="form-label data-label">Nama Lengkap</label>
+                                <div class="data-value" id="name-value-form">Eryca Dhamma</div>
+                                <input type="text" id="name-edit" class="form-control" style="display:none;" />
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="data-item">
-                                <div class="data-label">Username</div>
-                                <div class="data-value" id="username-value">Ruuchiera</div>
-                                <input type="text" id="username-edit" class="form-control" style="display:none;">
+                            <div class="col-md-6">
+                                <label for="username-edit" class="form-label data-label">Username</label>
+                                <div class="data-value" id="username-value-form">Ruuchiera</div>
+                                <input type="text" id="username-edit" class="form-control" style="display:none;" />
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="data-item">
-                                <div class="data-label">Email</div>
-                                <div class="data-value" id="email-value">Ruuchiera@email.com</div>
-                                <input type="email" id="email-edit" class="form-control" style="display:none;">
+                            <div class="col-md-6">
+                                <label for="email-edit" class="form-label data-label">Email</label>
+                                <div class="data-value" id="email-value-form">Ruuchiera@email.com</div>
+                                <input type="email" id="email-edit" class="form-control" style="display:none;" />
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="data-item">
-                                <div class="data-label">Nomor Telepon</div>
-                                <div class="data-value" id="phone-value">+62 812 3456 7890</div>
-                                <input type="text" id="phone-edit" class="form-control" style="display:none;">
+                            <div class="col-md-6">
+                                <label for="phone-edit" class="form-label data-label">Nomor Telepon</label>
+                                <div class="data-value" id="phone-value-form">+62 812 3456 7890</div>
+                                <input type="text" id="phone-edit" class="form-control" style="display:none;" />
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="data-item">
-                                <div class="data-label">Jenis Kelamin</div>
-                                <div class="data-value" id="gender-value">Perempuan</div>
-                                <input type="text" id="gender-edit" class="form-control" style="display:none;">
+                            <div class="col-md-6">
+                                <label for="gender-edit" class="form-label data-label">Jenis Kelamin</label>
+                                <div class="data-value" id="gender-value-form">Perempuan</div>
+                                <input type="text" id="gender-edit" class="form-control" style="display:none;" />
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="data-item">
-                                <div class="data-label">Tanggal Bergabung</div>
+                            <div class="col-md-6">
+                                <label class="form-label data-label">Tanggal Bergabung</label>
                                 <div class="data-value">21 Januari 2023</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-4">
-                        <button class="btn btn-primary" id="save-button" style="display:none;">
-                            <i class="fas fa-save me-2"></i> Simpan Perubahan
-                        </button>
+                        <div class="mt-4">
+                            <button class="btn btn-success" id="save-button" style="display:none;">
+                                <i class="fas fa-save me-2"></i> Simpan Perubahan
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Profile Content End -->
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Event listener tombol Edit Profil
+        document.getElementById('edit-profile-btn').addEventListener('click', function () {
+            toggleDisplay(false);
+            document.getElementById('name-edit').value = document.getElementById('name-value-form').innerText;
+            document.getElementById('username-edit').value = document.getElementById('username-value-form').innerText;
+            document.getElementById('email-edit').value = document.getElementById('email-value-form').innerText;
+            document.getElementById('phone-edit').value = document.getElementById('phone-value-form').innerText;
+            document.getElementById('gender-edit').value = document.getElementById('gender-value-form').innerText;
+
+            document.getElementById('save-button').style.display = 'inline-block';
+            document.getElementById('edit-profile-btn').style.display = 'none';
+        });
+
+        // Event listener tombol Simpan Perubahan
+        document.getElementById('save-button').addEventListener('click', function () {
+            document.getElementById('name-value-form').innerText = document.getElementById('name-edit').value;
+            document.getElementById('username-value-form').innerText = document.getElementById('username-edit').value;
+            document.getElementById('email-value-form').innerText = document.getElementById('email-edit').value;
+            document.getElementById('phone-value-form').innerText = document.getElementById('phone-edit').value;
+            document.getElementById('gender-value-form').innerText = document.getElementById('gender-edit').value;
+
+            // Update header profil supaya sinkron
+            document.getElementById('name-display').innerText = document.getElementById('name-edit').value;
+            document.getElementById('email-display').innerText = document.getElementById('email-edit').value;
+
+            toggleDisplay(true);
+
+            document.getElementById('edit-profile-btn').style.display = 'inline-block';
+            document.getElementById('save-button').style.display = 'none';
+        });
+
+        function toggleDisplay(showData) {
+            const dataIds = ['name', 'username', 'email', 'phone', 'gender'];
+            dataIds.forEach(id => {
+                document.getElementById(id + '-value-form').style.display = showData ? 'block' : 'none';
+                document.getElementById(id + '-edit').style.display = showData ? 'none' : 'block';
+            });
+        }
+    });
+    </script>
 
     <!-- Location Section -->
     <section id="location" class="py-5 bg-light">
