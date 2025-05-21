@@ -110,3 +110,31 @@ app.listen(3000, () => {
 
   updateTotal(); // initial update
 
+    // Fungsi untuk mengganti tab yang aktif
+    function changeTab(activeTab) {
+        // Menyembunyikan semua tab
+        document.getElementById('infection-prevention').style.display = 'none';
+        document.getElementById('cleanliness-procedures').style.display = 'none';
+
+        // Menghapus kelas "active" pada semua tab menu
+        document.querySelectorAll('.security-menu-item').forEach(function(tab) {
+            tab.classList.remove('active');
+        });
+
+        // Menampilkan tab yang sesuai dan menambahkan kelas "active" pada menu yang dipilih
+        document.getElementById(activeTab).style.display = 'block';
+        document.getElementById(activeTab + '-tab').classList.add('active');
+    }
+
+    // Event listener untuk setiap tab menu
+    document.getElementById('infection-prevention-tab').addEventListener('click', function() {
+        changeTab('infection-prevention');
+    });
+
+    document.getElementById('cleanliness-procedures-tab').addEventListener('click', function() {
+        changeTab('cleanliness-procedures');
+    });
+
+    // Inisialisasi tab pertama untuk ditampilkan (Pencegahan Infeksi)
+    changeTab('infection-prevention');
+
