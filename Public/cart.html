@@ -64,18 +64,6 @@
         </div>
     </nav>
     <!-- Navbar End -->
-  
-        <div class="cart-item">
-    <span class="item-name">Produk A</span>
-    <span data-price="20000"></span>
-    <div class="quantity-control">
-        <button class="quantity-btn">-</button>
-        <span class="quantity">1</span>
-        <button class="quantity-btn">+</button>
-    </div>
-    <span class="item-total">Rp 20.000</span>
-    <button class="remove-btn" style="background-color: red; color: white;">Hapus</button>
-    </div>
 
     <!-- Cart dan struk -->
     <!-- <div class="row align-items-center border-bottom py-3 cart-item">
@@ -262,10 +250,12 @@
         </div>
     </section>
 
+
     <!-- Location Section -->
     <section id="location" class="py-5 bg-light">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center justify-content-between">
+                <!-- Left Column: Location Info -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h2 class="fw-bold mb-4">Kunjungi Kami</h2>
                     <p class="mb-4">Kami hadir di beberapa lokasi strategis untuk memudahkan Anda menikmati kelezatan masakan kami.</p>
@@ -275,8 +265,8 @@
                         <div class="flex-shrink-0">
                             <i class="bi bi-geo-alt text-danger fs-4"></i>
                         </div>
-                        <div class="ms-3">
-                            <h5>Lokasi</h5>
+                        <div class="ms-3 text-start">
+                            <h5 class="mb-0">Lokasi</h5>
                             <p class="mb-0">Tarumanagara University, Jl. Taman S. Parman No.blok A, RT.6/RW.16, Tomang, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11440</p>
                         </div>
                     </div>
@@ -286,7 +276,7 @@
                         <div class="flex-shrink-0">
                             <i class="bi bi-telephone text-danger fs-4"></i>
                         </div>
-                        <div class="ms-3">
+                        <div class="ms-3 text-start">
                             <h5>Kontak</h5>
                             <p class="mb-0">0818-0855-1680</p>
                         </div>
@@ -297,9 +287,9 @@
                         <div class="flex-shrink-0">
                             <i class="bi bi-clock text-danger fs-4"></i>
                         </div>
-                        <div class="ms-3">
+                        <div class="ms-3 text-start">
                             <h5>Jam Operasional</h5>
-                            <ul class="list-unstyled">
+                            <ul class="list-unstyled mb-0">
                                 <li>Jumat: 7.00 am – 3.00 pm</li>
                                 <li>Sabtu: Tutup</li>
                                 <li>Minggu: Tutup</li>
@@ -313,22 +303,24 @@
                         <div class="flex-shrink-0">
                             <i class="bi bi-credit-card text-danger fs-4"></i>
                         </div>
-                        <div class="ms-3">
+                        <div class="ms-3 text-start">
                             <h5>Opsi Pembayaran</h5>
                             <p class="mb-0">Hanya Menerima Pembayaran Tunai</p>
                         </div>
                     </div>
                 </div>
-              <!-- Embed Google Maps -->
-              <div class="col-lg-6">
-                <div class="ratio ratio-16x9">
-                    <!-- Google Maps Embed iframe -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1170.8445564277936!2d106.78870808028746!3d-6.169614224309266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7f6fba2b5b5%3A0x68d7f6aef79e4fb4!2sKantin%2088%20Untar!5e0!3m2!1sen!2sid!4v1746187970343!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <!-- Right Column: Google Maps Embed -->
+                <div class="col-lg-6">
+                    <div class="ratio ratio-16x9">
+                        <!-- Google Maps Embed iframe -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1170.8445564277936!2d106.78870808028746!3d-6.169614224309266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7f6fba2b5b5%3A0x68d7f6aef79e4fb4!2sKantin%2088%20Untar!5e0!3m2!1sen!2sid!4v1746187970343!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </section>
+    <!-- Location Section End -->
 
     <!-- Footer -->
     <footer class="footer py-5">
@@ -382,8 +374,6 @@
             </div>
         </div>
     </footer>
-    <script src="js/cart.js"></script>
-
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
