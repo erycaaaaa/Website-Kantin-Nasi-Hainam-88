@@ -161,75 +161,102 @@
             </div>
         </div>
     </section>
-  
-  <div class="container">
-    <h1>Menu Restoran</h1>
+  <!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
 
-    <!-- Form Tambah Menu (khusus admin) -->
-    <div id="admin-panel" style="display:none;">
-      <form ng-submit="addMemory()" enctype="multipart/form-data">
-        <input id="photoInput" type="file" file-model="memory.photo" required>
-        <input type="text" ng-model="memory.name" placeholder="Nama menu..." required>
-        <input type="text" ng-model="memory.description" placeholder="Deskripsi menu..." required>
-        <input type="number" ng-model="memory.price" placeholder="Harga menu..." required>
-        <button type="submit">Tambah Menu</button>
-      </form>
-    </div>
+<style>
+  /* Atur tinggi gambar agar proporsional */
+  .swiper-slide img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
 
-  <!-- Floating Cart Button -->
-<button id="cartButton" class="btn btn-primary rounded-circle shadow-lg position-fixed"
-        style="bottom: 20px; right: 20px; z-index: 1050;"
-        onclick="toggleCartPanel()">
-    <i class="bi bi-cart-fill fs-4 position-relative">
-        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {{ cart.length }}
-            <span class ="visually-hidden"></span>
-        </span>
-    </i>
-</button>
+  .card-title {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
 
+  .swiper-slide {
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+  }
+</style>
 
-<!-- Panel Keranjang Belanja -->
-<div id="cartPanel" class="bg-light p-3 rounded shadow"
-     style="position: fixed; bottom: 80px; right: 20px; width: 300px; display: none; z-index: 1040; max-height: 400px; overflow-y: auto;">
-  <h5>Keranjang Belanja</h5>
+<div class="container my-4">
+  <h1>Menu Restoran</h1>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <!-- Slide Item 1 -->
+      <div class="swiper-slide">
+        <img src="images/Togesyr.jpeg" alt="Sayur Toge Tumis" />
+        <h5 class="card-title">Sayur Toge Tumis</h5>
+      </div>
 
-  <div ng-if="cart.length === 0">Keranjang Anda kosong.</div>
+      <!-- Slide Item 2 -->
+      <div class="swiper-slide">
+        <img src="images/Togesyr.jpeg" alt="Menu 2" />
+        <h5 class="card-title">Menu 2</h5>
+      </div>
 
-  <div ng-repeat="item in cart" class="mb-2">
-    <strong>{{item.name}}</strong><br>
-    Rp {{item.price | number:0}} x {{item.quantity}} =
-    <strong>Rp {{item.price * item.quantity | number:0}}</strong><br>
-    <button ng-click="addToCart(item)">+</button>
-    <button ng-click="removeFromCart(item)">Hapus</button>
-  </div>
+      <!-- Slide Item 3 -->
+      <div class="swiper-slide">
+        <img src="images/Togesyr.jpeg" alt="Menu 3" />
+        <h5 class="card-title">Menu 3</h5>
+      </div>
 
-  <p ng-if="cart.length > 0" class="mt-3"><strong>Total:</strong> Rp {{ getTotal() | number:0 }}</p>
-</div>
-    <!-- Daftar Menu -->
-    <div class="memory-list">
-      <div class="memory-item" ng-repeat="memory in memories">
-        <div ng-if="!memory.editing">
-          <img ng-src="http://localhost:5000/{{memory.photo}}" alt="Foto Menu" width="200">
-          <h3><b>{{memory.name}}</b></h3>
-          <p>{{memory.description}}</p>
-          <p>Rp {{memory.price | number:0}}</p>
-          <button ng-show="isAdmin()" ng-click="deleteMemory(memory._id)" style="background: blue; color: white;">Hapus</button>
-          <button ng-show="isAdmin()" ng-click="editMemory(memory)" style="background: blue; color: white;">Edit</button>
-          <!-- Tombol untuk menambah menu ke keranjang -->
-          <button ng-click="addToCart(memory)" style="background: orange; color: white;">Tambah ke Keranjang</button>
-        </div>
-
-        <div ng-if="memory.editing">
-          <input type="text" ng-model="memory.name" placeholder="Edit nama..." required>
-          <input type="text" ng-model="memory.description" placeholder="Edit deskripsi..." required>
-          <input type="number" ng-model="memory.price" placeholder="Edit harga..." required>
-          <button ng-click="saveMemory(memory)" style="background: green; color: white;">Simpan</button>
-          <button ng-click="cancelEdit(memory)" style="background: gray; color: white;">Batal</button>
-        </div>
+      <!-- Tambah item lain sesuai kebutuhan -->
+      <div class="swiper-slide">
+        <img src="images/Togesyr.jpeg" alt="Menu 4" />
+        <h5 class="card-title">Menu 4</h5>
+      </div>
+      <div class="swiper-slide">
+        <img src="images/Togesyr.jpeg" alt="Menu 5" />
+        <h5 class="card-title">Menu 5</h5>
       </div>
     </div>
+
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+    <!-- Pagination dots -->
+    <div class="swiper-pagination"></div>
   </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+  const swiper = new Swiper('.mySwiper', {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      320: { slidesPerView: 1, spaceBetween: 10 },
+      576: { slidesPerView: 2, spaceBetween: 15 },
+      768: { slidesPerView: 3, spaceBetween: 15 },
+      992: { slidesPerView: 4, spaceBetween: 20 },
+    },
+  });
+</script>
+
+
 
    <!-- Testimonial Section -->
     <section class="py-5">
