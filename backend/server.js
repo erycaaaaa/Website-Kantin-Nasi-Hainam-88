@@ -7,6 +7,7 @@ const connectDB = require("./config/db"); // Pastikan import connectDB dari db.j
 const authRoutes = require("./routes/authRoutes");
 const menuRoutes = require("./routes/menuRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const dataRoutes = require("./routes/dataRoutes");
 const Menu = require("./models/Menu"); // Tambahkan ini
 const multer = require("multer");
 const app = express();
@@ -26,8 +27,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/auth", authRoutes);
 app.use("/api/menu", menuRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/datas", dataRoutes)
 
-mongoose.connect('mongodb://localhost:27017/memories', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/warung88', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Skema MongoDB
 const memorySchema = new mongoose.Schema({

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bukti Pembayaran</title>
+    <style>
+        #image-container img {
+        display: block;
+        margin: auto;
+        max-width: 100px;
+        width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex justify-content-center my-3">
+        <div id="image-container" class="mt-4"></div>
+    </div>
+
+    <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const filename = urlParams.get('filename');
+
+    // Display the image
+    if (filename) {
+        const img = document.createElement("img");
+        img.src = `../backend/uploads/${filename}`; // Change path if needed
+        img.alt = "Bukti Pembayaran";
+        img.style.maxWidth = "20%";
+        document.getElementById("image-container").appendChild(img);
+    } else {
+        document.getElementById("image-container").textContent = "No image filename provided.";
+    }
+    </script>
+
+</body>
+</html>
