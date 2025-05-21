@@ -75,7 +75,7 @@
                     <div class="profile-menu-item active" data-tab="personal-info">
                         <i class="fas fa-user"></i> Informasi Pribadi
                     </div>
-                    <div class="profile-menu-item" data-tab="order-history" onclick="window.open('order-history.html', '_blank')">
+                    <div class="profile-menu-item" data-tab="order-history" onclick="window.open('histori_order_pembeli.html', '_blank')">
                         <i class="fas fa-clipboard-list"></i> Riwayat Pesanan
                     </div>
                     <div class="profile-menu-item" data-tab="security" onclick="window.open('security.html', '_blank')">
@@ -84,13 +84,39 @@
                     <div class="profile-menu-item" data-tab="help" onclick="window.open('bantuan.html', '_blank')">
                         <i class="fas fa-life-ring"></i> Bantuan
                     </div>
-                    <div class="profile-menu-item" data-tab="change-password" onclick="window.open('ubahPw.html', '_blank')">
+                    <div class="profile-menu-item" onclick="openPasswordModal()">
                         <i class="fas fa-key"></i> Ubah Password
                     </div>
-                    <div class="profile-menu-item" data-tab="delete-account" onclick="window.open('hapusAcc.html', '_blank')">
+                    <div class="profile-menu-item" onclick="konfirmasiHapusAkun()">
                         <i class="fas fa-trash-alt"></i> Hapus Akun
                     </div>
                 </div>
+            </div>
+
+
+            <!-- Modal Layer Ubah Password -->
+            <div id="passwordModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="closePasswordModal()">&times;</span>
+                <h3>Ubah Password</h3>
+                <form id="passwordForm" onsubmit="return submitPasswordChange(event)">
+                <div>
+                    <label for="oldPassword">Password Lama:</label><br />
+                    <input type="password" id="oldPassword" name="oldPassword" required />
+                </div>
+                <div>
+                    <label for="newPassword">Password Baru:</label><br />
+                    <input type="password" id="newPassword" name="newPassword" required />
+                </div>
+                <div>
+                    <label for="confirmPassword">Konfirmasi Password Baru:</label><br />
+                    <input type="password" id="confirmPassword" name="confirmPassword" required />
+                </div>
+                <br />
+                <button type="submit">Ubah Password</button>
+                </form>
+                <div id="passwordMessage" style="color:red; margin-top:10px;"></div>
+            </div>
             </div>
 
             <!-- Right Column - Profile Info -->
@@ -139,7 +165,57 @@
             </div>
         </div>
     </div>
-    
+
+    <script>
+         function openPasswordModal() {
+  document.getElementById('passwordModal').style.display = 'block';
+  document.getElementById('passwordMessage').innerText = '';
+  document.getElementById('passwordForm').reset();
+}
+
+function closePasswordModal() {
+  document.getElementById('passwordModal').style.display = 'none';
+}
+
+function submitPasswordChange(event) {
+  event.preventDefault(); // supaya halaman tidak reload
+
+  const oldPass = document.getElementById('oldPassword').value.trim();
+  const newPass = document.getElementById('newPassword').value.trim();
+  const confirmPass = document.getElementById('confirmPassword').value.trim();
+  const message = document.getElementById('passwordMessage');
+
+  // Validasi sederhana
+  if (newPass !== confirmPass) {
+    message.innerText = 'Password baru dan konfirmasi tidak sama.';
+    return false;
+  }
+
+  if (newPass.length < 6) {
+    message.innerText = 'Password baru minimal 6 karakter.';
+    return false;
+  }
+
+  // TODO: kirim data ke server via AJAX/fetch untuk proses update password
+  // Misal:
+  // fetch('/api/change-password', {method:'POST', body: JSON.stringify({oldPass, newPass}), headers:{'Content-Type':'application/json'}})
+  //  .then(...) dan seterusnya
+
+  alert('Password berhasil diubah!'); // ganti dengan response server sebenarnya
+  closePasswordModal();
+  return false;
+}
+
+// Optional: tutup modal saat klik di luar modal content
+window.onclick = function(event) {
+  const modal = document.getElementById('passwordModal');
+  if (event.target == modal) {
+    closePasswordModal();
+  }
+}
+
+    </script>
+   
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Event listener tombol Edit Profil
@@ -181,6 +257,29 @@
             });
         }
     });
+    </script>
+
+    <!-- Script Konfirmasi Hapus Akun -->
+    <script>
+    function konfirmasiHapusAkun() {
+        const konfirmasi1 = confirm("Apakah Anda yakin ingin menghapus akun?");
+        if (konfirmasi1) {
+            const konfirmasi2 = confirm("Tindakan ini permanen. Lanjutkan?");
+            if (konfirmasi2) {
+                const username = prompt("Masukkan username Anda untuk konfirmasi:");
+                if (username && username.trim() !== "") {
+                    // Lakukan validasi jika perlu
+                    window.open('hapusAcc.html?user=' + encodeURIComponent(username), '_blank');
+                } else {
+                    alert("Penghapusan akun dibatalkan. Username tidak boleh kosong.");
+                }
+            } else {
+                alert("Penghapusan akun dibatalkan.");
+            }
+        } else {
+            alert("Penghapusan akun dibatalkan.");
+        }
+    }
     </script>
 
     <!-- Location Section -->
@@ -306,6 +405,7 @@
             </div>
         </div>
     </footer>
+    
     <!-- Bootstrap JS -->
     <link rel="stylesheet" href="./js/script.js">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

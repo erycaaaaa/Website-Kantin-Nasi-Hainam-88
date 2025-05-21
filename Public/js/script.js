@@ -138,3 +138,69 @@ app.listen(3000, () => {
     // Inisialisasi tab pertama untuk ditampilkan (Pencegahan Infeksi)
     changeTab('infection-prevention');
 
+  //Script Konfirmasi Hapus Akun
+function konfirmasiHapusAkun() {
+    const konfirmasi1 = confirm("Apakah Anda yakin ingin menghapus akun?");
+    if (konfirmasi1) {
+        const konfirmasi2 = confirm("Tindakan ini permanen. Lanjutkan?");
+        if (konfirmasi2) {
+            const username = prompt("Masukkan username Anda untuk konfirmasi:");
+            if (username && username.trim() !== "") {
+                // Lakukan validasi jika perlu
+                window.open('hapusAcc.html?user=' + encodeURIComponent(username), '_blank');
+            } else {
+                alert("Penghapusan akun dibatalkan. Username tidak boleh kosong.");
+            }
+        } else {
+            alert("Penghapusan akun dibatalkan.");
+        }
+    } else {
+        alert("Penghapusan akun dibatalkan.");
+    }
+}
+function openPasswordModal() {
+  document.getElementById('passwordModal').style.display = 'block';
+  document.getElementById('passwordMessage').innerText = '';
+  document.getElementById('passwordForm').reset();
+}
+
+function closePasswordModal() {
+  document.getElementById('passwordModal').style.display = 'none';
+}
+
+function submitPasswordChange(event) {
+  event.preventDefault(); // supaya halaman tidak reload
+
+  const oldPass = document.getElementById('oldPassword').value.trim();
+  const newPass = document.getElementById('newPassword').value.trim();
+  const confirmPass = document.getElementById('confirmPassword').value.trim();
+  const message = document.getElementById('passwordMessage');
+
+  // Validasi sederhana
+  if (newPass !== confirmPass) {
+    message.innerText = 'Password baru dan konfirmasi tidak sama.';
+    return false;
+  }
+
+  if (newPass.length < 6) {
+    message.innerText = 'Password baru minimal 6 karakter.';
+    return false;
+  }
+
+  // TODO: kirim data ke server via AJAX/fetch untuk proses update password
+  // Misal:
+  // fetch('/api/change-password', {method:'POST', body: JSON.stringify({oldPass, newPass}), headers:{'Content-Type':'application/json'}})
+  //  .then(...) dan seterusnya
+
+  alert('Password berhasil diubah!'); // ganti dengan response server sebenarnya
+  closePasswordModal();
+  return false;
+}
+
+// Optional: tutup modal saat klik di luar modal content
+window.onclick = function(event) {
+  const modal = document.getElementById('passwordModal');
+  if (event.target == modal) {
+    closePasswordModal();
+  }
+}
