@@ -43,20 +43,22 @@
   <!-- Navbar End -->
    
   <!-- Daftar Pesanan -->
-  <div class="container">
-    <h1>Status Pesanan</h1>
-    <p id="current-status">Status saat ini: <span id="status-text">Menunggu Konfirmasi</span></p>
-
-    <div id="status-form" class="hidden">
-      <label for="status-select">Ubah Status:</label>
-      <select id="status-select">
-        <option value="Makanan sedang diproses">Makanan sedang diproses</option>
-        <option value="Makanan siap diambil">Makanan siap diambil</option>
-        <option value="Makanan telah diambil">Makanan telah diambil</option>
-      </select>
-      <button onclick="updateStatus()">Simpan</button>
+  <div class="container mt-5">
+    <h2 class="text-center">Status Pesanan Anda</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered mt-4">
+        <thead class="table-light">
+          <tr>
+            <th>Nama Pesanan</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="order-list">
+        </tbody>
+      </table>
     </div>
   </div>
+
 
     <script src="js/pesanan.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

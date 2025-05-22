@@ -1,0 +1,16 @@
+{
+  "name": "website-kantin-nasi-hainam-88",
+  "version": "1.0.0",
+  "description": "npm init -y\r npm install express mongoose cors body-parser\r mongod\r node server.js",
+  "main": "seed.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.16.0"
+  }
+}
