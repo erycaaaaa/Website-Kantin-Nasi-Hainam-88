@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rekap Penjualan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body ng-app="warung88" ng-controller="PesananAktifController" id="home">
+  <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+      <!-- Kiri -->
+      <a class="navbar-brand" href="#">Kantin 88 Nasi Hainam</a>
+  
+      <!-- Toggler for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/Public/index.html">Beranda</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./menu.html">Menu</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#location">Lokasi</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Tentang Kami</a>
+          </li>
+          </ul>
+      </div>
+      </div>
+  </nav>
+  <!-- Navbar End -->
+  
+    <div class="container py-5">
+    <h2 class="text-center mb-4">Rekap Penjualan</h2>
+
+    <!-- Toggle Radio Buttons -->
+    <div class="btn-group d-flex justify-content-center mb-4" role="group" aria-label="Filter Waktu">
+      <input type="radio" class="btn-check" name="period" id="daily" autocomplete="off" checked>
+      <label class="btn btn-outline-primary" for="daily">Daily</label>
+
+      <input type="radio" class="btn-check" name="period" id="weekly" autocomplete="off">
+      <label class="btn btn-outline-primary" for="weekly">Weekly</label>
+
+      <input type="radio" class="btn-check" name="period" id="monthly" autocomplete="off">
+      <label class="btn btn-outline-primary" for="monthly">Monthly</label>
+
+      <input type="radio" class="btn-check" name="period" id="yearly" autocomplete="off">
+      <label class="btn btn-outline-primary" for="yearly">Yearly</label>
+    </div>
+
+    <!-- Tabel Rekap -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+          <tr>
+            <th>Menu</th>
+            <th>Jumlah Dibeli</th>
+          </tr>
+        </thead>
+        <tbody id="sales-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      daily: [
+        { menu: "Nasi Goreng", jumlah: 5 },
+        { menu: "Mie Ayam", jumlah: 3 },
+        { menu: "Ayam Geprek", jumlah: 2 },
+        { menu: "Es Teh Manis", jumlah: 6 },
+      ],
+      weekly: [
+        { menu: "Nasi Goreng", jumlah: 18 },
+        { menu: "Mie Ayam", jumlah: 12 },
+        { menu: "Ayam Geprek", jumlah: 9 },
+        { menu: "Es Teh Manis", jumlah: 22 },
+      ],
+      monthly: [
+        { menu: "Nasi Goreng", jumlah: 70 },
+        { menu: "Mie Ayam", jumlah: 60 },
+        { menu: "Ayam Geprek", jumlah: 45 },
+        { menu: "Es Teh Manis", jumlah: 90 },
+      ],
+      yearly: [
+        { menu: "Nasi Goreng", jumlah: 820 },
+        { menu: "Mie Ayam", jumlah: 780 },
+        { menu: "Ayam Geprek", jumlah: 640 },
+        { menu: "Es Teh Manis", jumlah: 980 },
+      ]
+    };
+
+    function renderTable(period) {
+      const tbody = document.getElementById("sales-table-body");
+      tbody.innerHTML = "";
+      data[period].forEach(item => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${item.menu}</td>
+            <td>${item.jumlah}</td>
+          </tr>
+        `;
+      });
+    }
+
+    document.querySelectorAll("input[name='period']").forEach(radio => {
+      radio.addEventListener("change", () => {
+        if (radio.checked) {
+          renderTable(radio.id);
+        }
+      });
+    });
+    renderTable("daily");
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

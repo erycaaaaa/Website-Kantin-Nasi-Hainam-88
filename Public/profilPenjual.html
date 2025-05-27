@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profil Penjual</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="css/style.css" rel="stylesheet">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .counter {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .icon-circle {
+      background-color: #eef2ff;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+    }
+    body {
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+<body ng-app="warung88" ng-controller="PesananAktifController" id="home">
+  <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+      <!-- Kiri -->
+      <a class="navbar-brand" href="#">Kantin 88 Nasi Hainam</a>
+  
+      <!-- Toggler for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/Public/index.html">Beranda</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./menu.html">Menu</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#location">Lokasi</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Tentang Kami</a>
+          </li>
+          </ul>
+      </div>
+      </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <!-- Header -->
+  <header
+  class="text-white text-center py-5 mb-4"
+  style="background: linear-gradient(90deg, #0a0a23, #1a1a3c)"
+>
+  <div class="container">
+    <img
+      src="images\ProfilBapak.jpeg"
+      alt="Foto Penjual"
+      class="rounded-circle mb-3"
+      style="width: 120px; height: 120px; object-fit: cover; border: 3px solid white;"
+    />
+    <h1 class="fw-bold">Profil Penjual</h1>
+    <p class="lead">Dashboard Ringkas Performance Penjualan</p>
+  </div>
+  </header>
+
+  <main class="container">
+    <!-- Statistik -->
+    <section id="stats" class="row text-center mb-5">
+      <div class="col-md-4 mb-4 fade-in">
+        <div
+          class="card shadow-sm p-4 stat-card"
+          data-url="historyPenjual.html"
+          style="cursor:pointer"
+        >
+          <div class="icon-circle">
+            <i class="bi bi-cash-stack fs-3 text-primary"></i>
+          </div>
+          <div>Total Uang Masuk</div>
+          <div id="totalRevenue" class="counter text-success">Rp 0</div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 fade-in">
+        <div
+          class="card shadow-sm p-4 stat-card"
+          data-url="historyPenjual.html"
+          style="cursor:pointer"
+        >
+          <div class="icon-circle">
+            <i class="bi bi-receipt fs-3 text-primary"></i>
+          </div>
+          <div>Jumlah Transaksi</div>
+          <div id="totalTransactions" class="counter text-success">0</div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 fade-in">
+        <div
+          class="card shadow-sm p-4 stat-card"
+          data-url="menuPenjual.html"
+          style="cursor:pointer"
+        >
+          <div class="icon-circle">
+            <i class="bi bi-calendar2-check fs-3 text-primary"></i>
+          </div>
+          <div>Menu</div>
+          <div id="totalMenus" class="counter text-success">-</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section id="history" class="mb-5">
+      <h2 class="mb-4 text-black">History Pembayaran </h2>
+      <div class="table-responsive shadow-sm rounded">
+        <table
+          class="table table-striped align-middle text-center"
+          id="historyTable"
+        >
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Tanggal</th>
+              <th>Customer</th>
+              <th>Jumlah (Rp)</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer py-4 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; 2025 Kantin 88 Nasi Hainam. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-end">
+          <a href="#" class="text-white me-3">Syarat &amp; Ketentuan</a>
+          <a href="#" class="text-white">Kebijakan Privasi</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  const payments = [
+    { id: "P001", date: "2025-05-10", customer: "Budi", amount: 150000 },
+    { id: "P002", date: "2025-05-12", customer: "Siti", amount: 200000 },
+    { id: "P003", date: "2025-05-15", customer: "Joko", amount: 175000 },
+  ];
+
+  const menus = ["Nasi Goreng", "Mie Ayam", "Ayam Geprek", "Es Teh Manis"];
+
+  function animateCounter(id, endValue, prefix = "") {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    let start = 0;
+    const duration = 1500;
+    const steps = 60;
+    const increment = endValue / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= endValue) {
+        start = endValue;
+        clearInterval(timer);
+      }
+      el.innerText = prefix + Math.floor(start).toLocaleString("id-ID");
+    }, duration / steps);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const total = payments.reduce((sum, p) => sum + p.amount, 0);
+
+    animateCounter("totalRevenue", total, "Rp ");
+    animateCounter("totalTransactions", payments.length);
+
+    const totalMenusEl = document.getElementById("totalMenus");
+    if (totalMenusEl) {
+      totalMenusEl.innerText = menus.length;
+    }
+
+    const tbody = document.getElementById("historyTableBody");
+    payments.forEach((p) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${p.id}</td>
+        <td>${p.date}</td>
+        <td>${p.customer}</td>
+        <td>${p.amount.toLocaleString("id-ID")}</td>
+      `;
+      row.style.cursor = "pointer";
+      row.addEventListener("click", () => {
+        window.location.href = "historyPenjual.html";
+      });
+      tbody.appendChild(row);
+    });
+
+    // Animasi fade-in
+    const faders = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    faders.forEach((el) => observer.observe(el));
+
+    // Event klik untuk card statistik
+    document.querySelectorAll(".stat-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const url = card.getAttribute("data-url");
+        if (url) {
+          window.location.href = url;
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
