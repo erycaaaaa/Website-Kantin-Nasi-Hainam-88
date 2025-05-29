@@ -3,482 +3,466 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Kantin Nasi Hainam 88</title>
-
+  <title>Kantin Nasi Hainam 88</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <link rel="stylesheet" href="css/memory.css">
   <link rel="stylesheet" href="css/style.css">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Link Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
-    
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
-<body>
+<body ng-controller="MemoryController">
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <!-- Left Section with Profile -->
-            <a class="navbar-brand d-flex align-items-center" href="./profile.html">
-                <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
-                Kantin 88 Nasi Hainam
-            </a>
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="./profile.html">
+        <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
+        Kantin 88 Nasi Hainam
+      </a>
 
-            <!-- Toggler for Mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./menu.html">Menu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#location">Lokasi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./tentangKami.html">Tentang Kami</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#location">Lokasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="./tentangKami.html">Tentang Kami</a></li>
+          <!-- Tombol Logout (hanya muncul setelah login) -->
+  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
+     
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
 
-<!-- Hero Section -->
-<section class="hero-section py-5">
+  <!-- Hero Section -->
+  <section class="hero-section py-5">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <h1 class="display-4 fw-bold mb-3">Kantin Nasi Hainam <span class="text-warning">88</span></h1>
-                <p class="lead mb-4">Semua menu kami dimasak dengan bahan segar setiap hari. Kami mementingkan gizi seimbang untuk mahasiswa yang butuh energi sepanjang hari.</p>
-                <div class="d-flex justify-content-center">
-                <a href="#login-section" class="btn btn-primary btn-lg me-3">Pesan Sekarang</a>
-                <a href="./menu.html" class="btn btn-outline-light btn-lg">Lihat Menu</a>
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h1 class="display-4 fw-bold mb-3">Kantin Nasi Hainam <span class="text-warning">88</span></h1>
+          <p class="lead mb-4">Semua menu kami dimasak dengan bahan segar setiap hari. Kami mementingkan gizi seimbang untuk mahasiswa yang butuh energi sepanjang hari.</p>
+          <div class="d-flex justify-content-center">
+            <a href="#login-section" class="btn btn-primary btn-lg me-3">Pesan Sekarang</a>
+            <a href="./menu.html" class="btn btn-outline-light btn-lg">Lihat Menu</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="images/fotofull-makanan.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Section End -->
+
+  <!-- Login Section -->
+  <section id="login-section" class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="card login-card">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-md-5">
+                  <img src="images/chef.png" alt="Illustration" class="seafood-illustration">
+                </div>
+                <div class="col-md-7 p-4 p-lg-5">
+                  <div class="tabs-container">
+                    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">Register</button>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="login" role="tabpanel">
+                        <form id="loginForm">
+                          <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda" required>
+                          </div>
+                          <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Ingat saya</label>
+                          </div>
+                          <button type="button" class="btn btn-login btn-lg w-100" onclick="login()">Login</button>
+                          <div class="text-center mt-3">
+                            <a href="#" class="text-decoration-none">Lupa password?</a>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="tab-pane fade" id="register" role="tabpanel">
+                        <form id="registerForm">
+                          <div class="mb-3">
+                            <label for="fullName" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Masukkan nama lengkap Anda" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" placeholder="Masukkan email Anda" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="phone" class="form-label">Nomor Telepon</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Masukkan nomor telepon Anda" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Masukkan password Anda" required>
+                          </div>
+                          <button type="button" class="btn btn-register btn-lg w-100" onclick="register()">Register</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Login Section End -->
+
+  <div class="container">
+     <!-- Menu -->
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Menu Harian</h2>
+            </div>
+
+    <!-- Form Tambah Menu (khusus admin) -->
+    <div id="admin-panel" ng-show="isAdmin()">
+      <form ng-submit="addMemory()" enctype="multipart/form-data">
+        <input type="file" file-model="memory.photo" required>
+        <input type="text" ng-model="memory.name" placeholder="Nama menu..." required>
+        <input type="text" ng-model="memory.description" placeholder="Deskripsi menu..." required>
+        <input type="number" ng-model="memory.price" placeholder="Harga menu..." required>
+        <button type="submit">Tambah Menu</button>
+      </form>
+    </div>
+
+<!-- Daftar Menu -->
+<div class="row g-4">
+    <div class="col-md-3" ng-repeat="m in memories">
+        <div class="card food-item h-100">
+            <!-- Image from database -->
+            <img ng-src="http://localhost:5000/{{m.photo}}" class="card-img-top" alt="{{m.name}}">
+
+            <div class="card-body">
+                <h5 class="card-title fw-bold">{{m.name}}</h5>
+                <p class="card-text">
+                    {{m.description | limitTo: 100}}...
+                    <!-- Collapse for more description -->
+                    <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail{{m.id}}">More...</a>
+                </p>
+                <div id="detail{{m.id}}" class="collapse">
+                    <p>{{m.description}}</p>
                 </div>
 
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="fw-bold text-danger mb-0">Rp {{m.price | number:0}}</p>
+                </div>
 
-            </div>
-            <div class="col-lg-6">
-                <img src="images/fotofull-makanan.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <button 
+                        class="btn btn-outline-dark btn-sm btn-add-cart"
+                        ng-click="addToCart(m)">
+                        <i class="bi bi-cart-plus"></i> Keranjang
+                    </button>
+
+                   
+                </div>
             </div>
         </div>
+    </div>
+</div>
 
+
+
+          <!-- Edit & Hapus (Admin) -->
+          <button class="btn btn-primary btn-sm me-2" ng-show="isAdmin()" ng-click="startEdit(m)">
+            <i class="bi bi-pencil-square"></i> Edit
+          </button>
+          <button class="btn btn-danger btn-sm" ng-show="isAdmin()" ng-click="deleteMemory(m._id)">
+            <i class="bi bi-trash"></i> Hapus
+          </button>
+        </div>
+
+        <div ng-if="m.editing" class="p-3">
+          <input type="text" ng-model="m.name" class="form-control mb-2" />
+          <input type="text" ng-model="m.description" class="form-control mb-2" />
+          <input type="number" ng-model="m.price" class="form-control mb-2" />
+
+          <button class="btn btn-success btn-sm me-2" ng-click="saveEdit(m)">
+            <i class="bi bi-save2"></i> Simpan
+          </button>
+          <button class="btn btn-secondary btn-sm" ng-click="cancelEdit(m)">
+            <i class="bi bi-x-circle"></i> Batal
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Floating Cart Button -->
-    <a href="./cart.html" id="cart-button" class="btn rounded-circle shadow-lg cart-button position-fixed">
-        <i class="bi bi-cart-fill fs-4 position-relative">
-            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                0
-            </span>
-        </i>
-    </a>
-    
-</section>
+    <button id="cartButton" class="btn btn-primary rounded-circle shadow-lg position-fixed" style="bottom: 20px; right: 20px; z-index: 1050;" onclick="toggleCartPanel()">
+      <i class="bi bi-cart-fill fs-4 position-relative">
+        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ cart.length }}<span class="visually-hidden"></span></span>
+      </i>
+    </button>
 
-<!-- Hero Section End -->
-  <link rel="stylesheet" href="./js/script.js">
-<body ng-controller="MemoryController">
+    <!-- Panel Keranjang Belanja -->
+    <div id="cartPanel" class="bg-light p-3 rounded shadow" style="position: fixed; bottom: 80px; right: 20px; width: 300px; display: none; z-index: 1040; max-height: 400px; overflow-y: auto;">
+      <h5>Keranjang Belanja</h5>
+      <div ng-if="cart.length === 0">Keranjang Anda kosong.</div>
 
-  <!-- Tombol Logout (hanya muncul setelah login) -->
-  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
-     
-  <section id="login-section" class="py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card login-card">
-                        <div class="card-body p-0">
-                            <div class="row g-0">
-                                <div class="col-md-5">
-                                    <img src="images/chef.png" alt="Illustration" class="seafood-illustration">
-                                </div>
-                                <div class="col-md-7 p-4 p-lg-5">
-                                    <div class="tabs-container">
-                                        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">Register</button>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content" id="myTabContent">
-                                            <div class="tab-pane fade show active" id="login" role="tabpanel">
-                                                <form id="loginForm">
-                                                    <div class="mb-3">
-                                                        <label for="email" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="password" class="form-label">Password</label>
-                                                        <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda" required>
-                                                    </div>
-                                                    <div class="mb-3 form-check">
-                                                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                                                        <label class="form-check-label" for="rememberMe">Ingat saya</label>
-                                                    </div>
-                                                    <button type="button" class="btn btn-login btn-lg w-100" onclick="login()">Login</button>
-                                                    <div class="text-center mt-3">
-                                                        <a href="#" class="text-decoration-none">Lupa password?</a>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="register" role="tabpanel">
-                                                <form id="registerForm">
-                                                    <div class="mb-3">
-                                                        <label for="fullName" class="form-label">Nama Lengkap</label>
-                                                        <input type="text" class="form-control" id="fullName" placeholder="Masukkan nama lengkap Anda" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="registerEmail" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="registerEmail" placeholder="Masukkan email Anda" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="phone" class="form-label">Nomor Telepon</label>
-                                                        <input type="tel" class="form-control" id="phone" placeholder="Masukkan nomor telepon Anda" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="registerPassword" class="form-label">Password</label>
-                                                        <input type="password" class="form-control" id="registerPassword" placeholder="Masukkan password Anda" required>
-                                                    </div>
-                                                    <button type="button" class="btn btn-register btn-lg w-100" onclick="register()">Register</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-  <!-- Swiper CSS -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
-/>
-
-<style>
-  /* Atur tinggi gambar agar proporsional */
-  .swiper-slide img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .card-title {
-    font-size: 1rem;
-    margin-top: 8px;
-  }
-
-  .swiper-slide {
-    background: #fff;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
-  }
-</style>
-
-<div class="container my-4">
-  <h1>Menu Restoran</h1>
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <!-- Slide Item 1 -->
-      <div class="swiper-slide">
-        <img src="images/Togesyr.jpeg" alt="Sayur Toge Tumis" />
-        <h5 class="card-title">Sayur Toge Tumis</h5>
+      <div ng-repeat="item in cart" class="mb-2">
+        <strong>{{item.name}}</strong><br>
+        Rp {{item.price | number:0}} x {{item.quantity}} = <strong>Rp {{item.price * item.quantity | number:0}}</strong><br>
+        <button ng-click="addToCart(item)">+</button>
+        <button ng-click="removeFromCart(item)">Hapus</button>
       </div>
 
-      <!-- Slide Item 2 -->
-      <div class="swiper-slide">
-        <img src="images/Togesyr.jpeg" alt="Menu 2" />
-        <h5 class="card-title">Menu 2</h5>
-      </div>
-
-      <!-- Slide Item 3 -->
-      <div class="swiper-slide">
-        <img src="images/Togesyr.jpeg" alt="Menu 3" />
-        <h5 class="card-title">Menu 3</h5>
-      </div>
-
-      <!-- Tambah item lain sesuai kebutuhan -->
-      <div class="swiper-slide">
-        <img src="images/Togesyr.jpeg" alt="Menu 4" />
-        <h5 class="card-title">Menu 4</h5>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/Togesyr.jpeg" alt="Menu 5" />
-        <h5 class="card-title">Menu 5</h5>
+      <div ng-if="cart.length > 0" class="mt-3">
+        <p class="fw-bold mb-2 text-end">Total: Rp {{ getTotal() | number:0 }}</p>
+        <button class="btn btn-outline-primary w-100 mb-2" ng-click="goToCart()">
+          <i class="bi bi-cart4 me-1"></i> Lihat Keranjang
+        </button>
+        <button class="btn btn-danger w-100" onclick="window.location.href='pembayaran.html'">
+          Checkout
+        </button>
       </div>
     </div>
-
-    <!-- Navigation buttons -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-
-    <!-- Pagination dots -->
-    <div class="swiper-pagination"></div>
   </div>
-</div>
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-<script>
-  const swiper = new Swiper('.mySwiper', {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    breakpoints: {
-      320: { slidesPerView: 1, spaceBetween: 10 },
-      576: { slidesPerView: 2, spaceBetween: 15 },
-      768: { slidesPerView: 3, spaceBetween: 15 },
-      992: { slidesPerView: 4, spaceBetween: 20 },
-    },
-  });
-</script>
-
-
-
-   <!-- Testimonial Section -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Apa Kata Pelanggan Kami</h2>
-                <p class="text-muted">Pengalaman pelanggan yang puas dengan pelayanan kami</p>
+  <!-- Testimonial Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Apa Kata Pelanggan Kami</h2>
+        <p class="text-muted">Pengalaman pelanggan yang puas dengan pelayanan kami</p>
+      </div>
+      <div class="row g-4">
+        <!-- Testimonial 1 -->
+        <div class="col-md-3">
+          <div class="card h-100 p-4">
+            <div class="d-flex mb-3">
+              <div class="flex-shrink-0">
+                <img src="./images/eryca2.jpg" class="rounded-circle" alt="Customer" width="80" height="80">
+              </div>
+              <div class="ms-3">
+                <h5 class="mb-0">Eryca Dhamma</h5>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
             </div>
-            <div class="row g-4">
-                <!-- Testimonial 1 -->
-                <div class="col-md-3">
-                    <div class="card h-100 p-4">
-                        <div class="d-flex mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="./images/eryca2.jpg" class="rounded-circle" alt="Customer" width="80" height="80">
-                            </div>
-                            <div class="ms-3">
-                                <h5 class="mb-0">Eryca Dhamma</h5>
-                                <div class="text-warning mb-1">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="card-text">"Nasi Hainam terbaik yang pernah saya coba! Rasanya autentik dan porsinya cukup besar. Pelayanannya juga ramah."</p>
-                    </div>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="col-md-3">
-                    <div class="card h-100 p-4">
-                        <div class="d-flex mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="./images/brenda1.jpg" class="rounded-circle" alt="Customer" width="80" height="80">
-                            </div>
-                            <div class="ms-3">
-                                <h5 class="mb-0">Brenda Abigail</h5>
-                                <div class="text-warning mb-1">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="card-text">"Seafood-nya segar dan diolah dengan sempurna. Saya sering pesan delivery dan selalu puas dengan rasa dan kebersihannya."</p>
-                    </div>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="col-md-3">
-                    <div class="card h-100 p-4">
-                        <div class="d-flex mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="./images/gea1.jpg" class="rounded-circle" alt="Customer" width="80" height="80">
-                            </div>
-
-                            <div class="ms-3">
-                                <h5 class="mb-0">Georgia Sugisandhea</h5>
-                                <div class="text-warning mb-1">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="card-text">"Tempat nyaman dan bersih. Menu Nasi Hainam Special benar-benar worth it untuk dicoba. Akan kembali lagi!"</p>
-                    </div>
-                </div>
-                <!-- Testimonial 4 -->
-                <div class="col-md-3">
-                    <div class="card h-100 p-4">
-                        <div class="d-flex mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="./images/gatan1.jpg" class="rounded-circle" alt="Customer" width="80" height="80">
-                            </div>
-                            <div class="ms-3">
-                                <h5 class="mb-0">Gathan</h5>
-                                <div class="text-warning mb-1">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="card-text">"Tempat nyaman dan bersih. Menu Nasi Hainam Special benar-benar worth it untuk dicoba. Akan kembali lagi!"</p>
-                    </div>
-                </div>
-            </div>
+            <p class="card-text">"Nasi Hainam terbaik yang pernah saya coba! Rasanya autentik dan porsinya cukup besar. Pelayanannya juga ramah."</p>
+          </div>
         </div>
-    </section>
 
-    <!-- Location Section -->
-    <section id="location" class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <!-- Left Column: Location Info -->
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="fw-bold mb-4">Kunjungi Kami</h2>
-                    <p class="mb-4">Kami hadir di beberapa lokasi strategis untuk memudahkan Anda menikmati kelezatan masakan kami.</p>
-                    
-                    <!-- Alamat Lokasi -->
-                    <div class="d-flex mb-3">
-                        <div class="flex-shrink-0">
-                            <i class="bi bi-geo-alt text-danger fs-4"></i>
-                        </div>
-                        <div class="ms-3 text-start">
-                            <h5 class="mb-0">Lokasi</h5>
-                            <p class="mb-0">Tarumanagara University, Jl. Taman S. Parman No.blok A, RT.6/RW.16, Tomang, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11440</p>
-                        </div>
-                    </div>
-
-                    <!-- Nomor Telepon -->
-                    <div class="d-flex mb-3">
-                        <div class="flex-shrink-0">
-                            <i class="bi bi-telephone text-danger fs-4"></i>
-                        </div>
-                        <div class="ms-3 text-start">
-                            <h5>Kontak</h5>
-                            <p class="mb-0">0818-0855-1680</p>
-                        </div>
-                    </div>
-
-                    <!-- Jam Operasional -->
-                    <div class="d-flex mb-3">
-                        <div class="flex-shrink-0">
-                            <i class="bi bi-clock text-danger fs-4"></i>
-                        </div>
-                        <div class="ms-3 text-start">
-                            <h5>Jam Operasional</h5>
-                            <ul class="list-unstyled mb-0">
-                                <li>Jumat: 7.00 am – 3.00 pm</li>
-                                <li>Sabtu: Tutup</li>
-                                <li>Minggu: Tutup</li>
-                                <li>Senin – Kamis: 7.00 am – 3.00 pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Service Options -->
-                    <div class="d-flex mb-3">
-                        <div class="flex-shrink-0">
-                            <i class="bi bi-credit-card text-danger fs-4"></i>
-                        </div>
-                        <div class="ms-3 text-start">
-                            <h5>Opsi Pembayaran</h5>
-                            <p class="mb-0">Hanya Menerima Pembayaran Tunai</p>
-                        </div>
-                    </div>
+        <!-- Testimonial 2 -->
+        <div class="col-md-3">
+          <div class="card h-100 p-4">
+            <div class="d-flex mb-3">
+              <div class="flex-shrink-0">
+                <img src="./images/brenda1.jpg" class="rounded-circle" alt="Customer" width="80" height="80">
+              </div>
+              <div class="ms-3">
+                <h5 class="mb-0">Brenda Abigail</h5>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
                 </div>
-
-                <!-- Right Column: Google Maps Embed -->
-                <div class="col-lg-6">
-                    <div class="ratio ratio-16x9">
-                        <!-- Google Maps Embed iframe -->
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1170.8445564277936!2d106.78870808028746!3d-6.169614224309266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7f6fba2b5b5%3A0x68d7f6aef79e4fb4!2sKantin%2088%20Untar!5e0!3m2!1sen!2sid!4v1746187970343!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
+              </div>
             </div>
+            <p class="card-text">"Seafood-nya segar dan diolah dengan sempurna. Saya sering pesan delivery dan selalu puas dengan rasa dan kebersihannya."</p>
+          </div>
         </div>
-    </section>
-    <!-- Location Section End -->
 
-    <!-- Footer -->
-    <footer class="footer py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h3 class="brand-name mb-4">Kantin 88 Nasi Hainam</h3>
-                    <p>Restoran keluarga yang menyajikan makanan khas Hainan dan seafood dengan cita rasa autentik dan bahan berkualitas.</p>
-                    <div class="mt-4">
-                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-                    </div>
+        <!-- Testimonial 3 -->
+        <div class="col-md-3">
+          <div class="card h-100 p-4">
+            <div class="d-flex mb-3">
+              <div class="flex-shrink-0">
+                <img src="./images/gea1.jpg" class="rounded-circle" alt="Customer" width="80" height="80">
+              </div>
+              <div class="ms-3">
+                <h5 class="mb-0">Georgia Sugisandhea</h5>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
                 </div>
-                <div class="col-lg-2">
-                    <h5 class="mb-4">Menu</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Nasi Hainam</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Menu Spesial</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2">
-                    <h5 class="mb-4">Layanan</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Katering</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Event</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h5 class="mb-4">Hubungi Kami</h5>
-                    <form>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Email Anda">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="3" placeholder="Pesan Anda"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-light">Kirim Pesan</button>
-                    </form>
-                </div>
+              </div>
             </div>
-            <hr class="my-4 bg-light">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2025 Kantin 88 Nasi Hainam. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="text-white text-decoration-none me-3">Syarat & Ketentuan</a>
-                    <a href="#" class="text-white text-decoration-none">Kebijakan Privasi</a>
-                </div>
-            </div>
+            <p class="card-text">"Tempat nyaman dan bersih. Menu Nasi Hainam Special benar-benar worth it untuk dicoba. Akan kembali lagi!"</p>
+          </div>
         </div>
-    </footer>
+
+        <!-- Testimonial 4 -->
+        <div class="col-md-3">
+          <div class="card h-100 p-4">
+            <div class="d-flex mb-3">
+              <div class="flex-shrink-0">
+                <img src="./images/gatan1.jpg" class="rounded-circle" alt="Customer" width="80" height="80">
+              </div>
+              <div class="ms-3">
+                <h5 class="mb-0">Gathan</h5>
+                <div class="text-warning mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-text">"Tempat nyaman dan bersih. Menu Nasi Hainam Special benar-benar worth it untuk dicoba. Akan kembali lagi!"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section id="location" class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h2 class="fw-bold mb-4">Kunjungi Kami</h2>
+          <p class="mb-4">Kami hadir di beberapa lokasi strategis untuk memudahkan Anda menikmati kelezatan masakan kami.</p>
+
+          <div class="d-flex mb-3">
+            <div class="flex-shrink-0">
+              <i class="bi bi-geo-alt text-danger fs-4"></i>
+            </div>
+            <div class="ms-3 text-start">
+              <h5 class="mb-0">Lokasi</h5>
+              <p class="mb-0">Tarumanagara University, Jl. Taman S. Parman No.blok A, RT.6/RW.16, Tomang, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11440</p>
+            </div>
+          </div>
+
+          <div class="d-flex mb-3">
+            <div class="flex-shrink-0">
+              <i class="bi bi-telephone text-danger fs-4"></i>
+            </div>
+            <div class="ms-3 text-start">
+              <h5>Kontak</h5>
+              <p class="mb-0">0818-0855-1680</p>
+            </div>
+          </div>
+
+          <div class="d-flex mb-3">
+            <div class="flex-shrink-0">
+              <i class="bi bi-clock text-danger fs-4"></i>
+            </div>
+            <div class="ms-3 text-start">
+              <h5>Jam Operasional</h5>
+              <ul class="list-unstyled mb-0">
+                <li>Jumat: 7.00 am – 3.00 pm</li>
+                <li>Sabtu: Tutup</li>
+                <li>Minggu: Tutup</li>
+                <li>Senin – Kamis: 7.00 am – 3.00 pm</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="d-flex mb-3">
+            <div class="flex-shrink-0">
+              <i class="bi bi-credit-card text-danger fs-4"></i>
+            </div>
+            <div class="ms-3 text-start">
+              <h5>Opsi Pembayaran</h5>
+              <p class="mb-0">Hanya Menerima Pembayaran Tunai</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9">
+            <!-- Google Maps Embed iframe -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1170.8445564277936!2d106.78870808028746!3d-6.169614224309266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7f6fba2b5b5%3A0x68d7f6aef79e4fb4!2sKantin%2088%20Untar!5e0!3m2!1sen!2sid!4v1746187970343!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Location Section End -->
+
+  <!-- Footer -->
+  <footer class="footer py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h3 class="brand-name mb-4">Kantin 88 Nasi Hainam</h3>
+          <p>Restoran keluarga yang menyajikan makanan khas Hainan dan seafood dengan cita rasa autentik dan bahan berkualitas.</p>
+          <div class="mt-4">
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <h5 class="mb-4">Menu</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Nasi Hainam</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Menu Spesial</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h5 class="mb-4">Layanan</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Katering</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Event</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5 class="mb-4">Hubungi Kami</h5>
+          <form>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Email Anda">
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="3" placeholder="Pesan Anda"></textarea>
+            </div>
+            <button type="submit" class="btn btn-light">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4 bg-light">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2025 Kantin 88 Nasi Hainam. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white text-decoration-none me-3">Syarat & Ketentuan</a>
+          <a href="#" class="text-white text-decoration-none">Kebijakan Privasi</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer End -->
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 
   <!-- Script autentikasi -->
   <script>
@@ -561,6 +545,10 @@ function updateCartDisplay() {
   if (cartButton && cartButton.innerText.includes("Keranjang")) {
     cartButton.innerText = `Keranjang (${cartCount})`;
   }
+}
+function toggleCartPanel() {
+    var cartPanel = document.getElementById("cartPanel");
+    cartPanel.style.display = (cartPanel.style.display === "none" || cartPanel.style.display === "") ? "block" : "none";
 }
 
 function removeFromCart(item) {

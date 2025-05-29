@@ -1,26 +1,172 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="memoryApp">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Restoran</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Restoran & Populer</title>
+
+  <!-- Font Awesome untuk ikon -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+<!-- Bootstrap 5 CSS -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<!-- Bootstrap Icons -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+  rel="stylesheet"
+/>
+
+  <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <link rel="stylesheet" href="css/memory.css">
+
+  <style>
+    /* ===== Reset & Base ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5; color: #333;
+    }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px; background: #fff; border-bottom: 1px solid #ddd;
+    }
+    .brand { font-size: 1.5rem; font-weight: bold; }
+    .btn-logout {
+      background: none; border: none; color: #e74c3c; cursor: pointer;
+    }
+    .container { max-width: 960px; margin: 40px auto; padding: 0 20px; }
+
+    h1, h2 { text-align: center; color: #1c2d5c; }
+    h1 { margin-bottom: 20px; font-size: 2rem; }
+    h2 { margin-top: 60px; font-size: 2.5rem; }
+
+    /* ===== ADMIN PANEL ===== */
+    #admin-panel {
+      background: #fff; border: 1px solid #ddd; border-radius: 8px;
+      padding: 20px; margin-bottom: 40px;
+    }
+    #admin-panel input, #admin-panel button {
+      width: 100%; margin-top: 12px; padding: 10px;
+      border-radius: 4px; border: 1px solid #ccc;
+    }
+    #admin-panel button {
+      background: #28a745; color: #fff; border: none;
+    }
+
+    /* ===== DAFTAR MENU ===== */
+    .memory-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+      gap: 20px;
+    }
+    .memory-item {
+      background: #fff; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform .2s;
+    }
+    .memory-item:hover { transform: translateY(-4px); }
+    .memory-item img {
+      width: 100%; height: 160px; object-fit: cover;
+    }
+    .memory-item h3 {
+      margin: 12px; font-size: 1.2rem; color: #1c2d5c;
+    }
+    .memory-item p {
+      margin: 0 12px 12px; font-size: .95rem; color: #495057;
+    }
+    .memory-item input {
+      width: calc(100% - 24px); margin: 12px; padding: 8px;
+      border: 1px solid #ccc; border-radius: 4px;
+    }
+    .memory-item button {
+      margin: 0 12px 12px; padding: 8px 12px; border: none;
+      border-radius: 4px; cursor: pointer; color: #fff;
+    }
+    .btn-delete { background: #dc3545; }
+    .btn-delete:hover { background: #c82333; }
+    .btn-edit { background: #3498db; }
+    .btn-edit:hover { background: #2980b9; }
+    .btn-addcart { background: #06f72e; }
+    .btn-addcart:hover { background: #e68900; }
+
+    /* ===== FLOATING CART BUTTON ===== */
+    #cartButton {
+      position: fixed; bottom: 20px; right: 20px; z-index: 1050;
+      background: #007bff; color: #fff; border: none;
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); cursor: pointer;
+    }
+    #cartButton .badge {
+      position: absolute; top: 5px; right: 5px;
+      background: #dc3545; color: #fff;
+      border-radius: 50%; padding: 2px 6px;
+      font-size: .75rem;
+    }
+ .brand {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+    }
+    /* ===== CART PANEL ===== */
+    #cartPanel {
+      position: fixed; bottom: 90px; right: 20px;
+      width: 300px; max-height: 400px; overflow-y: auto;
+      background: #fff; border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 16px; z-index: 1040;
+      display: none;
+    }
+    #cartPanel h5 { margin-bottom: 12px; }
+    #cartPanel .cart-item {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    #cartPanel .cart-item button {
+      background: none; border: none; font-size: 1.1rem;
+      cursor: pointer;
+    }
+    #cartPanel .cart-item button.remove { color: #dc3545; }
+    #cartPanel .total {
+      margin-top: 16px; font-weight: bold; text-align: right;
+    }
+      footer {
+      border-top: 1px solid #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
 </head>
-<button onclick="logout()">Logout</button>
-
-
 
 <body ng-controller="MemoryController">
-  
-  
+  <header>
+     <div class="brand">Kantin 88 Nasi Hainam</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Input Menu</a>
+      <a href="#">History</a>
+    <button class="btn-logout" ng-click="logout()">Logout</button>
+  </header>
+
   <div class="container">
     <h1>Menu Restoran</h1>
-    
+
     <!-- Form Tambah Menu (khusus admin) -->
-    <div id="admin-panel" style="display:none;">
+    <div id="admin-panel" ng-show="isAdmin()">
       <form ng-submit="addMemory()" enctype="multipart/form-data">
-        <input id="photoInput" type="file" file-model="memory.photo" required>
+        <input type="file" file-model="memory.photo" required>
         <input type="text" ng-model="memory.name" placeholder="Nama menu..." required>
         <input type="text" ng-model="memory.description" placeholder="Deskripsi menu..." required>
         <input type="number" ng-model="memory.price" placeholder="Harga menu..." required>
@@ -28,91 +174,130 @@
       </form>
     </div>
 
-<!-- Tombol Keranjang Belanja -->
-<div id="cartButton" style="display: none;">
-  <button ng-click="showCart = !showCart">Keranjang ({{cart.length}})</button>
-  <div ng-if="showCart">
-    <h2>Keranjang Belanja</h2>
-    <div ng-if="cart.length === 0">Keranjang Anda kosong.</div>
-    <ul>
-      <li ng-repeat="item in cart">
-        <p>{{item.name}} - Rp {{item.price | number:0}}</p>
-        <button ng-click="removeFromCart(item)" style="background: red; color: white;">Hapus</button>
-      </li>
-    </ul>
-    <p ng-if="cart.length > 0">Total: Rp {{getTotal() | number:0}}</p>
+    <!-- Daftar Menu -->
+    <div class="memory-list">
+    <div class="memory-item" ng-repeat="m in memories">
+  <div ng-if="!m.editing" class="p-3">
+    <img
+      ng-src="http://localhost:5000/{{m.photo}}"
+      alt="{{m.name}}"
+      class="img-fluid mb-2"
+    />
+    <h3>{{m.name}}</h3>
+    <p>{{m.description}}</p>
+    <p><strong>Rp {{m.price|number:0}}</strong></p>
+
+    <!-- Tambah ke keranjang -->
+    <button
+      class="btn btn-warning btn-sm me-2"
+      ng-click="addToCart(m)"
+    >
+      <i class="bi bi-cart-plus"></i> Keranjang
+    </button>
+
+    <!-- Edit & Hapus (Admin) -->
+    <button
+      class="btn btn-primary btn-sm me-2"
+      ng-show="isAdmin()"
+      ng-click="startEdit(m)"
+    >
+      <i class="bi bi-pencil-square"></i> Edit
+    </button>
+    <button
+      class="btn btn-danger btn-sm"
+      ng-show="isAdmin()"
+      ng-click="deleteMemory(m._id)"
+    >
+      <i class="bi bi-trash"></i> Hapus
+    </button>
+  </div>
+
+  <div ng-if="m.editing" class="p-3">
+    <input type="text" ng-model="m.name" class="form-control mb-2" />
+    <input
+      type="text"
+      ng-model="m.description"
+      class="form-control mb-2"
+    />
+    <input type="number" ng-model="m.price" class="form-control mb-2" />
+
+    <button
+      class="btn btn-success btn-sm me-2"
+      ng-click="saveEdit(m)"
+    >
+      <i class="bi bi-save2"></i> Simpan
+    </button>
+    <button
+      class="btn btn-secondary btn-sm"
+      ng-click="cancelEdit(m)"
+    >
+      <i class="bi bi-x-circle"></i> Batal
+    </button>
   </div>
 </div>
 
 
-<!-- Daftar Menu -->
-<div class="memory-list">
-  <div class="memory-item" ng-repeat="memory in memories">
-    <div ng-if="!memory.editing">
-      <img ng-src="http://localhost:5000/{{memory.photo}}" alt="Foto Menu" width="200">
-      <h3><b>{{memory.name}}</b></h3>
-      <p>{{memory.description}}</p>
-      <p>Rp {{memory.price | number:0}}</p>
-      <button ng-show="isAdmin()" ng-click="deleteMemory(memory._id)" style="background: blue; color: white;">Hapus</button>
-      <button ng-show="isAdmin()" ng-click="editMemory(memory)" style="background: blue; color: white;">Edit</button>
-      <!-- Tombol untuk menambah menu ke keranjang -->
-      <button ng-click="addToCart(memory)" style="background: orange; color: white;">Tambah ke Keranjang</button>
-    </div>
+ 
 
-    <div ng-if="memory.editing">
-      <input type="text" ng-model="memory.name" placeholder="Edit nama..." required>
-      <input type="text" ng-model="memory.description" placeholder="Edit deskripsi..." required>
-      <input type="number" ng-model="memory.price" placeholder="Edit harga..." required>
-      <button ng-click="saveMemory(memory)" style="background: green; color: white;">Simpan</button>
-      <button ng-click="cancelEdit(memory)" style="background: gray; color: white;">Batal</button>
-    </div>
-  </div>
-</div>
-
-
-  <!-- Script autentikasi -->
+  <!-- AngularJS App & Controller (tanpa override fungsi Anda) -->
   <script>
-    async function getProtectedData() {
-      const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/auth/protected", {
-        method: "GET",
-        headers: { "Authorization": `Bearer ${token}` }
-      });
-      const data = await response.json();
-      console.log(data);
-      alert(JSON.stringify(data));
-    }
-
-    function logout() {
-      localStorage.removeItem("token");
-      localStorage.removeItem("role");
-      window.location.href = "index.html";
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const role = localStorage.getItem("role");
-      
-      // Menampilkan panel admin hanya jika peran adalah admin
-      const adminPanel = document.getElementById("admin-panel");
-      if (role === "admin") {
-        adminPanel.style.display = "block";
-      } else {
-        adminPanel.style.display = "none";
-      }
+    angular.module('memoryApp', [])
+    .directive('fileModel',['$parse',function($parse){
+      return {
+        restrict:'A',
+        link:function(scope,el,attrs){
+          const model = $parse(attrs.fileModel);
+          const setter = model.assign;
+          el.bind('change', () => {
+            scope.$apply(() => setter(scope, el[0].files[0]));
+          });
+        }
+      };
+    }])
     
-      // Menampilkan tombol keranjang hanya untuk customer
-      const cartButton = document.getElementById("cartButton");
-      if (role === "customer") {
-        cartButton.style.display = "inline-block"; // Menampilkan tombol keranjang untuk customer
-      } else {
-        cartButton.style.display = "none"; // Menyembunyikan tombol keranjang untuk selain customer
+    .controller('MemoryController',['$scope','$http',function($scope,$http){
+      // Auth & role
+      $scope.logout = function(){
+        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+        window.location = 'index.html';
+      };
+      $scope.role = localStorage.getItem('role');
+      $scope.isAdmin = () => $scope.role === 'admin';
+
+      // Load menu
+      function load(){
+        $http.get('http://localhost:5000/api/memories')
+          .then(r => $scope.memories = r.data);
       }
-    });
+      load();
+
+      // CRUD menu
+      $scope.addMemory = function(){
+        const fd = new FormData();
+        fd.append('photo',$scope.memory.photo);
+        fd.append('name',$scope.memory.name);
+        fd.append('description',$scope.memory.description);
+        fd.append('price',$scope.memory.price);
+        $http.post('http://localhost:5000/api/memories', fd, {
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
+        }).then(load);
+      };
+      $scope.deleteMemory = id => $http.delete('http://localhost:5000/api/memories/'+id).then(load);
+      $scope.startEdit    = m => m.editing = true;
+      $scope.saveEdit     = m => {
+        $http.put('http://localhost:5000/api/memories/'+m._id, m)
+             .then(() => m.editing = false);
+      };
+      $scope.cancelEdit   = m => m.editing = false;
+
+      // Wrapper supaya ng-click="addToCart(m)" memanggil fungsi global
+      $scope.addToCart = memory => window.addToCart(memory);
+    }]);
     
   </script>
 
-  <script src="fotoapp.js"></script>
-  <script src="auth.js"></script>
-
+  
 </body>
 </html>
