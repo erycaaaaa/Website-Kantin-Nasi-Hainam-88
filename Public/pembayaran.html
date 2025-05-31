@@ -45,7 +45,7 @@
                     <input type="file" id="uploadFile" class="d-none" onchange="angular.element(this).scope().fileSelected(this.files)">
                     <label for="uploadFile" class="btn btn-primary mb-3">Upload Image</label>
 
-                    <button class="btn btn-success" ng-disabled="!isUploaded" ng-click="continue()">Continue</button>
+                    <button type="button" class="btn btn-success" ng-disabled="!isUploaded" ng-click="continue($event)">Continue</button>
                 </div>
             </div>
         </div>

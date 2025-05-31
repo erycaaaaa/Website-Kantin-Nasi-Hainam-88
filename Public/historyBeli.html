@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body ng-app="warung88" ng-controller="HistoryBeliController">   
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
@@ -51,17 +51,30 @@
                         <th>No</th>
                         <th>Tanggal</th>
                         <th>Menu</th>
-                        <th>Jumlah</th>
                         <th>Total Harga</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody id="history-table-body">
+                     <tr ng-repeat="item in allData">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ item.tanggal | date:'dd MMM yyyy, HH:mm' }}</td>
+                        <td>
+                            <span ng-repeat="p in item.pesanan track by $index">
+                                {{ p[0] }} ({{ p[1] }})
+                                <span ng-if="!$last">, </span>
+                            </span>
+                        </td>
+                        <td>Rp {{ item.totalHarga }}</td>
+                        <td>{{ statusLabels[item.status] || item.status }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <!--Tabel History Pembelian End -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="js/historyBeli.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>

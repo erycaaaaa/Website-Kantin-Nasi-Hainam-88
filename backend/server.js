@@ -50,6 +50,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+app.get('/', (req, res) => {
+  res.send("Server is running!");
+});
+
 app.post("/api/menu", upload.single("image"), async (req, res) => {
     const { name, price, description } = req.body;
     const image = req.file;
@@ -74,78 +78,79 @@ app.get("/api/menu/:id/image", async (req, res) => {
     res.send(menu.image.data);
 });
 
-router.post("/api/menu", upload.single("image"), async (req, res) => {
-    try {
-        const { name, price, description } = req.body;
-        const imageFile = req.file;
+// router.post("/api/menu", upload.single("image"), async (req, res) => {
+//     try {
+//         const { name, price, description } = req.body;
+//         const imageFile = req.file;
 
-        if (!name || !price || !description || !imageFile) {
-            return res.status(400).json({ success: false, message: "Semua field harus diisi!" });
-        }
+//         if (!name || !price || !description || !imageFile) {
+//             return res.status(400).json({ success: false, message: "Semua field harus diisi!" });
+//         }
 
-        const newMenu = new Menu({
-            name,
-            price,
-            description,
-            image: {
-                data: imageFile.buffer,
-                contentType: imageFile.mimetype
-            }
-        });
+//         const newMenu = new Menu({
+//             name,
+//             price,
+//             description,
+//             image: {
+//                 data: imageFile.buffer,
+//                 contentType: imageFile.mimetype
+//             }
+//         });
 
-        await newMenu.save();
+//         await newMenu.save();
 
-        res.status(201).json({ success: true, message: "Menu berhasil ditambahkan!" });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ success: false, message: "Terjadi kesalahan server." });
-    }
-});
-// ✅ [POST] Tambah menu
+//         res.status(201).json({ success: true, message: "Menu berhasil ditambahkan!" });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ success: false, message: "Terjadi kesalahan server." });
+//     }
+// });
+
 app.post('/api/memories', upload.single('photo'), async (req, res) => {
     try {
-      const newMemory = new Memory({
-        photo: req.file ? req.file.path : '',
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price
-      });
-      await newMemory.save();
-      res.status(201).json(newMemory);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  });
+    const newMenu = new Menu({
+      photo: req.file ? req.file.path : '',
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      status: true // or false, depending on your default logic
+    });
+
+    await newMenu.save();
+    res.status(201).json(newMenu);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
   
-  // ✅ [GET] Ambil semua menu
-  app.get('/api/memories', async (req, res) => {
-    try {
-      const memories = await Memory.find().sort({ created_at: -1 });
-      res.json(memories);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  });
+  // app.get('/api/memories', async (req, res) => {
+  //   try {
+  //     const memories = await Menu.find().sort({ created_at: -1 });
+  //     res.json(memories);
+  //   } catch (err) {
+  //     res.status(500).json({ error: err.message });
+  //   }
+  // });
   
   // ✅ [DELETE] Hapus menu
   app.delete('/api/memories/:id', async (req, res) => {
     try {
-      await Memory.findByIdAndDelete(req.params.id);
+      await Menu.findByIdAndDelete(req.params.id);
       res.json({ message: 'Memory deleted successfully' });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   });
   
-  // ✅ [PUT] Update nama, deskripsi, dan harga
   app.put('/api/memories/:id', async (req, res) => {
     try {
-      const memory = await Memory.findByIdAndUpdate(
+      const memory = await Menu.findByIdAndUpdate(
         req.params.id,
         {
           name: req.body.name,
           description: req.body.description,
-          price: req.body.price
+          price: req.body.price,
+          status: req.body.status 
         },
         { new: true }
       );

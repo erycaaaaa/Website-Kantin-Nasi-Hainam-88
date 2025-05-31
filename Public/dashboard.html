@@ -186,6 +186,8 @@
     <h3>{{m.name}}</h3>
     <p>{{m.description}}</p>
     <p><strong>Rp {{m.price|number:0}}</strong></p>
+    <p>{{ m.status ? 'Aktif' : 'Nonaktif' }}</p>
+
 
     <!-- Tambah ke keranjang -->
     <button
@@ -221,6 +223,11 @@
     />
     <input type="number" ng-model="m.price" class="form-control mb-2" />
 
+    <select class="form-select mb-2" ng-model="m.status">
+      <option ng-value="true">Aktif</option>
+      <option ng-value="false">Nonaktif</option>
+    </select>
+
     <button
       class="btn btn-success btn-sm me-2"
       ng-click="saveEdit(m)"
@@ -236,10 +243,6 @@
   </div>
 </div>
 
-
- 
-
-  <!-- AngularJS App & Controller (tanpa override fungsi Anda) -->
   <script>
     angular.module('memoryApp', [])
     .directive('fileModel',['$parse',function($parse){
@@ -256,7 +259,6 @@
     }])
     
     .controller('MemoryController',['$scope','$http',function($scope,$http){
-      // Auth & role
       $scope.logout = function(){
         localStorage.removeItem('token');
         localStorage.removeItem('role');
@@ -267,7 +269,7 @@
 
       // Load menu
       function load(){
-        $http.get('http://localhost:5000/api/memories')
+        $http.get('http://localhost:5000/api/menu/')
           .then(r => $scope.memories = r.data);
       }
       load();

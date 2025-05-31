@@ -17,13 +17,11 @@
     $scope.isAdmin = () => $scope.role === 'admin';
 
     // Load semua menu dari API
-    $http.get('http://localhost:5000/api/memories')
-      .then(function(resp) {
-        $scope.memories = resp.data;
-      })
-      .catch(function(err) {
-        console.error('Error loading memories:', err);
-      });
+    $http.get('http://localhost:5000/api/menu')
+    .then(function(response) {
+        $scope.allData = response.data.filter(item => item.status === true);
+        console.log($scope.allData);
+    })
 
     // Tambah menu (Admin)
     $scope.addMemory = function() {
@@ -102,39 +100,40 @@
         });
     };
 
-    $scope.cart = [];
+    // $scope.cart = [];
 
 $scope.addToCart = function(item) {
-    let found = false;
-    // Mengecek apakah item sudah ada di keranjang
-    for (let i = 0; i < $scope.cart.length; i++) {
-        if ($scope.cart[i]._id === item._id) {
-            $scope.cart[i].quantity++;
-            found = true;
-            break;
-        }
+  let found = false;
+  for (let i = 0; i < $scope.cart.length; i++) {
+    if ($scope.cart[i]._id === item._id) {
+      $scope.cart[i].quantity++;
+      found = true;
+      break;
     }
+  }
 
-    if (!found) {
-        // Jika item belum ada, tambahkan item baru ke keranjang
-        item.quantity = 1;
-        $scope.cart.push(item);
-    }
+  if (!found) {
+    item.quantity = 1;
+    $scope.cart.push(item);
+  }
+
+  localStorage.setItem('cart', JSON.stringify($scope.cart)); // 🔁 Save updated cart
 };
 
 $scope.removeFromCart = function(item) {
-    for (let i = 0; i < $scope.cart.length; i++) {
-        if ($scope.cart[i]._id === item._id) {
-            if ($scope.cart[i].quantity > 1) {
-                $scope.cart[i].quantity--;
-            } else {
-                $scope.cart.splice(i, 1);
-            }
-            break;
-        }
+  for (let i = 0; i < $scope.cart.length; i++) {
+    if ($scope.cart[i]._id === item._id) {
+      if ($scope.cart[i].quantity > 1) {
+        $scope.cart[i].quantity--;
+      } else {
+        $scope.cart.splice(i, 1);
+      }
+      break;
     }
-};
+  }
 
+  localStorage.setItem('cart', JSON.stringify($scope.cart)); // 🔁 Save updated cart
+};
 
     // Hitung total harga
     $scope.getTotal = function() {
@@ -154,6 +153,11 @@ $scope.removeFromCart = function(item) {
     $scope.getTotal = function() {
       return $scope.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     };
+    $scope.goToCheckout = function() {
+      const total = $scope.getTotal();
+      window.location.href = 'pembayaran.html?total=' + total;
+    };
+
   }]);
 
   // Directive untuk file upload

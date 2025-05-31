@@ -12,9 +12,11 @@
                 });
 
                 const data = await response.json();
+                console.log(data);
                 if (response.ok) {
                     localStorage.setItem("token", data.token); 
                     localStorage.setItem("role", data.role);   
+                    localStorage.setItem("username", data.username);
                     alert("Login berhasil!");
 
                     if (data.role === "admin") {

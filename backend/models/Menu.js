@@ -1,19 +1,11 @@
 const mongoose = require("mongoose");
 
-const imageSchema = new mongoose.Schema({
-  path: String,
-  filename: String,
-  mimetype: String,
-  uploadDate: { type: Date, default: Date.now },
-  size: Number
-});
-
 const menuSchema = new mongoose.Schema({
+  photo: String,
   name: String,
   description: String,
   price: Number,
-  category: String,
-  images: [imageSchema]
+  status: Boolean,
 });
 
 menuSchema.index({ name: 1 }); // Optional: untuk optimasi pencarian

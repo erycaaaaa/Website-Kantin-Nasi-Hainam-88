@@ -11,8 +11,7 @@
     <!-- External CSS File -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
-    <!-- Navbar Start -->
+<body ng-app="warung88" ng-controller="MenuController" id="home"> 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <!-- Left Section with Profile -->
@@ -65,62 +64,28 @@
             </a>
                         <!-- Popular Menu Section -->
             <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch" ng-repeat="item in allData">
+                    <div class="card food-item h-100" style="width: 100%;">
+                        <img ng-src="../backend/uploads/{{item.photo}}" class="card-img-top" alt="{{menu.name}}" style="object-fit: cover; width: 100%; max-height: 180px;">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">
-                                Sayur Toge Tumis adalah hidangan Indonesia... 
-                                <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a>
-                            </p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur sehat yang terdiri dari toge, bawang putih, dan bumbu lainnya.</p>
-                            </div>
-                
+                            <h5 class="card-title fw-bold">{{item.name}}</h5>
+                            <p class="card-text">{{item.description}}</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                                <button 
-                                    class="btn btn-outline-dark btn-sm btn-add-cart"
-                                    data-name="Sayur Toge Tumis"
-                                    data-price="5000"
-                                    data-img="images/Togesyr.jpeg">
-                                    <i class="bi bi-cart-plus"></i> Keranjang
-                                </button>
-                
-                                <button 
-                                    class="btn btn-outline-danger btn-sm btn-remove-cart"
-                                    data-name="Sayur Toge Tumis">
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="card food-item h-100" style="width: 100%; aspect-ratio: 1;">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis" style="object-fit: cover; width: 100%; height: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
+                                <p class="fw-bold text-danger mb-0">Rp {{item.price}}</p>
                                 <p class="mb-0">Stok: 15</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
+                            <button 
+                                class="btn btn-outline-dark btn-sm btn-add-cart"
+                                data-name="{{item.name}}"
+                                data-price="{{item.price}}"
+                                data-img="../backend/uploads/{{item.photo}}">
                                 <i class="bi bi-cart-plus"></i> Keranjang
                             </button>
 
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
+<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="{{item.name}}"
+                                data-price="{{item.price}}"
+                                data-img="../backend/uploads/{{item.photo}}">
 
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
@@ -128,244 +93,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card food-item h-100">
-                        <img src="images/Togesyr.jpeg" class="card-img-top" alt="Sayur Toge Tumis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sayur Toge Tumis</h5>
-                            <p class="card-text">Sayur Toge Tumis adalah hidangan Indonesia yang terbuat dari... <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail2">More...</a></p>
-                            <div id="detail2" class="collapse">
-                                <p>Sayur Toge Tumis adalah hidangan sehat yang terdiri dari toge yang ditumis dengan bawang putih dan bumbu lainnya. Rasanya segar dan sangat cocok untuk mereka yang menginginkan makanan yang ringan namun bergizi.</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="fw-bold text-danger mb-0">Rp 5.000</p>
-                                <p class="mb-0">Stok: 15</p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                            <button class="btn btn-outline-dark btn-sm btn-add-cart" data-name="Kentang Balado">
-                                <i class="bi bi-cart-plus"></i> Keranjang
-                            </button>
-
-<button class="btn btn-outline-danger btn-sm btn-remove-cart" data-name="Kentang Balado">
-
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                
-
             </div>
         </div>
     </section>
@@ -590,9 +317,9 @@
             </div>
         </div>
     </footer>
-    <script src="js/script.js"></script>
-
-    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/menu.js"></script>
+    <!-- <script src="js/script.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

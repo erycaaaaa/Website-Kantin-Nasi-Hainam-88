@@ -1,29 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetch('http://localhost:5000/api/cart/guest123')
-      .then(res => res.json())
-      .then(data => {
-          const items = data.items || [];
-          const tableBody = document.getElementById("history-table-body");
+var app = angular.module('warung88', []);
 
-          if (items.length === 0) {
-              tableBody.innerHTML = `<tr><td colspan="5">Belum ada histori pembelian.</td></tr>`;
-              return;
-          }
+app.controller('HistoryBeliController', function($scope, $http, $window) {
+    $http.get('http://localhost:5000/api/datas/viewData')
+    .then(function(response) {
+        console.log(response.data);  
+        const username = localStorage.getItem("username");
+        $scope.allData = response.data.filter(item => item.username === username && (item.status === "selesai" || item.status === "tidakvalid" || item.status === "tidakcocok" || item.status === "habis")).sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+    })
+    .catch(function(error) {
+        console.error("Error fetching data:", error);
+    });
 
-          items.forEach((item, index) => {
-              const row = `
-                  <tr>
-                      <td>${index + 1}</td>
-                      <td>${new Date().toLocaleDateString()}</td>
-                      <td>${item.name}</td>
-                      <td>1</td>
-                      <td>Rp${item.price.toLocaleString()}</td>
-                  </tr>
-              `;
-              tableBody.insertAdjacentHTML("beforeend", row);
-          });
-      })
-      .catch(err => {
-          console.error("❌ Gagal mengambil histori:", err);
-      });
+    $scope.statusLabels = {
+        belum: "Menunggu Konfirmasi",
+        proses: "Pesanan Diproses",
+        selesai: "Selesai",
+        tidakvalid: "Pembayaran Tidak Valid",
+        habis: "Stok Habis",
+        tidakcocok: "Jumlah Pembayaran Tidak Cocok"
+    };
 });

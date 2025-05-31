@@ -16,11 +16,11 @@ router.get("/protected", verifyToken, (req, res) => {
 // Register dengan Email & Password
 router.post("/register", async (req, res) => {
     console.log("Hit API /register");
-    const { email, password } = req.body;
-
+    const { fullName, email, password } = req.body;
+    const username = fullName; // Menggunakan fullName sebagai username
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({ email, password: hashedPassword });
+        const user = new User({ username, email, password: hashedPassword });
         await user.save();
         res.status(201).json({ message: "User registered!" });
     } catch (error) {
@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-        res.json({ token, role: user.role }); // Kirim token + role ke frontend
+        res.json({ token, role: user.role, username: user.username }); // Kirim token + role ke frontend
     } catch (error) {
         res.status(500).json({ message: "Terjadi kesalahan pada server" });
     }

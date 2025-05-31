@@ -1,6 +1,53 @@
 const express = require("express");
 const router = express.Router();
 const Data = require("../models/Data.js");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../uploads"));
+  },
+  filename: function (req, file, cb) {
+    const uniqueName = `buktipembayaran-${Date.now()}-${Math.random().toString(36).substring(2,8)}`;
+    const ext = path.extname(file.originalname);
+    cb(null, uniqueName + ext);
+  }
+});
+const upload = multer({ storage });
+
+router.post("/upload", upload.single("file"), (req, res) => {
+  if (!req.file) return res.status(400).send("No file uploaded.");
+
+  // Send back the full filename including extension
+  res.status(200).json({ 
+    message: "File uploaded successfully.",
+    filename: req.file.filename
+  });
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const { username, tanggal, pesanan, totalHarga, buktiPembayaran, kode, status } = req.body;
+
+    const newData = new Data({
+      username,
+      tanggal,
+      pesanan,
+      totalHarga,
+      buktiPembayaran,
+      kode,
+      status
+    });
+
+    await newData.save();
+    res.status(201).json({ message: 'Order saved successfully!' });
+  } catch (error) {
+    console.error('Error saving order:', error);
+    res.status(500).json({ message: 'Failed to save order' });
+  }
+});
 
 router.get('/viewData', async (req, res) => {
   try {

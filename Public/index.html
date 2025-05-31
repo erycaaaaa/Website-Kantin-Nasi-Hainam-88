@@ -152,10 +152,10 @@
 
 <!-- Daftar Menu -->
 <div class="row g-4">
-    <div class="col-md-3" ng-repeat="m in memories">
+    <div class="col-md-3" ng-repeat="m in allData">
         <div class="card food-item h-100">
             <!-- Image from database -->
-            <img ng-src="http://localhost:5000/{{m.photo}}" class="card-img-top" alt="{{m.name}}">
+            <img ng-src="../backend/{{m.photo}}" class="card-img-top" alt="{{m.name}}">
 
             <div class="card-body">
                 <h5 class="card-title fw-bold">{{m.name}}</h5>
@@ -172,29 +172,18 @@
                     <p class="fw-bold text-danger mb-0">Rp {{m.price | number:0}}</p>
                 </div>
 
-<<<<<<< HEAD
                 <div class="d-flex justify-content-between align-items-center mt-2">
                     <button 
                         class="btn btn-outline-dark btn-sm btn-add-cart"
                         ng-click="addToCart(m)">
                         <i class="bi bi-cart-plus"></i> Keranjang
                     </button>
-
-                   
                 </div>
-=======
-            </div>
-            <div class="col-lg-6">
-                <img src="./images/landing-page.jpg" alt="Ilustrasi Makanan" class="img-fluid rounded-3 shadow">
->>>>>>> c46f5cde9135900b92426e9cc3e5f343e830b918
             </div>
         </div>
     </div>
 </div>
 
-
-
-          <!-- Edit & Hapus (Admin) -->
           <button class="btn btn-primary btn-sm me-2" ng-show="isAdmin()" ng-click="startEdit(m)">
             <i class="bi bi-pencil-square"></i> Edit
           </button>
@@ -230,91 +219,29 @@
       <h5>Keranjang Belanja</h5>
       <div ng-if="cart.length === 0">Keranjang Anda kosong.</div>
 
-<<<<<<< HEAD
       <div ng-repeat="item in cart" class="mb-2">
         <strong>{{item.name}}</strong><br>
         Rp {{item.price | number:0}} x {{item.quantity}} = <strong>Rp {{item.price * item.quantity | number:0}}</strong><br>
         <button ng-click="addToCart(item)">+</button>
         <button ng-click="removeFromCart(item)">Hapus</button>
-=======
-  <!-- Tombol Logout (hanya muncul setelah login) -->
-  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
-     
-<section id="login-section" class="py-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div class="card login-card">
-          <div class="card-body p-0 text-start">
-            <div class="row g-0">
-              <div class="col-md-5">
-                <img src="images/chef.png" alt="Illustration" class="seafood-illustration" />
-              </div>
-              <div class="col-md-7 p-4 p-lg-5 text-start">
-                <div class="tabs-container">
-                  <ul class="nav nav-tabs mb-4 text-start" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">Register</button>
-                    </li>
-                  </ul>
-                  <div class="tab-content" id="myTabContent">
-                    <!-- Login Form -->
-                    <div class="tab-pane fade show active" id="login" role="tabpanel">
-                      <form id="loginForm" class="text-start">
-                        <div class="mb-3">
-                          <label for="email" class="form-label">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" required />
-                        </div>
-                        <div class="mb-3">
-                          <label for="password" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda" required />
-                        </div>
-                        <div class="mb-3 form-check">
-                          <input type="checkbox" class="form-check-input" id="rememberMe" />
-                          <label class="form-check-label" for="rememberMe">Ingat saya</label>
-                        </div>
-                        <button type="button" class="btn btn-login btn-lg w-100" onclick="login()">Login</button>
-                        <div class="mt-3">
-                          <a href="#" class="text-decoration-none">Lupa password?</a>
-                        </div>
-                      </form>
-                    </div>
-
-                    <!-- Register Form -->
-                    <div class="tab-pane fade" id="register" role="tabpanel">
-                      <form id="registerForm" class="text-start">
-                        <div class="mb-3">
-                          <label for="fullName" class="form-label">Nama Lengkap</label>
-                          <input type="text" class="form-control" id="fullName" placeholder="Masukkan nama lengkap Anda" required />
-                        </div>
-                        <div class="mb-3">
-                          <label for="registerEmail" class="form-label">Email</label>
-                          <input type="email" class="form-control" id="registerEmail" placeholder="Masukkan email Anda" required />
-                        </div>
-                        <div class="mb-3">
-                          <label for="phone" class="form-label">Nomor Telepon</label>
-                          <input type="tel" class="form-control" id="phone" placeholder="Masukkan nomor telepon Anda" required />
-                        </div>
-                        <div class="mb-3">
-                          <label for="registerPassword" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="registerPassword" placeholder="Masukkan password Anda" required />
-                        </div>
-                        <button type="button" class="btn btn-register btn-lg w-100" onclick="register()">Register</button>
-                      </form>
-                    </div>
-                  </div> <!-- End tab-content -->
-                </div> <!-- End tabs-container -->
-              </div>
-            </div>
-          </div> <!-- End card-body -->
-        </div>
+  </div> 
+  <div class="container my-4">
+      <div ng-if="cart.length > 0" class="mt-3">
+        <p class="fw-bold mb-2 text-end">Total: Rp {{ getTotal() | number:0 }}</p>
+        <button class="btn btn-outline-primary w-100 mb-2" ng-click="goToCart()">
+          <i class="bi bi-cart4 me-1"></i> Lihat Keranjang
+        </button>
+        <button class="btn btn-danger w-100" onclick="window.location.href='pembayaran.html?total=' + getTotal()">
+          Checkout
+        </button>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+  <!-- Tombol Logout (hanya muncul setelah login) -->
+  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
+
 
   <!-- Swiper CSS -->
 <link
@@ -343,29 +270,6 @@
     box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
   }
 </style>
-
-<div class="container my-4">
-  <h1>Menu Restoran</h1>
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <!-- Slide Item 1 -->
-      <div class="swiper-slide">
-        <img src="images/Togesyr.jpeg" alt="Sayur Toge Tumis" />
-        <h5 class="card-title">Sayur Toge Tumis</h5>
->>>>>>> c46f5cde9135900b92426e9cc3e5f343e830b918
-      </div>
-
-      <div ng-if="cart.length > 0" class="mt-3">
-        <p class="fw-bold mb-2 text-end">Total: Rp {{ getTotal() | number:0 }}</p>
-        <button class="btn btn-outline-primary w-100 mb-2" ng-click="goToCart()">
-          <i class="bi bi-cart4 me-1"></i> Lihat Keranjang
-        </button>
-        <button class="btn btn-danger w-100" onclick="window.location.href='pembayaran.html'">
-          Checkout
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- Testimonial Section -->
   <section class="py-5">

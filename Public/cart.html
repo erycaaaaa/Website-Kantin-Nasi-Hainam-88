@@ -94,9 +94,9 @@
         <i class="bi bi-arrow-left-circle me-1"></i> Kembali
       </button>
       <button class="btn btn-danger"
-              onclick="window.location.href='pembayaran.html';">
-        <i class="bi bi-credit-card-fill me-1"></i> Checkout
-      </button>
+            ng-click="goToCheckout()">
+    <i class="bi bi-credit-card-fill me-1"></i> Checkout
+    </button>
     </div>
   </div>
    <!-- Testimonial Section -->
@@ -325,16 +325,6 @@
       <!-- AngularJS & Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
    <script src="fotoapp.js"></script>
- <script>
-    // Retrieve cart data from localStorage when the page loads
-    window.onload = function() {
-      var cartData = localStorage.getItem('cart');
-      if (cartData) {
-        // Parse the stored data and assign it to the AngularJS model
-        angular.element(document).injector().get('$rootScope').cart = JSON.parse(cartData);
-      }
-    };
-  </script>
 </body>
 </html>
 
