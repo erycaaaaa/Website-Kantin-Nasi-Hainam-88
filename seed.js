@@ -26,7 +26,7 @@ async function initializeDatabase() {
     const dbName = 'warung88'; 
     const db = await connectToDatabase(dbName); 
 
-    const collection = db.collection('menu');
+    const collection = db.collection('menus');
 
     const initialData = [
     { photo: "uploads/tempeorekbasah.jpg", name: "tempe orek basah", description: "tempe dipotong kecil kecil dan diorek dengan saus enak", price: 3000, created_at: new Date(), status: true, __v: 0 },
@@ -44,7 +44,7 @@ async function initializeDatabase() {
     { photo: "uploads/tempegorengtepung.jpg", name: "tempe goreng tepung", description: "tempe digoreng dengan tepung crispy", price: 2000, created_at: new Date(), status: true, __v: 0 },
     { photo: "uploads/sosisayamasammanis.jpg", name: "sosis ayam asam manis", description: "sosis ayam dimasak dengan saus asam manis", price: 5000, created_at: new Date(), status: true, __v: 0 },
     { photo: "uploads/gohiongayam.jpg", name: "gohiong ayam", description: "olahan ayam berbumbu khas gohiong", price: 5000, created_at: new Date(), status: true, __v: 0 },
-    { photo: "uploads/tahosaostiram.jpg", name: "tahu saos tiram", description: "tahu dimasak dengan saus tiram gurih", price: 3000, created_at: new Date(), status: true, __v: 0 },
+    { photo: "uploads/tahusaostiram.jpg", name: "tahu saos tiram", description: "tahu dimasak dengan saus tiram gurih", price: 3000, created_at: new Date(), status: true, __v: 0 },
     { photo: "uploads/kripikkentangpedasmanis.jpg", name: "kripik kentang pedas manis", description: "kripik kentang dengan bumbu pedas manis", price: 4000, created_at: new Date(), status: true, __v: 0 },
     { photo: "uploads/telorceplokbalado.jpg", name: "telor ceplok balado", description: "telor ceplok dimasak dengan sambal balado", price: 5000, created_at: new Date(), status: true, __v: 0 },
     { photo: "uploads/tahuopor.jpg", name: "tahu opor", description: "tahu dimasak dengan kuah opor kuning", price: 3000, created_at: new Date(), status: true, __v: 0 },
