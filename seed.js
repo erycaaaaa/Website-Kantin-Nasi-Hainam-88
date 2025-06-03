@@ -26,7 +26,7 @@ async function initializeDatabase() {
     const dbName = 'warung88'; 
     const db = await connectToDatabase(dbName); 
 
-    const collection = db.collection('menu');
+    const collection = db.collection('menus');
 
     const initialData = [
     { photo: "uploads/tempeorekbasah.jpg", name: "tempe orek basah", description: "tempe dipotong kecil kecil dan diorek dengan saus enak", price: 3000, created_at: new Date(), status: true, __v: 0 },
