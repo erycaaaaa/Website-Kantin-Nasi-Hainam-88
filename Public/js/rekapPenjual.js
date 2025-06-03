@@ -1,6 +1,10 @@
 var app = angular.module('warung88', []);
 
 app.controller('RekapPenjualController', function($scope, $http, $window, $filter) {
+    $scope.role = localStorage.getItem('role');
+    if($scope.role !== 'admin') {
+        $window.location.href = './index.html';
+    }
      const periodDays = {
         daily: 1,
         weekly: 7,

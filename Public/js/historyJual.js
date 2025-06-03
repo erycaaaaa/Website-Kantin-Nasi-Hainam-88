@@ -1,6 +1,11 @@
 var app = angular.module('warung88', []);
 
 app.controller('HistoryPenjualController', function($scope, $http, $window) {
+    $scope.role = localStorage.getItem('role');
+    if($scope.role !== 'admin') {
+        $window.location.href = './index.html';
+    }
+    
     $http.get('http://localhost:5000/api/datas/viewData')
     .then(function(response) {
         console.log(response.data);  
