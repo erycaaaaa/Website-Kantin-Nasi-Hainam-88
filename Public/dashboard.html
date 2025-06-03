@@ -23,7 +23,7 @@
 
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-
+  <link rel="stylsheet" href="./css/style.css">
   <style>
     /* ===== Reset & Base ===== */
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -152,12 +152,35 @@
 
 <body ng-controller="MemoryController">
   <header>
-     <div class="brand">Kantin 88 Nasi Hainam</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Input Menu</a>
-      <a href="#">History</a>
-    <button class="btn-logout" ng-click="logout()">Logout</button>
+     <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+    <a class="navbar-brand d-flex align-items-center" ng-href="{{ getProfileLink() }}">
+      <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
+      Kantin 88 Nasi Hainam
+    </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
+          <li class="nav-item" ng-if="isAdmin()">
+            <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
+          </li>
+
+          <!-- If not admin -->
+          <li class="nav-item" ng-if="!isAdmin()">
+            <a class="nav-link" href="#location">Lokasi</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="./tentangKami.html">Tentang Kami</a></li>
+  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>    
+        </ul>
+      </div>
+    </div>
+  </nav>
   </header>
 
   <div class="container">

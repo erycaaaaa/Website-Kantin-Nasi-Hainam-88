@@ -18,11 +18,10 @@
 
     $scope.getProfileLink = function() {
       const token = localStorage.getItem("token");
-      if (!token) return ""; // No link if not logged in
+      if (!token) return ""; 
       return $scope.isAdmin() ? "./profilPenjual.html" : "./profile.html";
     };
 
-    // Load semua menu dari API
     $http.get('http://localhost:5000/api/menu')
     .then(function(response) {
         $scope.allData = response.data.filter(item => item.status === true);
