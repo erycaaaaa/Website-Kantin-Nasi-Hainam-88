@@ -16,6 +16,12 @@
     // Helper untuk cek admin
     $scope.isAdmin = () => $scope.role === 'admin';
 
+    $scope.getProfileLink = function() {
+      const token = localStorage.getItem("token");
+      if (!token) return ""; // No link if not logged in
+      return $scope.isAdmin() ? "./profilPenjual.html" : "./profile.html";
+    };
+
     // Load semua menu dari API
     $http.get('http://localhost:5000/api/menu')
     .then(function(response) {

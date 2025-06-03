@@ -14,10 +14,10 @@
   <!-- Navbar Start -->
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
-      <a class="navbar-brand d-flex align-items-center" href="./profile.html">
-        <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
-        Kantin 88 Nasi Hainam
-      </a>
+    <a class="navbar-brand d-flex align-items-center" ng-href="{{ getProfileLink() }}">
+      <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
+      Kantin 88 Nasi Hainam
+    </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,11 +27,16 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
-          <li class="nav-item"><a class="nav-link" href="#location">Lokasi</a></li>
+          <li class="nav-item" ng-if="isAdmin()">
+            <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
+          </li>
+
+          <!-- If not admin -->
+          <li class="nav-item" ng-if="!isAdmin()">
+            <a class="nav-link" href="#location">Lokasi</a>
+          </li>
           <li class="nav-item"><a class="nav-link" href="./tentangKami.html">Tentang Kami</a></li>
-          <!-- Tombol Logout (hanya muncul setelah login) -->
-  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
-     
+  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>    
         </ul>
       </div>
     </div>
@@ -141,13 +146,9 @@
 
     <!-- Form Tambah Menu (khusus admin) -->
     <div id="admin-panel" ng-show="isAdmin()">
-      <form ng-submit="addMemory()" enctype="multipart/form-data">
-        <input type="file" file-model="memory.photo" required>
-        <input type="text" ng-model="memory.name" placeholder="Nama menu..." required>
-        <input type="text" ng-model="memory.description" placeholder="Deskripsi menu..." required>
-        <input type="number" ng-model="memory.price" placeholder="Harga menu..." required>
-        <button type="submit">Tambah Menu</button>
-      </form>
+        <a href="/Public/dashboard.html">
+          <button class="btn-primary" type="button">Tambah Menu</button>
+        </a>
     </div>
 
 <!-- Daftar Menu -->
@@ -159,11 +160,7 @@
 
             <div class="card-body">
                 <h5 class="card-title fw-bold">{{m.name}}</h5>
-                <p class="card-text">
-                    {{m.description | limitTo: 100}}...
-                    <!-- Collapse for more description -->
-                    <a href="#" class="text-primary" data-bs-toggle="collapse" data-bs-target="#detail{{m.id}}">More...</a>
-                </p>
+                <p class="card-text">{{ m.description }}</p>
                 <div id="detail{{m.id}}" class="collapse">
                     <p>{{m.description}}</p>
                 </div>
@@ -172,12 +169,12 @@
                     <p class="fw-bold text-danger mb-0">Rp {{m.price | number:0}}</p>
                 </div>
 
-                <div class="d-flex justify-content-between align-items-center mt-2">
-                    <button 
-                        class="btn btn-outline-dark btn-sm btn-add-cart"
-                        ng-click="addToCart(m)">
-                        <i class="bi bi-cart-plus"></i> Keranjang
-                    </button>
+                <div class="d-flex justify-content-between align-items-center mt-2" ng-if="!isAdmin()">
+                  <button 
+                    class="btn btn-outline-dark btn-sm btn-add-cart"
+                    ng-click="addToCart(m)">
+                    <i class="bi bi-cart-plus"></i> Keranjang
+                  </button>
                 </div>
             </div>
         </div>
@@ -538,6 +535,8 @@ function addToCart(memory) {
   updateCartDisplay(); // Update tampilan keranjang
 }
 
+
+
 // Fungsi untuk mendapatkan total harga
 function getTotal() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -548,10 +547,10 @@ function getTotal() {
     function logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
-      window.location.href = "index.html"; // Redirect ke halaman login
+      localStorage.removeItem("cart"); 
+      window.location.href = "index.html"; 
     }
 
-    // Fungsi untuk login
     function login() {
       // Logika login di sini, simpan token dan role ke localStorage jika login berhasil
       localStorage.setItem("token", "some-auth-token");

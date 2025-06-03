@@ -131,7 +131,7 @@
       <div class="col-md-4 mb-4 fade-in">
         <div
           class="card shadow-sm p-4 stat-card"
-          data-url="menuPenjual.html"
+          data-url="menu.html"
           style="cursor:pointer"
         >
           <div class="icon-circle">
@@ -184,13 +184,27 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-  const payments = [
-    { id: "P001", date: "2025-05-10", customer: "Budi", amount: 150000 },
-    { id: "P002", date: "2025-05-12", customer: "Siti", amount: 200000 },
-    { id: "P003", date: "2025-05-15", customer: "Joko", amount: 175000 },
-  ];
+  async function fetchOrders() {
+    try {
+      const res = await fetch('http://localhost:5000/api/datas/viewData');
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+      return [];
+    }
+  }
 
-  const menus = ["Nasi Goreng", "Mie Ayam", "Ayam Geprek", "Es Teh Manis"];
+  async function fetchMenus() {
+    try {
+      const res = await fetch('http://localhost:5000/api/menu');
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching menus:', error);
+      return [];
+    }
+  }
 
   function animateCounter(id, endValue, prefix = "") {
     const el = document.getElementById(id);
@@ -211,25 +225,47 @@
     }, duration / steps);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const total = payments.reduce((sum, p) => sum + p.amount, 0);
+  document.addEventListener("DOMContentLoaded", async () => {
+    const orders = await fetchOrders();
+    const menus = await fetchMenus();
 
-    animateCounter("totalRevenue", total, "Rp ");
-    animateCounter("totalTransactions", payments.length);
+    // Revenue and Transactions
+    const totalRevenue = orders.reduce((sum, order) => sum + (order.totalHarga || 0), 0);
+    const totalTransactions = orders.length;
 
+    animateCounter("totalRevenue", totalRevenue, "Rp ");
+    animateCounter("totalTransactions", totalTransactions);
+
+    // Menu count
     const totalMenusEl = document.getElementById("totalMenus");
     if (totalMenusEl) {
       totalMenusEl.innerText = menus.length;
     }
 
+    // Populate history table
     const tbody = document.getElementById("historyTableBody");
-    payments.forEach((p) => {
+    orders.forEach((order) => {
+      const formattedDate = order.tanggal
+  ? new Date(order.tanggal).toLocaleString('id-ID', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+  : "-";
+  let pesananHtml = "-";
+if (Array.isArray(order.pesanan) && order.pesanan.length > 0) {
+  pesananHtml = order.pesanan
+    .map(p => `${p[0]} (${p[1]})`)
+    .join(", ");
+}
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${p.id}</td>
-        <td>${p.date}</td>
-        <td>${p.customer}</td>
-        <td>${p.amount.toLocaleString("id-ID")}</td>
+        <td>${pesananHtml}</td>
+        <td>${formattedDate}</td>
+        <td>${order.username}</td>
+        <td>${(order.totalHarga || 0).toLocaleString("id-ID")}</td>
       `;
       row.style.cursor = "pointer";
       row.addEventListener("click", () => {

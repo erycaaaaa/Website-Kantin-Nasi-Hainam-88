@@ -20,7 +20,7 @@
                     alert("Login berhasil!");
 
                     if (data.role === "admin") {
-                        window.location.href = "dashboard.html";
+                        window.location.href = "profilPenjual.html";
                     } else if (data.role === "customer") {
                         window.location.href = "index.html";
                     } else {
@@ -36,6 +36,10 @@
         }
 
         async function register() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
+            localStorage.removeItem("username");
+            localStorage.removeItem("cart");
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('registerEmail').value;
             const phone = document.getElementById('phone').value;
@@ -61,4 +65,5 @@
                 console.error("Error:", error);
                 alert("Terjadi kesalahan!");
             }
+            location.reload();
         }

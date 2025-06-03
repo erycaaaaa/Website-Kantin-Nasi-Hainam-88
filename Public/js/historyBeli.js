@@ -5,7 +5,8 @@ app.controller('HistoryBeliController', function($scope, $http, $window) {
     .then(function(response) {
         console.log(response.data);  
         const username = localStorage.getItem("username");
-        $scope.allData = response.data.filter(item => item.username === username && (item.status === "selesai" || item.status === "tidakvalid" || item.status === "tidakcocok" || item.status === "habis")).sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+         const userData = response.data.filter(item => item.username === username);
+        $scope.allData = userData.sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
     })
     .catch(function(error) {
         console.error("Error fetching data:", error);

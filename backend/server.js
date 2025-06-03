@@ -3,12 +3,13 @@ const express = require("express");
 const mongoose = require('mongoose');
 
 const cors = require("cors");
-const connectDB = require("./config/db"); // Pastikan import connectDB dari db.js
+const connectDB = require("./config/db"); 
 const authRoutes = require("./routes/authRoutes");
 const menuRoutes = require("./routes/menuRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const dataRoutes = require("./routes/dataRoutes");
-const Menu = require("./models/Menu"); // Tambahkan ini
+const Menu = require("./models/Menu"); 
+const User = require("./models/User"); 
 const multer = require("multer");
 const app = express();
 const router = express.Router();
@@ -78,34 +79,6 @@ app.get("/api/menu/:id/image", async (req, res) => {
     res.send(menu.image.data);
 });
 
-// router.post("/api/menu", upload.single("image"), async (req, res) => {
-//     try {
-//         const { name, price, description } = req.body;
-//         const imageFile = req.file;
-
-//         if (!name || !price || !description || !imageFile) {
-//             return res.status(400).json({ success: false, message: "Semua field harus diisi!" });
-//         }
-
-//         const newMenu = new Menu({
-//             name,
-//             price,
-//             description,
-//             image: {
-//                 data: imageFile.buffer,
-//                 contentType: imageFile.mimetype
-//             }
-//         });
-
-//         await newMenu.save();
-
-//         res.status(201).json({ success: true, message: "Menu berhasil ditambahkan!" });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ success: false, message: "Terjadi kesalahan server." });
-//     }
-// });
-
 app.post('/api/memories', upload.single('photo'), async (req, res) => {
     try {
     const newMenu = new Menu({
@@ -122,15 +95,6 @@ app.post('/api/memories', upload.single('photo'), async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-  
-  // app.get('/api/memories', async (req, res) => {
-  //   try {
-  //     const memories = await Menu.find().sort({ created_at: -1 });
-  //     res.json(memories);
-  //   } catch (err) {
-  //     res.status(500).json({ error: err.message });
-  //   }
-  // });
   
   // ✅ [DELETE] Hapus menu
   app.delete('/api/memories/:id', async (req, res) => {
@@ -159,6 +123,33 @@ app.post('/api/memories', upload.single('photo'), async (req, res) => {
       res.status(500).json({ error: err.message });
     }
   });
+
+  app.get('/users', async (req, res) => {
+    try {
+        const users = await User.find();
+        console.log(users);
+        res.json(users);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+  });
+
+app.get('/users/:username', async (req, res) => {
+  try {
+    const username = req.params.username;
+    const user = await User.findOne({ username: username });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 module.exports = router;
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server berjalan di port ${PORT}`));
