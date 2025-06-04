@@ -829,3 +829,18 @@ button:hover {
       font-weight: bold;
       color: #333;
     }
+        .quantity-btn {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+    }
+    .item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+    .total-box {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+    }
