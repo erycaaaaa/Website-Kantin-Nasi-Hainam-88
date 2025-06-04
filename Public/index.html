@@ -222,8 +222,9 @@
         Rp {{item.price | number:0}} x {{item.quantity}} = <strong>Rp {{item.price * item.quantity | number:0}}</strong><br>
         <button ng-click="addToCart(item)">+</button>
         <button ng-click="removeFromCart(item)">Hapus</button>
-  </div> 
-  <div class="container my-4">
+      </div> 
+
+      <div class="container my-4">
       <div ng-if="cart.length > 0" class="mt-3">
         <p class="fw-bold mb-2 text-end">Total: Rp {{ getTotal() | number:0 }}</p>
         <button class="btn btn-outline-primary w-100 mb-2" ng-click="goToCart()">
@@ -233,9 +234,46 @@
           Checkout
         </button>
       </div>
+      </div>
+      </div>
     </div>
-  </div>
-</div>
+    
+      <div class="container py-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 1: Call Support -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Call Support</h5>
+                        <p class="card-text">We bring the right people together to challenge established thinking.</p>
+                        <a href="#" class="btn btn-primary" onclick="window.open('profile.html#location')">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2: FAQ Page -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">FAQ Page</h5>
+                        <p class="card-text">We bring the right people together to challenge established thinking.</p>
+                           <a href="#" class="btn btn-primary" onclick="window.open('bantuan.html')">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3: Kebersihan -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Kebersihan</h5>
+                        <p class="card-text">We bring the right people together to challenge established thinking.</p>
+                        <a href="#" class="btn btn-primary" onclick="window.open('security.html')">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
 
   <!-- Tombol Logout (hanya muncul setelah login) -->
   <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
