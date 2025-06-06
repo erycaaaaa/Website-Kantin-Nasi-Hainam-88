@@ -154,8 +154,9 @@
 </head>
 
 <body ng-controller="MemoryController">
-  <header>
-     <nav class="navbar navbar-expand-lg sticky-top">
+  
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
     <a class="navbar-brand d-flex align-items-center" ng-href="{{ getProfileLink() }}">
       <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
@@ -173,6 +174,7 @@
           <li class="nav-item" ng-if="isAdmin()">
             <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
           </li>
+          <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
 
           <!-- If not admin -->
           <li class="nav-item" ng-if="!isAdmin()">
@@ -184,6 +186,7 @@
       </div>
     </div>
   </nav>
+  <!-- Navbar End -->
   </header>
 
   <div class="container">
