@@ -59,7 +59,7 @@
                     alert("Registrasi berhasil, silakan login!");
                     document.getElementById('login-tab').click(); // Pindah ke tab login
                 } else {
-                    alert(data.message || "Registrasi gagal");
+                    alert(data.error || "Registrasi gagal");
                 }
             } catch (error) {
                 console.error("Error:", error);

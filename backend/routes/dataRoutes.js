@@ -80,4 +80,15 @@ router.put('/updateStatus/:id', async (req, res) => {
   }
 });
 
+router.get("/orders/pending-count", async (req, res) => {
+    try {
+        const count = await Data.countDocuments({
+            status: { $in: ["belum", "proses", "tunggu"] }
+        });
+        res.json({ count });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 module.exports = router;

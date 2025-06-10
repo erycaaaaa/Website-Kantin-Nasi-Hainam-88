@@ -1,7 +1,19 @@
 var app = angular.module('warung88', []);
 
 app.controller('PembayaranController', function($scope, $http, $window) {
-    const params = new URLSearchParams($window.location.search);
+  const params = new URLSearchParams($window.location.search);
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart && cart.length > 0) {
+      console.log("Cart exists with items");
+    } else {
+      $window.location.href = 'index.html';
+    }
+
+    if (params && Array.from(params).length > 0) {
+      console.log("Params exist:", params.toString());
+    } else {
+      $window.location.href = 'index.html';
+    }
     $scope.amount = params.get("total");
 
      $scope.isUploaded = false;
@@ -19,15 +31,13 @@ app.controller('PembayaranController', function($scope, $http, $window) {
     const pesanan = cart.map(item => [item.name, item.quantity]);
     const totalHarga = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-    // Generate filename
     const uniqueName = `buktipembayaran-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`;
     const username = localStorage.getItem("username");
 
-    // Step 1: Upload the file first
     if ($scope.selectedFile) {
       const formData = new FormData();
       formData.append("file", $scope.selectedFile);
-      formData.append("filename", uniqueName); // Send filename to backend
+      formData.append("filename", uniqueName); 
 
       $http.post("http://localhost:5000/api/datas/upload", formData, {
         transformRequest: angular.identity,

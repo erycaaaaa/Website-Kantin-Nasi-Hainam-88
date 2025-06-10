@@ -8,7 +8,7 @@ app.controller('PesananAktifController', function($scope, $http, $window) {
     $http.get('http://localhost:5000/api/datas/viewData')
     .then(function(response) {
         console.log(response.data);  // Debugging line
-        $scope.allData = response.data.filter(item => item.status === "belum" || item.status === "proses");
+        $scope.allData = response.data.filter(item => item.status === "belum" || item.status === "proses" || item.status === "tunggu");
     })
     .catch(function(error) {
         console.error("Error fetching data:", error);
@@ -21,8 +21,8 @@ app.controller('PesananAktifController', function($scope, $http, $window) {
             console.log('Status updated successfully');
             $http.get('http://localhost:5000/api/datas/viewData')
             .then(function(response) {
-                console.log(response.data);  // Debugging line
-                $scope.allData = response.data.filter(item => item.status === "belum" || item.status === "proses");
+                console.log(response.data);  
+                $scope.allData = response.data.filter(item => item.status === "belum" || item.status === "proses" || item.status === "tunggu");
             })
             .catch(function(error) {
                 console.error("Error fetching data:", error);
@@ -32,4 +32,13 @@ app.controller('PesananAktifController', function($scope, $http, $window) {
             console.error('Error updating status:', error);
         });
     };
+     $scope.fetchPendingOrdersCount = function () {
+        $http.get("http://localhost:5000/api/datas/orders/pending-count").then(function (response) {
+            $scope.pendingOrdersCount = response.data.count;
+        }).catch(function (error) {
+            console.error("Failed to fetch pending orders count:", error);
+        });
+    };
+    console.log("Pending orders count:", $scope.pendingOrdersCount);
+    $scope.fetchPendingOrdersCount();
 });

@@ -24,8 +24,15 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="./pesananAktif.html">
+              Pesanan Aktif
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    ng-if="pendingOrdersCount > 0">
+                {{ pendingOrdersCount }}
+                <span class="visually-hidden">Pending orders</span>
+              </span>
+            </a>
           </li>
           <li class="nav-item"><a class="nav-link" href="./tentangKami.html">Tentang Kami</a></li>
   <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>    

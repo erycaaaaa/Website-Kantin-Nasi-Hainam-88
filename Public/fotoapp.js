@@ -150,6 +150,19 @@ $scope.removeFromCart = function(item) {
       localStorage.setItem('cart', JSON.stringify($scope.cart));
       window.location.href = 'cart.html';
     };
+
+     $scope.pendingOrdersCount = 0;
+
+    $scope.fetchPendingOrdersCount = function () {
+        $http.get("http://localhost:5000/api/datas/orders/pending-count").then(function (response) {
+            $scope.pendingOrdersCount = response.data.count;
+        }).catch(function (error) {
+            console.error("Failed to fetch pending orders count:", error);
+        });
+    };
+    console.log("Pending orders count:", $scope.pendingOrdersCount);
+    $scope.fetchPendingOrdersCount();
+
   }]);
 
   // Controller untuk halaman cart.html

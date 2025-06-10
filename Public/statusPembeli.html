@@ -51,6 +51,7 @@
         <thead class="table-light">
           <tr>
             <th>Nama Pesanan</th>
+            <th>Kode</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -62,6 +63,7 @@
                                 <span ng-if="!$last">, </span>
                             </span>
                         </td>
+                        <td>{{ item.kode }}</td>
                         <td>{{ statusLabels[item.status] || item.status }}</td>
                     </tr>
                 </tbody>

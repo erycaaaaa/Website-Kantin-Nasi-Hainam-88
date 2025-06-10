@@ -170,8 +170,15 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
-          <li class="nav-item" ng-if="isAdmin()">
-            <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="./pesananAktif.html">
+              Pesanan Aktif
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    ng-if="pendingOrdersCount > 0">
+                {{ pendingOrdersCount }}
+                <span class="visually-hidden">Pending orders</span>
+              </span>
+            </a>
           </li>
 
           <!-- If not admin -->
@@ -299,6 +306,16 @@
           .then(r => $scope.memories = r.data);
       }
       load();
+
+      $scope.fetchPendingOrdersCount = function () {
+        $http.get("http://localhost:5000/api/datas/orders/pending-count").then(function (response) {
+            $scope.pendingOrdersCount = response.data.count;
+        }).catch(function (error) {
+            console.error("Failed to fetch pending orders count:", error);
+        });
+    };
+    console.log("Pending orders count:", $scope.pendingOrdersCount);
+    $scope.fetchPendingOrdersCount();
 
       // CRUD menu
       $scope.addMemory = function(){

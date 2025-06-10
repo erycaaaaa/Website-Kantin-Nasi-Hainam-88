@@ -25,6 +25,7 @@ app.controller('StatusPembeliController', function($scope, $http, $window) {
     $scope.statusLabels = {
         belum: "Menunggu Konfirmasi",
         proses: "Pesanan Diproses",
+        tunggu: "Tolong Ambil Pesanan Anda",
         selesai: "Selesai! Silahkan diambil!",
         tidakvalid: "Pembayaran Tidak Valid, tolong hubungi penjual",
         habis: "Stok Habis, tolong hubungi penjual",

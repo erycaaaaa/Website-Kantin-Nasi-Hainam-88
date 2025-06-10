@@ -27,8 +27,15 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
-          <li class="nav-item" ng-if="isAdmin()">
-            <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
+          <li class="nav-item position-relative" ng-if="isAdmin()">
+            <a class="nav-link" href="./pesananAktif.html">
+              Pesanan Aktif
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    ng-if="pendingOrdersCount > 0">
+                {{ pendingOrdersCount }}
+                <span class="visually-hidden">Pending orders</span>
+              </span>
+            </a>
           </li>
 
           <!-- If not admin -->
@@ -51,7 +58,7 @@
           <h1 class="display-4 fw-bold mb-3">Kantin Nasi Hainam <span class="text-warning">88</span></h1>
           <p class="lead mb-4">Semua menu kami dimasak dengan bahan segar setiap hari. Kami mementingkan gizi seimbang untuk mahasiswa yang butuh energi sepanjang hari.</p>
           <div class="d-flex justify-content-center">
-            <a href="#login-section" class="btn btn-primary btn-lg me-3">Pesan Sekarang</a>
+            <a href="./statusPembeli.html" class="btn btn-primary btn-lg me-3" id="pesananButton" style="display: none;">Cek Pesanan</a>
             <a href="./menu.html" class="btn btn-outline-light btn-lg">Lihat Menu</a>
           </div>
         </div>
@@ -180,27 +187,6 @@
         </div>
     </div>
 </div>
-
-          <button class="btn btn-primary btn-sm me-2" ng-show="isAdmin()" ng-click="startEdit(m)">
-            <i class="bi bi-pencil-square"></i> Edit
-          </button>
-          <button class="btn btn-danger btn-sm" ng-show="isAdmin()" ng-click="deleteMemory(m._id)">
-            <i class="bi bi-trash"></i> Hapus
-          </button>
-        </div>
-
-        <div ng-if="m.editing" class="p-3">
-          <input type="text" ng-model="m.name" class="form-control mb-2" />
-          <input type="text" ng-model="m.description" class="form-control mb-2" />
-          <input type="number" ng-model="m.price" class="form-control mb-2" />
-
-          <button class="btn btn-success btn-sm me-2" ng-click="saveEdit(m)">
-            <i class="bi bi-save2"></i> Simpan
-          </button>
-          <button class="btn btn-secondary btn-sm" ng-click="cancelEdit(m)">
-            <i class="bi bi-x-circle"></i> Batal
-          </button>
-        </div>
       </div>
     </div>
 
@@ -601,10 +587,13 @@ function removeFromCart(item) {
     function updateUI() {
       const token = localStorage.getItem("token");
       const logoutButton = document.getElementById("logoutButton");
+      const pesananButton = document.getElementById("pesananButton");
       if (token) {
         logoutButton.style.display = "inline-block"; // Tampilkan tombol logout jika login berhasil
+        pesananButton.style.display = "inline-block"; // Tampilkan tombol cek pesanan jika login berhasil
       } else {
         logoutButton.style.display = "none"; // Sembunyikan tombol logout jika belum login
+        pesananButton.style.display = "none"; // Sembunyikan tombol cek pesanan jika belum login
       }
 
       const role = localStorage.getItem("role");

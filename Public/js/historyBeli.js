@@ -15,6 +15,7 @@ app.controller('HistoryBeliController', function($scope, $http, $window) {
     $scope.statusLabels = {
         belum: "Menunggu Konfirmasi",
         proses: "Pesanan Diproses",
+        tunggu: "Tolong Ambil Pesanan Anda",
         selesai: "Selesai",
         tidakvalid: "Pembayaran Tidak Valid",
         habis: "Stok Habis",
