@@ -10,28 +10,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Optional: styles.css jika perlu styling tambahan -->
   <link rel="stylesheet" href="css/style.css">
-   <style>
-    .quantity-btn {
-      width: 32px;
-      height: 32px;
-      padding: 0;
-    }
-    .item-img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-    }
-    .total-box {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 10px;
-    }
-  </style>
+
 </head>
 <body>
       
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
     <a class="navbar-brand d-flex align-items-center" ng-href="{{ getProfileLink() }}">
       <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
@@ -49,6 +33,7 @@
           <li class="nav-item" ng-if="isAdmin()">
             <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
           </li>
+          <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
 
           <!-- If not admin -->
           <li class="nav-item" ng-if="!isAdmin()">
@@ -60,6 +45,8 @@
       </div>
     </div>
   </nav>
+  <!-- Navbar End -->
+   
 <body ng-controller="CartController" class="bg-light">
 
   <div class="container my-5">

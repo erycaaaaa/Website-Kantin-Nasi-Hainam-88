@@ -64,8 +64,14 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
-          <li class="nav-item">
+          <li class="nav-item" ng-if="isAdmin()">
             <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
+
+          <!-- If not admin -->
+          <li class="nav-item" ng-if="!isAdmin()">
+            <a class="nav-link" href="#location">Lokasi</a>
           </li>
           <li class="nav-item"><a class="nav-link" href="./tentangKami.html">Tentang Kami</a></li>
   <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>    
