@@ -1,10 +1,11 @@
 var app = angular.module('warung88', []);
 
-app.controller('PesananAktifController', function($scope, $http, $window) {
+app.controller('PesananAktifController', function($scope, $http, $window, $interval) {
     $scope.role = localStorage.getItem('role');
     if($scope.role !== 'admin') {
         $window.location.href = './index.html';
     }
+
     $http.get('http://localhost:5000/api/datas/viewData')
     .then(function(response) {
         console.log(response.data);  // Debugging line
@@ -39,6 +40,15 @@ app.controller('PesananAktifController', function($scope, $http, $window) {
             console.error("Failed to fetch pending orders count:", error);
         });
     };
-    console.log("Pending orders count:", $scope.pendingOrdersCount);
     $scope.fetchPendingOrdersCount();
+
+    $interval($scope.fetchPendingOrdersCount, 60000);
+
+     $scope.logout = function () {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("cart"); 
+      localStorage.removeItem("username");
+      $window.location.href = "./index.html"; 
+    };
 });

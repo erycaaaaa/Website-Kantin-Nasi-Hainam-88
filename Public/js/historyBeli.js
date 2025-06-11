@@ -21,4 +21,12 @@ app.controller('HistoryBeliController', function($scope, $http, $window) {
         habis: "Stok Habis",
         tidakcocok: "Jumlah Pembayaran Tidak Cocok"
     };
+
+     $scope.logout = function () {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("cart"); 
+      localStorage.removeItem("username");
+      $window.location.href = "./index.html"; 
+    };
 });

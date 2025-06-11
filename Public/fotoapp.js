@@ -16,15 +16,29 @@
     // Helper untuk cek admin
     $scope.isAdmin = () => $scope.role === 'admin';
 
+    $scope.isCustomer = () => $scope.role === 'customer';
+
+
     $scope.getProfileLink = function() {
       const token = localStorage.getItem("token");
       if (!token) return ""; 
       return $scope.isAdmin() ? "./profilPenjual.html" : "./profile.html";
     };
 
+    $scope.getPesananLink = function() {
+      const token = localStorage.getItem("token");
+      if (!token) return ""; 
+      return $scope.isAdmin() ? "./pesananAktif.html" : "./statusPembeli.html";
+    };
+
     $http.get('http://localhost:5000/api/menu')
     .then(function(response) {
+      if($scope.isAdmin()){
+        $scope.allData = response.data;
+      }
+      else{
         $scope.allData = response.data.filter(item => item.status === true);
+      }
         console.log($scope.allData);
     })
 
@@ -105,7 +119,17 @@
         });
     };
 
-    // $scope.cart = [];
+    $scope.changeStatus = function(item) {
+      if(item.status === false){
+        item.status = true;
+        $http.put('http://localhost:5000/api/memories/'+item._id, item);
+      }
+      else {
+        item.status = false;
+        $http.put('http://localhost:5000/api/memories/'+item._id, item);
+      }
+
+    }
 
 $scope.addToCart = function(item) {
   let found = false;
@@ -133,6 +157,17 @@ $scope.removeFromCart = function(item) {
       } else {
         $scope.cart.splice(i, 1);
       }
+      break;
+    }
+  }
+
+  localStorage.setItem('cart', JSON.stringify($scope.cart)); // 🔁 Save updated cart
+};
+
+$scope.deleteFromCart = function(item) {
+  for (let i = 0; i < $scope.cart.length; i++) {
+    if ($scope.cart[i]._id === item._id) {
+      $scope.cart.splice(i, 1);
       break;
     }
   }

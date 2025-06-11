@@ -14,9 +14,9 @@
    <!-- Navbar Start -->
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
-    <a class="navbar-brand d-flex align-items-center" ng-href="{{ getProfileLink() }}">
+    <a class="navbar-brand d-flex align-items-center" href="./index.html">
       <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
-      Kantin 88 Nasi Hainam
+      Kantin 88 Untar
     </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,12 +25,18 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
-          <li class="nav-item" ng-if="isAdmin()">
-            <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
+          <li class="nav-item position-relative" ng-if="isAdmin()">
+            <a class="nav-link" href="./pesananAktif.html">
+              Pesanan Aktif
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    ng-if="pendingOrdersCount > 0">
+                {{ pendingOrdersCount }}
+                <span class="visually-hidden">Pending orders</span>
+              </span>
+            </a>
           </li>
-          <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" id="profileButton" ng-href="{{ getProfileLink() }}" style="display: none;">Profile</a></li>
 
           <!-- If not admin -->
           <li class="nav-item" ng-if="!isAdmin()">
@@ -75,12 +81,20 @@
                     <p class="fw-bold text-danger mb-0">Rp {{m.price | number:0}}</p>
                 </div>
 
-                <div class="d-flex justify-content-between align-items-center mt-2" ng-if="!isAdmin()">
+                <div class="d-flex justify-content-between align-items-center mt-2" ng-if="isCustomer()">
                     <button 
                         class="btn btn-outline-dark btn-sm btn-add-cart"
                         ng-click="addToCart(m)">
                         <i class="bi bi-cart-plus"></i> Keranjang
                     </button>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-2" ng-if="isAdmin()">
+                  <button 
+                    class="btn btn-outline-dark btn-sm btn-add-cart"
+                    ng-click="changeStatus(m)">
+                    Status: {{ m.status ? 'Aktif' : 'Nonaktif' }}
+                  </button>
                 </div>
             </div>
         </div>
@@ -334,7 +348,6 @@ function getTotal() {
   return cart.reduce((total, item) => total + item.price * item.quantity, 0); // Total harga berdasarkan quantity
 }
 
-
     function logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
@@ -392,10 +405,13 @@ function removeFromCart(item) {
     function updateUI() {
       const token = localStorage.getItem("token");
       const logoutButton = document.getElementById("logoutButton");
+      const profileButton = document.getElementById("profileButton")
       if (token) {
-        logoutButton.style.display = "inline-block"; // Tampilkan tombol logout jika login berhasil
+        logoutButton.style.display = "inline-block";
+        profileButton.style.display = "inline-block"; 
       } else {
-        logoutButton.style.display = "none"; // Sembunyikan tombol logout jika belum login
+        logoutButton.style.display = "none";
+        profileButton.style.display = "none";
       }
 
       const role = localStorage.getItem("role");

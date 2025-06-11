@@ -4,9 +4,14 @@ app.controller('StatusPembeliController', function($scope, $http, $window) {
     $http.get('http://localhost:5000/api/datas/viewData')
     .then(function(response) {
         console.log(response.data);  
+        const role = localStorage.getItem("role");
         const username = localStorage.getItem("username");
+        if(role!="customer"){
+            window.location.href = "./index.html";
+        }
+
         const now = new Date();
-        const fiveHoursAgo = new Date(now.getTime() - (5 * 60 * 60 * 1000)); // 5 hours ago
+        const fiveHoursAgo = new Date(now.getTime() - (5 * 60 * 60 * 1000)); 
 
         $scope.allData = response.data.filter(item => {
             const itemDate = new Date(item.tanggal);
@@ -30,5 +35,13 @@ app.controller('StatusPembeliController', function($scope, $http, $window) {
         tidakvalid: "Pembayaran Tidak Valid, tolong hubungi penjual",
         habis: "Stok Habis, tolong hubungi penjual",
         tidakcocok: "Jumlah Pembayaran Tidak Cocok, tolong hubungi penjual"
+    };
+
+    $scope.logout = function () {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("cart"); 
+      localStorage.removeItem("username");
+      $window.location.href = "./index.html"; 
     };
 });

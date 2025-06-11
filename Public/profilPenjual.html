@@ -51,9 +51,9 @@
   <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
-    <a class="navbar-brand d-flex align-items-center" ng-href="{{ getProfileLink() }}">
+    <a class="navbar-brand d-flex align-items-center" href="./index.html">
       <img src="./images/man.png" alt="Profile" style="width:40px; height:40px; border-radius:50%; object-fit:cover; margin-right:10px;">
-      Kantin 88 Nasi Hainam
+      Kantin 88 Untar
     </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,19 +62,20 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="./index.html">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="./menu.html">Menu</a></li>
-          <li class="nav-item" ng-if="isAdmin()">
-            <a class="nav-link" href="./pesananAktif.html">Pesanan Aktif</a>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="./pesananAktif.html">
+              Pesanan Aktif
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    ng-if="pendingOrdersCount > 0">
+                <!-- {{ pendingOrdersCount }} -->
+                <span class="visually-hidden">Pending orders</span>
+              </span>
+            </a>
           </li>
-          <li class="nav-item"><a class="nav-link" href="./profile.html">Profile</a></li>
-
-          <!-- If not admin -->
-          <li class="nav-item" ng-if="!isAdmin()">
-            <a class="nav-link" href="#location">Lokasi</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="profilPenjual.html">Profile</a></li>
           <li class="nav-item"><a class="nav-link" href="./tentangKami.html">Tentang Kami</a></li>
-  <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>    
+        <button id="logoutButton" onclick="logout()">Logout</button>    
         </ul>
       </div>
     </div>
@@ -104,7 +105,7 @@
       <div class="col-md-4 mb-4 fade-in">
         <div
           class="card shadow-sm p-4 stat-card"
-          data-url="dashboard.html"
+          data-url="historyPenjual.html"
           style="cursor:pointer"
         >
           <div class="icon-circle">
@@ -227,6 +228,20 @@
       el.innerText = prefix + Math.floor(start).toLocaleString("id-ID");
     }, duration / steps);
   }
+
+  
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("cart"); 
+      localStorage.removeItem("username");
+      window.location.href = "index.html"; 
+    }
+
+    const userRole = localStorage.getItem("role");
+    if (userRole !== "admin") {
+      window.location.href = "index.html";
+    }
 
   document.addEventListener("DOMContentLoaded", async () => {
     const orders = await fetchOrders();

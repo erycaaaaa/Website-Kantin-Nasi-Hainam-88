@@ -1,6 +1,6 @@
 var app = angular.module('warung88', []);
 
-app.controller('RekapPenjualController', function($scope, $http, $window, $filter) {
+app.controller('RekapPenjualController', function($scope, $http, $window, $filter, $interval) {
     $scope.role = localStorage.getItem('role');
     if($scope.role !== 'admin') {
         $window.location.href = './index.html';
@@ -50,6 +50,14 @@ app.controller('RekapPenjualController', function($scope, $http, $window, $filte
             console.error("Failed to fetch pending orders count:", error);
         });
     };
-    console.log("Pending orders count:", $scope.pendingOrdersCount);
     $scope.fetchPendingOrdersCount();
+    $interval($scope.fetchPendingOrdersCount, 60000);
+
+    $scope.logout = function () {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("cart"); 
+      localStorage.removeItem("username");
+      $window.location.href = "./index.html"; 
+    };
 });
