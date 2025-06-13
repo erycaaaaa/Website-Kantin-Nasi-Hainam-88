@@ -1,7 +1,7 @@
 var app = angular.module('warung88', []);
 
 app.controller('MenuController', function($scope, $http, $window) {
-    $http.get('http://localhost:5000/api/menu')
+    $http.get('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/menu')
     .then(function(response) {
         $scope.allData = response.data.filter(item => item.status === true);
         console.log($scope.allData);
@@ -9,7 +9,7 @@ app.controller('MenuController', function($scope, $http, $window) {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetch('http://localhost:5000/api/cart/guest123')
+    fetch('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/cart/guest123')
         .then(res => res.json())
         .then(data => {
             cartItems = data.items || [];

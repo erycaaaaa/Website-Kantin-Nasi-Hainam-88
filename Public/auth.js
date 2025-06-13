@@ -5,7 +5,7 @@
             const body = { email, password };
 
             try {
-                const response = await fetch("http://localhost:5000/api/auth/login", {
+                const response = await fetch("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/auth/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(body)
@@ -48,7 +48,7 @@
             const body = { fullName, email, phone, password };
 
             try {
-                const response = await fetch("http://localhost:5000/api/auth/register", {
+                const response = await fetch("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/auth/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(body)

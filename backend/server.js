@@ -30,7 +30,7 @@ app.use("/api/menu", menuRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/datas", dataRoutes)
 
-mongoose.connect('mongodb://localhost:27017/warung88', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://geasandhea19:RYdcGEOvNw7dtouI@cluster0.lyzqhtm.mongodb.net/warung88?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Skema MongoDB
 const memorySchema = new mongoose.Schema({

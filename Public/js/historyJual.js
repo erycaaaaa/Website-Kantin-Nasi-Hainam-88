@@ -6,7 +6,7 @@ app.controller('HistoryPenjualController', function($scope, $http, $window, $int
         $window.location.href = './index.html';
     }
     
-    $http.get('http://localhost:5000/api/datas/viewData')
+    $http.get('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas/viewData')
     .then(function(response) {
         console.log(response.data);  
         $scope.allData = response.data.sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
@@ -16,7 +16,7 @@ app.controller('HistoryPenjualController', function($scope, $http, $window, $int
     });
 
     $scope.fetchPendingOrdersCount = function () {
-        $http.get("http://localhost:5000/api/datas/orders/pending-count").then(function (response) {
+        $http.get("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas/orders/pending-count").then(function (response) {
             $scope.pendingOrdersCount = response.data.count;
         }).catch(function (error) {
             console.error("Failed to fetch pending orders count:", error);

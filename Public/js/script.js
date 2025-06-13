@@ -7,7 +7,7 @@ function updateCartBadge() {
 
 async function syncCartToDB() {
     try {
-        const response = await fetch('http://localhost:5000/api/cart/save', {
+        const response = await fetch('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/cart/save', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -46,7 +46,7 @@ function removeItemFromCart(name) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetch('http://localhost:5000/api/cart/guest123')
+    fetch('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/cart/guest123')
         .then(res => res.json())
         .then(data => {
             cartItems = data.items || [];

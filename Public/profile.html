@@ -181,7 +181,7 @@ async function submitPasswordChange(event) {
       return false;
     }
 
-    const response = await fetch('http://localhost:5000/api/auth/change-password', {
+    const response = await fetch('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/auth/change-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -289,7 +289,7 @@ window.onclick = function(event) {
       return;
     }
 
-    const response = await fetch('http://localhost:5000/api/auth/delete-account', {
+    const response = await fetch('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/auth/delete-account', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

@@ -31,7 +31,7 @@
       return $scope.isAdmin() ? "./pesananAktif.html" : "./statusPembeli.html";
     };
 
-    $http.get('http://localhost:5000/api/menu')
+    $http.get('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/menu')
     .then(function(response) {
       if($scope.isAdmin()){
         $scope.allData = response.data;
@@ -50,7 +50,7 @@
       formData.append('description', $scope.memory.description);
       formData.append('price', $scope.memory.price);
 
-      $http.post('http://localhost:5000/api/memories', formData, {
+      $http.post('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/memories', formData, {
         headers: { 'Content-Type': undefined }
       })
       .then(function(response) {
@@ -85,7 +85,7 @@
         description: memory.description,
         price: memory.price
       };
-      $http.put(`http://localhost:5000/api/memories/${memory._id}`, updated)
+      $http.put(`https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/memories/${memory._id}`, updated)
         .then(function(resp) {
           memory.editing = false;
           Object.assign(memory, resp.data);
@@ -110,7 +110,7 @@
         alert('Hanya admin yang bisa menghapus menu.');
         return;
       }
-      $http.delete(`http://localhost:5000/api/memories/${id}`)
+      $http.delete(`https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/memories/${id}`)
         .then(function() {
           $scope.memories = $scope.memories.filter(m => m._id !== id);
         })
@@ -122,11 +122,11 @@
     $scope.changeStatus = function(item) {
       if(item.status === false){
         item.status = true;
-        $http.put('http://localhost:5000/api/memories/'+item._id, item);
+        $http.put('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/memories/'+item._id, item);
       }
       else {
         item.status = false;
-        $http.put('http://localhost:5000/api/memories/'+item._id, item);
+        $http.put('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/memories/'+item._id, item);
       }
 
     }
@@ -189,7 +189,7 @@ $scope.deleteFromCart = function(item) {
      $scope.pendingOrdersCount = 0;
 
     $scope.fetchPendingOrdersCount = function () {
-        $http.get("http://localhost:5000/api/datas/orders/pending-count").then(function (response) {
+        $http.get("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas/orders/pending-count").then(function (response) {
             $scope.pendingOrdersCount = response.data.count;
         }).catch(function (error) {
             console.error("Failed to fetch pending orders count:", error);

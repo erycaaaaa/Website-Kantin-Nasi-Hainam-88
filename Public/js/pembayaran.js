@@ -39,7 +39,7 @@ app.controller('PembayaranController', function($scope, $http, $window) {
       formData.append("file", $scope.selectedFile);
       formData.append("filename", uniqueName); 
 
-      $http.post("http://localhost:5000/api/datas/upload", formData, {
+      $http.post("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas/upload", formData, {
         transformRequest: angular.identity,
         headers: { "Content-Type": undefined }
       }).then(function(uploadResponse) {
@@ -53,7 +53,7 @@ app.controller('PembayaranController', function($scope, $http, $window) {
           status: "belum"
         };
 
-        $http.post("http://localhost:5000/api/datas", order)
+        $http.post("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas", order)
           .then(function(response) {
             localStorage.removeItem('cart');
             $window.location.href = 'success.html';

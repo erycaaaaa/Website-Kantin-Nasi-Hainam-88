@@ -209,7 +209,7 @@
     <div class="memory-item" ng-repeat="m in memories">
   <div ng-if="!m.editing" class="p-3">
     <img
-      ng-src="http://localhost:5000/{{m.photo}}"
+      ng-src="https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/{{m.photo}}"
       alt="{{m.name}}"
       class="img-fluid mb-2"
     />
@@ -293,13 +293,13 @@
       }
 
       function load(){
-        $http.get('http://localhost:5000/api/menu/')
+        $http.get('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/menu/')
           .then(r => $scope.memories = r.data);
       }
       load();
 
       $scope.fetchPendingOrdersCount = function () {
-        $http.get("http://localhost:5000/api/datas/orders/pending-count").then(function (response) {
+        $http.get("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas/orders/pending-count").then(function (response) {
             $scope.pendingOrdersCount = response.data.count;
         }).catch(function (error) {
             console.error("Failed to fetch pending orders count:", error);
@@ -323,15 +323,15 @@
         fd.append('name',$scope.memory.name);
         fd.append('description',$scope.memory.description);
         fd.append('price',$scope.memory.price);
-        $http.post('http://localhost:5000/api/memories', fd, {
+        $http.post('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/memories', fd, {
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
         }).then(load);
       };
-      $scope.deleteMemory = id => $http.delete('http://localhost:5000/api/memories/'+id).then(load);
+      $scope.deleteMemory = id => $http.delete('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/memories/'+id).then(load);
       $scope.startEdit    = m => m.editing = true;
       $scope.saveEdit     = m => {
-        $http.put('http://localhost:5000/api/memories/'+m._id, m)
+        $http.put('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/memories/'+m._id, m)
              .then(() => m.editing = false);
       };
       $scope.cancelEdit   = m => m.editing = false;

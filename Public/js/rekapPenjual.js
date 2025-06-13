@@ -16,7 +16,7 @@ app.controller('RekapPenjualController', function($scope, $http, $window, $filte
       $scope.rekapData = [];
 
       $scope.updateRekap = function() {
-        $http.get("http://localhost:5000/api/datas/viewData").then(response => {
+        $http.get("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas/viewData").then(response => {
           const allData = response.data;
           console.log(allData);
           const now = new Date();
@@ -44,7 +44,7 @@ app.controller('RekapPenjualController', function($scope, $http, $window, $filte
       $scope.updateRekap(); 
 
       $scope.fetchPendingOrdersCount = function () {
-        $http.get("http://localhost:5000/api/datas/orders/pending-count").then(function (response) {
+        $http.get("https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas/orders/pending-count").then(function (response) {
             $scope.pendingOrdersCount = response.data.count;
         }).catch(function (error) {
             console.error("Failed to fetch pending orders count:", error);

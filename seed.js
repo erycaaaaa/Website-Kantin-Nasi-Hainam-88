@@ -2,7 +2,7 @@
 
 const { MongoClient } = require('mongodb');
 
-const uri = 'mongodb://127.0.0.1:27017';
+const uri = 'mongodb+srv://geasandhea19:RYdcGEOvNw7dtouI@cluster0.lyzqhtm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const client = new MongoClient(uri);
 
 async function connectToDatabase(dbName) {

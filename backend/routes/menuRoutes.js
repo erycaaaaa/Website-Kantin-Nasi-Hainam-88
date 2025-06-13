@@ -7,6 +7,7 @@ const { verifyToken, verifyAdmin } = require("../middleware/authMiddleware");
 router.get("/", async (req, res) => {
     try {
         const menus = await Menu.find();
+        console.log(menus);
         res.json(menus);
     } catch (err) {
         res.status(500).json({ message: "Gagal mengambil data menu" });

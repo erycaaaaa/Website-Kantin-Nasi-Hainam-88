@@ -1,7 +1,7 @@
 var app = angular.module('warung88', []);
 
 app.controller('HistoryBeliController', function($scope, $http, $window) {
-    $http.get('http://localhost:5000/api/datas/viewData')
+    $http.get('https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/api/datas/viewData')
     .then(function(response) {
         console.log(response.data);  
         const username = localStorage.getItem("username");

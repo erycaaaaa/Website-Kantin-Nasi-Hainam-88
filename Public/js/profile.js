@@ -7,7 +7,7 @@ app.controller('ProfileController', function($scope, $http, $window) {
         $window.location.href = "index.html";
     }
     console.log("Username from localStorage:", username);
-    $http.get(`http://localhost:5000/users/${username}`)
+    $http.get(`https://eb6415fb-0b14-4e52-919d-efdcc0eb5ab0-00-2j9jbuyxc3a4h.pike.replit.dev/users/${username}`)
     .then(function(response) {
         console.log(response.data);  
         $scope.username = response.data.username;
