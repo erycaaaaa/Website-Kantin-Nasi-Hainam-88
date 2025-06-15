@@ -1,0 +1,10 @@
+{
+  "projectName": "kantin88",
+  "meta": {
+    "type": "backend"
+  },
+  "backend": {
+    "platform": "node14"
+  },
+  "hash": "73787c8c"
+}
